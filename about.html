@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Namrhali Projects</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #1a1a1a;
+            overflow-x: hidden;
+            background: #f8f9fa;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .about-hero {
+            height: 60vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 80px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .about-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            padding: 2rem;
+        }
+
+        .about-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .about-hero p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 5%;
+            background: white;
+            border-bottom: 1px solid #eee;
+        }
+
+        .breadcrumb a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .breadcrumb span {
+            color: #666;
+        }
+
+        /* Main Content */
+        .about-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 5rem 5%;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            max-width: 700px;
+        }
+
+        /* Story Section */
+        .story-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 6rem;
+            align-items: center;
+        }
+
+        .story-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+        }
+
+        .story-text p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .story-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            height: 400px;
+        }
+
+        .story-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .story-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Values Section */
+        .values-section {
+            margin-bottom: 6rem;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .value-card {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.05);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .value-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .value-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(102, 126, 234, 0.15);
+        }
+
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+            color: white;
+        }
+
+        .value-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .value-card p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Team Section */
+        .team-section {
+            margin-bottom: 6rem;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .team-member {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(102, 126, 234, 0.15);
+        }
+
+        .member-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .team-member:hover .member-image img {
+            transform: scale(1.1);
+        }
+
+        .member-info {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .member-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+
+        .member-info p {
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .member-info .bio {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Certification Section */
+        .certification-section {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 5rem 5%;
+            border-radius: 20px;
+            margin-bottom: 6rem;
+        }
+
+        .cert-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .cert-badge {
+            text-align: center;
+        }
+
+        .badge-icon {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            margin: 0 auto 1.5rem;
+            color: white;
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+        }
+
+        .cert-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+        }
+
+        .cert-text p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .cert-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .cert-list li {
+            margin-bottom: 0.8rem;
+            color: #666;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .cert-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 20px;
+            margin-bottom: 6rem;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 4rem 5%;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #aaa;
+            line-height: 2;
+            text-decoration: none;
+            display: block;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #667eea;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            color: #666;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .story-section {
+                grid-template-columns: 1fr;
+            }
+
+            .cert-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo"><img src="assets/NamrhaliLogo.png" height="80" width="80"></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <!--<li><a href="index.html#gallery">Gallery</a></li>-->
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="about-hero">
+        <div class="about-hero-content">
+            <h1>Our Story</h1>
+            <p>Building South Africa's logistics future with integrity and excellence</p>
+        </div>
+    </section>
+
+    <div class="breadcrumb">
+        <a href="index.html">Home</a> > <span>About Us</span>
+    </div>
+
+    <main class="about-content">
+        <section class="story-section">
+            <div class="story-text">
+                <h2>From Humble Beginnings to Industry Leaders</h2>
+                <p>Founded in 2022 in Middelburg, Mpumalanga, Namrhali Projects began with a simple vision: to provide reliable, efficient logistics solutions that empower South African businesses to thrive. What started as a small local operation has rapidly grown into a trusted partner for companies across the nation.</p>
+                <p>Our founder, recognizing the critical role of logistics in economic development, established Namrhali Projects with a commitment to excellence, integrity, and community empowerment. This foundation has guided our growth and continues to shape our operations today.</p>
+                <p>As a Level 1 B-BBEE contributor, we're proud to be part of South Africa's economic transformation journey while maintaining the highest standards of service delivery and customer satisfaction.</p>
+            </div>
+            <div class="story-image">
+                <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800" alt="Namrhali Projects warehouse">
+            </div>
+        </section>
+
+        <section class="values-section">
+            <h2 class="section-title">Our Values</h2>
+            <p class="section-subtitle">The principles that guide every decision we make and every service we deliver</p>
+            
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">✓</div>
+                    <h3>Integrity</h3>
+                    <p>We conduct business with honesty and transparency, building trust with every client interaction and maintaining the highest ethical standards.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">⚡</div>
+                    <h3>Excellence</h3>
+                    <p>We strive for perfection in every delivery, continuously improving our processes and exceeding customer expectations at every opportunity.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🤝</div>
+                    <h3>Partnership</h3>
+                    <p>We view our clients as partners, working collaboratively to develop customized solutions that address their unique logistics challenges.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🌱</div>
+                    <h3>Sustainability</h3>
+                    <p>We're committed to environmentally responsible practices and contributing positively to the communities we serve.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🚀</div>
+                    <h3>Innovation</h3>
+                    <p>We embrace technology and new approaches to solve complex logistics challenges and deliver superior value to our clients.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🏆</div>
+                    <h3>Empowerment</h3>
+                    <p>As a Level 1 B-BBEE contributor, we're dedicated to economic transformation and creating opportunities for all South Africans.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="team-section">
+            <h2 class="section-title">Our Leadership</h2>
+            <p class="section-subtitle">Meet the dedicated professionals driving Namrhali Projects forward</p>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400" alt="CEO">
+                    </div>
+                    <div class="member-info">
+                        <h3>James Mbeki</h3>
+                        <p>Founder & CEO</p>
+                        <p class="bio">With over 15 years in the logistics industry, James founded Namrhali Projects to create a company that combines operational excellence with meaningful social impact.</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400" alt="Operations Director">
+                    </div>
+                    <div class="member-info">
+                        <h3>Sarah Ndlovu</h3>
+                        <p>Operations Director</p>
+                        <p class="bio">Sarah brings extensive experience in supply chain management and logistics optimization, ensuring our operations run smoothly and efficiently.</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400" alt="Finance Manager">
+                    </div>
+                    <div class="member-info">
+                        <h3>Lerato Khumalo</h3>
+                        <p>Finance Manager</p>
+                        <p class="bio">Lerato oversees our financial operations with precision and strategic insight, ensuring sustainable growth and fiscal responsibility.</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400" alt="Client Relations Manager">
+                    </div>
+                    <div class="member-info">
+                        <h3>David van der Merwe</h3>
+                        <p>Client Relations Manager</p>
+                        <p class="bio">David is dedicated to building strong, lasting relationships with our clients and ensuring their needs are met with exceptional service.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="certification-section">
+            <div class="cert-content">
+                <div class="cert-badge">
+                    <div class="badge-icon">🏆</div>
+                    <h3>B-BBEE Level 1</h3>
+                    <p>135% Procurement Recognition</p>
+                </div>
+                <div class="cert-text">
+                    <h2>Our Commitment to Transformation</h2>
+                    <p>As a Level 1 B-BBEE contributor, Namrhali Projects is deeply committed to South Africa's economic transformation. Our certification reflects our dedication to:</p>
+                    <ul class="cert-list">
+                        <li>Creating meaningful employment opportunities</li>
+                        <li>Developing skills within our workforce</li>
+                        <li>Supporting black-owned suppliers and partners</li>
+                        <li>Contributing to socio-economic development</li>
+                        <li>Promoting enterprise development initiatives</li>
+                    </ul>
+                    <p>Our B-BBEE status isn't just a certificate—it's a reflection of our core values and our commitment to building a more inclusive South African economy.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2>Ready to Partner With Us?</h2>
+            <p>Join the growing list of satisfied clients who trust Namrhali Projects with their logistics needs. Let's discuss how we can support your business growth.</p>
+            <a href="index.html#contact" class="cta-btn">Get In Touch</a>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Namrhali Projects</h3>
+                <p>Your trusted partner in logistics excellence. Level 1 B-BBEE Contributor.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>41 Sapphire Crescent<br>Middelburg, Mpumalanga<br>1050, South Africa</p>
+                <p>info@namrhali.co.za</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="index.html#services">Services</a>
+                <a href="index.html#gallery">Gallery</a>
+                <a href="about.html">About Us</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h3>Certifications</h3>
+                <p>B-BBEE Level 1 Contributor<br>Registration: 2022/808593/07<br>Valid until June 2026</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Namrhali Projects (Pty) Ltd. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
