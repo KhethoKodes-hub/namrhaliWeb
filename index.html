@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Namrhali Projects | Logistics Excellence</title>
+    <title>Namrhali Projects | Logistics Excellence in Motion</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -13,19 +13,22 @@
         }
 
         :root {
-            --primary: #667eea;
-            --secondary: #764ba2;
-            --accent: #f093fb;
-            --dark: #1a1a1a;
-            --light: #f8f9fa;
-            --gray: #666;
+            --primary: #1e40af;
+            --primary-dark: #1e3a8a;
+            --secondary: #3b82f6;
+            --accent: #60a5fa;
+            --orange: #f97316;
+            --dark: #0f172a;
+            --gray: #475569;
+            --light-gray: #f1f5f9;
+            --white: #ffffff;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             color: var(--dark);
             overflow-x: hidden;
-            background: var(--light);
+            background: var(--white);
             line-height: 1.6;
         }
 
@@ -35,24 +38,29 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(30, 64, 175, 0.1);
             transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         }
 
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 5%;
+            padding: 1.2rem 8%;
             max-width: 1400px;
             margin: 0 auto;
         }
 
         .logo {
             font-size: 1.8rem;
-            font-weight: 700;
+            font-weight: 800;
+            letter-spacing: 1px;
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -63,148 +71,195 @@
             display: flex;
             gap: 2.5rem;
             list-style: none;
+            align-items: center;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: #333;
+            color: var(--dark);
             font-weight: 500;
+            font-size: 0.95rem;
             position: relative;
             transition: color 0.3s ease;
         }
 
-        .nav-links a::after {
+        .nav-links a:not(.nav-cta)::after {
             content: '';
             position: absolute;
             bottom: -5px;
-            left: 0;
+            left: 50%;
+            transform: translateX(-50%);
             width: 0;
             height: 2px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            background: var(--orange);
             transition: width 0.3s ease;
         }
 
-        .nav-links a:hover::after {
+        .nav-links a:not(.nav-cta):hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:not(.nav-cta):hover::after {
             width: 100%;
         }
 
         .nav-cta {
-            padding: 0.7rem 1.5rem;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            padding: 0.7rem 1.8rem;
+            background: linear-gradient(135deg, var(--orange) 0%, #ea580c 100%);
             color: white;
-            border-radius: 50px;
-            text-decoration: none;
+            border-radius: 8px;
             font-weight: 600;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
         }
 
         .nav-cta:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 6px 25px rgba(249, 115, 22, 0.4);
         }
 
         /* Hero Section */
         .hero {
-            height: 100vh;
+            min-height: 100vh;
             position: relative;
             overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-top: 80px;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
         }
 
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
-            opacity: 0.1;
-        }
-
-        .hero-shapes {
+        .road-lines {
             position: absolute;
             width: 100%;
             height: 100%;
-            overflow: hidden;
+            background-image: 
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 50px,
+                    rgba(255, 255, 255, 0.03) 50px,
+                    rgba(255, 255, 255, 0.03) 100px
+                );
+            animation: roadMove 20s linear infinite;
         }
 
-        .shape {
+        @keyframes roadMove {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(100px); }
+        }
+
+        .hero-particles {
             position: absolute;
-            border-radius: 50%;
-            filter: blur(60px);
-            opacity: 0.3;
-            animation: float 20s infinite ease-in-out;
+            width: 100%;
+            height: 100%;
         }
 
-        .shape1 {
-            width: 400px;
-            height: 400px;
-            background: var(--primary);
-            top: 10%;
-            left: 10%;
-            animation-delay: 0s;
-        }
-
-        .shape2 {
-            width: 300px;
-            height: 300px;
-            background: var(--secondary);
-            top: 50%;
-            right: 15%;
-            animation-delay: 5s;
-        }
-
-        .shape3 {
-            width: 350px;
-            height: 350px;
+        .particle-dot {
+            position: absolute;
+            width: 4px;
+            height: 4px;
             background: var(--accent);
-            bottom: 10%;
-            left: 30%;
-            animation-delay: 10s;
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float-particle 15s infinite ease-in-out;
         }
 
-        @keyframes float {
+        .particle-dot:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; }
+        .particle-dot:nth-child(2) { left: 30%; top: 40%; animation-delay: 2s; }
+        .particle-dot:nth-child(3) { left: 50%; top: 60%; animation-delay: 4s; }
+        .particle-dot:nth-child(4) { left: 70%; top: 30%; animation-delay: 6s; }
+        .particle-dot:nth-child(5) { left: 90%; top: 50%; animation-delay: 8s; }
+
+        @keyframes float-particle {
             0%, 100% {
-                transform: translate(0, 0) scale(1);
-            }
-            25% {
-                transform: translate(50px, -50px) scale(1.1);
+                transform: translate(0, 0);
+                opacity: 0.3;
             }
             50% {
-                transform: translate(-30px, 50px) scale(0.9);
+                transform: translate(50px, -50px);
+                opacity: 0.6;
             }
-            75% {
-                transform: translate(40px, 30px) scale(1.05);
-            }
+        }
+
+        .hero-truck {
+            position: absolute;
+            font-size: 8rem;
+            opacity: 0.05;
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            animation: truckPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes truckPulse {
+            0%, 100% { transform: translateY(-50%) scale(1); }
+            50% { transform: translateY(-50%) scale(1.05); }
         }
 
         .hero-content {
             position: relative;
             z-index: 2;
             text-align: center;
-            max-width: 900px;
-            padding: 2rem;
+            max-width: 1000px;
+            padding: 4rem 2rem;
+            color: white;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.5rem;
+            background: rgba(59, 130, 246, 0.15);
+            border: 1px solid rgba(96, 165, 250, 0.3);
+            border-radius: 50px;
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
         }
 
         .hero-content h1 {
-            font-size: 4rem;
-            font-weight: 800;
+            font-size: 5.5rem;
+            font-weight: 900;
             margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            letter-spacing: -2px;
+            line-height: 1.1;
+            animation: slideUp 0.8s ease;
+        }
+
+        .hero-content h1 .highlight {
+            background: linear-gradient(135deg, var(--orange) 0%, #ef4444 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            line-height: 1.2;
         }
 
-        .hero-content p {
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-subtitle {
             font-size: 1.3rem;
-            color: var(--gray);
-            margin-bottom: 2.5rem;
-            line-height: 1.6;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: slideUp 0.8s ease 0.2s backwards;
         }
 
         .cta-buttons {
@@ -212,119 +267,171 @@
             gap: 1.5rem;
             justify-content: center;
             flex-wrap: wrap;
+            animation: slideUp 0.8s ease 0.4s backwards;
         }
 
         .cta-btn {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
+            padding: 1.2rem 2.8rem;
             text-decoration: none;
-            border-radius: 50px;
+            border-radius: 8px;
             font-weight: 600;
+            font-size: 1rem;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            letter-spacing: 0.3px;
         }
 
-        .cta-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
-        }
-
-        .cta-btn-secondary {
-            background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            box-shadow: none;
-        }
-
-        .cta-btn-secondary:hover {
-            background: var(--primary);
+        .cta-primary {
+            background: linear-gradient(135deg, var(--orange) 0%, #ea580c 100%);
             color: white;
+            box-shadow: 0 10px 30px rgba(249, 115, 22, 0.4);
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(249, 115, 22, 0.5);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .cta-secondary:hover {
+            background: white;
+            color: var(--primary);
         }
 
         /* Stats Section */
         .stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 0;
             max-width: 1200px;
-            margin: -50px auto 0;
-            padding: 0 5%;
+            margin: -60px auto 0;
+            padding: 0 8%;
             position: relative;
             z-index: 10;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            border-radius: 16px;
+            overflow: hidden;
         }
 
         .stat-card {
             background: white;
-            padding: 2.5rem 2rem;
-            border-radius: 20px;
+            padding: 3rem 2rem;
             text-align: center;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
             transition: all 0.3s ease;
+            border-right: 1px solid var(--light-gray);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card:last-child {
+            border-right: none;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--orange), var(--primary));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover::before {
+            transform: scaleX(1);
         }
 
         .stat-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 50px rgba(102, 126, 234, 0.2);
+            background: var(--light-gray);
+            transform: translateY(-5px);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
         }
 
         .stat-number {
-            font-size: 2.5rem;
-            font-weight: 800;
+            font-size: 3rem;
+            font-weight: 900;
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             margin-bottom: 0.5rem;
+            line-height: 1;
         }
 
         .stat-label {
             color: var(--gray);
-            font-size: 0.95rem;
-            font-weight: 500;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         /* Services Section */
         .services {
-            padding: 8rem 5%;
-            max-width: 1400px;
-            margin: 0 auto;
+            padding: 10rem 8%;
+            background: var(--white);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 5rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            font-size: 0.85rem;
+            color: var(--orange);
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
         }
 
         .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
+            font-size: 3rem;
+            font-weight: 900;
             color: var(--dark);
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
         }
 
-        .section-subtitle {
-            text-align: center;
-            color: var(--gray);
+        .section-description {
             font-size: 1.1rem;
-            margin-bottom: 4rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
+            color: var(--gray);
+            line-height: 1.8;
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .service-card {
             background: white;
-            padding: 3rem 2rem;
-            border-radius: 20px;
-            box-shadow: 0 5px 30px rgba(0,0,0,0.05);
+            padding: 3rem 2.5rem;
+            border-radius: 16px;
+            border: 2px solid var(--light-gray);
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
-            text-align: center;
         }
 
         .service-card::before {
@@ -334,119 +441,172 @@
             left: 0;
             width: 100%;
             height: 4px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            background: linear-gradient(90deg, var(--orange), var(--primary));
             transform: scaleX(0);
+            transform-origin: left;
             transition: transform 0.4s ease;
+        }
+
+        .service-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, var(--orange), var(--primary));
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 0.4s ease 0.2s;
         }
 
         .service-card:hover::before {
             transform: scaleX(1);
         }
 
+        .service-card:hover::after {
+            transform: scaleY(1);
+        }
+
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 50px rgba(102, 126, 234, 0.15);
+            box-shadow: 0 20px 60px rgba(30, 64, 175, 0.15);
+            border-color: var(--accent);
         }
 
         .service-icon {
             width: 70px;
             height: 70px;
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            border-radius: 15px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 2rem;
-            margin: 0 auto 1.5rem;
+            margin-bottom: 1.5rem;
             color: white;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            background: linear-gradient(135deg, var(--orange) 0%, #ea580c 100%);
+            transform: scale(1.1) rotate(5deg);
         }
 
         .service-card h3 {
             font-size: 1.5rem;
+            font-weight: 700;
             margin-bottom: 1rem;
             color: var(--dark);
         }
 
         .service-card p {
             color: var(--gray);
-            line-height: 1.7;
+            line-height: 1.8;
+            font-size: 0.95rem;
         }
 
-        /* Why Choose Us Section */
+        /* Why Us Section */
         .why-us {
-            padding: 8rem 5%;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 8rem 8%;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .why-us::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(96, 165, 250, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(249, 115, 22, 0.1) 0%, transparent 50%);
         }
 
         .why-content {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 5rem;
             align-items: center;
+            position: relative;
+            z-index: 1;
         }
 
         .why-text h2 {
-            font-size: 2.5rem;
-            font-weight: 800;
+            font-size: 2.8rem;
+            font-weight: 900;
             margin-bottom: 1.5rem;
-            color: var(--dark);
+            letter-spacing: -1px;
         }
 
         .why-text p {
-            color: var(--gray);
-            line-height: 1.8;
+            line-height: 1.9;
             margin-bottom: 1.5rem;
             font-size: 1.05rem;
+            opacity: 0.95;
         }
 
         .features-list {
             list-style: none;
-            margin-top: 2rem;
+            margin-top: 2.5rem;
         }
 
         .features-list li {
-            margin-bottom: 1rem;
-            color: var(--gray);
+            margin-bottom: 1.2rem;
             position: relative;
-            padding-left: 2rem;
+            padding-left: 2.5rem;
+            font-size: 1rem;
+            opacity: 0.95;
         }
 
         .features-list li::before {
-            content: '✓';
+            content: '→';
             position: absolute;
             left: 0;
-            color: var(--primary);
+            color: var(--orange);
             font-weight: bold;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
         }
 
         .certification-badge {
-            display: inline-block;
-            padding: 0.8rem 1.5rem;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 50px;
             font-weight: 600;
-            margin-top: 1rem;
+            margin-top: 2rem;
             font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .certification-badge:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateX(5px);
         }
 
         .why-visual {
             position: relative;
-            height: 400px;
+            height: 500px;
         }
 
         .visual-card {
             position: absolute;
-            width: 250px;
-            height: 200px;
             background: white;
-            border-radius: 20px;
-            box-shadow: 0 15px 50px rgba(0,0,0,0.1);
-            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            padding: 2.5rem;
             transition: transform 0.3s ease;
+            color: var(--dark);
         }
 
         .visual-card:hover {
@@ -456,45 +616,130 @@
         .visual-card:nth-child(1) {
             top: 0;
             left: 0;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            width: 280px;
+            background: linear-gradient(135deg, var(--orange) 0%, #ea580c 100%);
             color: white;
+            z-index: 2;
         }
 
         .visual-card:nth-child(2) {
-            bottom: 0;
+            bottom: 50px;
             right: 0;
+            width: 300px;
+            z-index: 1;
+        }
+
+        .visual-card-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
         }
 
         .visual-card h4 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
         }
 
         .visual-card p {
-            font-size: 0.9rem;
-            opacity: 0.9;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            opacity: 0.95;
+        }
+
+        /* Process Section */
+        .process {
+            padding: 8rem 8%;
+            background: var(--light-gray);
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .process-step {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 2px solid transparent;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .process-step::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, var(--orange), var(--primary));
+            border-radius: 16px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
+        }
+
+        .process-step:hover::before {
+            opacity: 1;
+        }
+
+        .process-step:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(30, 64, 175, 0.12);
+        }
+
+        .process-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--orange) 0%, #ea580c 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .process-step h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .process-step p {
+            color: var(--gray);
+            line-height: 1.8;
+            font-size: 0.95rem;
         }
 
         /* Gallery Section */
         .gallery {
-            padding: 8rem 5%;
+            padding: 8rem 8%;
+            background: white;
         }
 
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
         .gallery-item {
             position: relative;
             height: 350px;
-            border-radius: 20px;
+            border-radius: 16px;
             overflow: hidden;
             cursor: pointer;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
         }
 
         .gallery-img {
@@ -514,8 +759,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.9) 0%, rgba(249, 115, 22, 0.9) 100%);
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             opacity: 0;
@@ -540,141 +786,191 @@
             transform: translateY(0);
         }
 
-        /* Testimonials Section */
+        /* Testimonials */
         .testimonials {
-            padding: 8rem 5%;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 8rem 8%;
+            background: var(--light-gray);
         }
 
         .testimonial-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2.5rem;
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
         .testimonial-card {
             background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
             position: relative;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 60px rgba(30, 64, 175, 0.12);
         }
 
         .testimonial-card::before {
             content: '"';
             position: absolute;
-            top: 20px;
-            left: 25px;
-            font-size: 4rem;
-            color: var(--primary);
-            opacity: 0.2;
+            top: 25px;
+            left: 30px;
+            font-size: 5rem;
+            color: var(--accent);
+            opacity: 0.15;
             font-family: Georgia, serif;
+            line-height: 1;
         }
 
         .testimonial-text {
             color: var(--gray);
             font-style: italic;
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
+            margin-bottom: 2rem;
+            line-height: 1.9;
+            font-size: 0.95rem;
         }
 
         .testimonial-author {
             display: flex;
             align-items: center;
+            gap: 1rem;
         }
 
         .author-avatar {
-            width: 50px;
-            height: 50px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-weight: bold;
-            margin-right: 1rem;
+            font-weight: 700;
+            font-size: 1.2rem;
         }
 
         .author-info h4 {
             font-size: 1.1rem;
-            margin-bottom: 0.2rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.3rem;
         }
 
         .author-info p {
             color: var(--gray);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         /* CTA Section */
         .cta-section {
-            padding: 8rem 5%;
+            padding: 8rem 8%;
             text-align: center;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            background: linear-gradient(135deg, var(--orange) 0%, #ea580c 100%);
             color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '🚛';
+            position: absolute;
+            font-size: 20rem;
+            opacity: 0.05;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
         .cta-content {
             max-width: 800px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .cta-section h2 {
-            font-size: 2.5rem;
+            font-size: 3rem;
+            font-weight: 900;
             margin-bottom: 1.5rem;
+            letter-spacing: -1px;
         }
 
         .cta-section p {
             font-size: 1.2rem;
-            margin-bottom: 2.5rem;
-            opacity: 0.9;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            line-height: 1.8;
+        }
+
+        .cta-section .cta-btn {
+            background: white;
+            color: var(--orange);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-section .cta-btn:hover {
+            background: var(--primary);
+            color: white;
         }
 
         /* Footer */
         footer {
             background: var(--dark);
             color: white;
-            padding: 4rem 5%;
+            padding: 5rem 8% 2rem;
         }
 
         .footer-content {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 3rem;
+            margin-bottom: 3rem;
         }
 
         .footer-section h3 {
             margin-bottom: 1.5rem;
             font-size: 1.3rem;
+            font-weight: 700;
         }
 
-        .footer-section p, .footer-section a {
-            color: #aaa;
+        .footer-section p {
+            color: #94a3b8;
             line-height: 2;
+            font-size: 0.95rem;
+        }
+
+        .footer-section a {
+            color: #94a3b8;
             text-decoration: none;
             display: block;
+            line-height: 2;
             transition: color 0.3s ease;
+            font-size: 0.95rem;
         }
 
         .footer-section a:hover {
-            color: var(--primary);
+            color: var(--accent);
         }
 
         .social-links {
             display: flex;
             gap: 1rem;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
         }
 
         .social-links a {
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
-            background: #333;
+            background: rgba(255, 255, 255, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -682,133 +978,205 @@
         }
 
         .social-links a:hover {
-            background: var(--primary);
+            background: var(--orange);
             transform: translateY(-3px);
         }
 
+        .footer-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 3rem 0 2rem;
+        }
+
         .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
             text-align: center;
-            margin-top: 3rem;
             padding-top: 2rem;
-            border-top: 1px solid #333;
-            color: #666;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #64748b;
+            font-size: 0.9rem;
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
+        @media (max-width: 968px) {
             .hero-content h1 {
-                font-size: 2.5rem;
+                font-size: 3.5rem;
             }
 
-            .nav-links {
-                display: none;
+            .section-title {
+                font-size: 2.5rem;
             }
 
             .why-content {
                 grid-template-columns: 1fr;
+                gap: 3rem;
             }
 
             .why-visual {
                 display: none;
             }
 
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stat-card {
+                border-right: none;
+                border-bottom: 1px solid var(--light-gray);
+            }
+
+            .stat-card:nth-last-child(-n+2) {
+                border-bottom: none;
+            }
+        }
+
+        @media (max-width: 640px) {
+            nav {
+                padding: 1rem 5%;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                margin-top: 70px;
+                padding: 3rem 5%;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .services, .why-us, .process, .gallery, .testimonials, .cta-section {
+                padding: 5rem 5%;
+            }
+
             .cta-buttons {
                 flex-direction: column;
-                align-items: center;
             }
 
             .cta-btn {
                 width: 100%;
-                max-width: 300px;
-                text-align: center;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+                margin: -40px 5% 0;
+            }
+
+            .stat-card {
+                border-bottom: 1px solid var(--light-gray);
+            }
+
+            .stat-card:last-child {
+                border-bottom: none;
             }
         }
     </style>
 </head>
 <body>
-    <header>
+    <header id="header">
         <nav>
             <div class="logo">NAMRHALI</div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="services.html">Services</a></li>
-                <li><a href="about.html">about</a></li>
-                <!--<li><a href="#gallery">Gallery</a></li>-->
-                <!--<li><a href="#testimonials">Testimonials</a></li>-->
+                <li><a href="about.html">About</a></li>
                 <li><a href="contact.html" class="nav-cta">Get Quote</a></li>
             </ul>
         </nav>
     </header>
 
     <section class="hero" id="home">
-        <div class="hero-bg"></div>
-        <div class="hero-shapes">
-            <div class="shape shape1"></div>
-            <div class="shape shape2"></div>
-            <div class="shape shape3"></div>
+        <div class="road-lines"></div>
+        <div class="hero-particles">
+            <div class="particle-dot"></div>
+            <div class="particle-dot"></div>
+            <div class="particle-dot"></div>
+            <div class="particle-dot"></div>
+            <div class="particle-dot"></div>
         </div>
+        <div class="hero-truck">🚛</div>
         <div class="hero-content">
-            <h1>Moving South Africa Forward</h1>
-            <p>Expert logistics solutions delivering excellence across every mile. From freight to supply chain management, we're your trusted partner in seamless transportation.</p>
+            <div class="hero-badge">
+                <span>🏆</span>
+                <span>Level 1 B-BBEE Certified</span>
+            </div>
+            <h1>Moving South Africa <span class="highlight">Forward</span></h1>
+            <p class="hero-subtitle">Expert logistics solutions delivering excellence across every mile. From freight to supply chain management, we're your trusted partner in seamless, reliable transportation that keeps business moving.</p>
             <div class="cta-buttons">
-                <a href="#services" class="cta-btn">Our Services</a>
-                <a href="contact.html" class="cta-btn cta-btn-secondary">Get Started</a>
+                <a href="#services" class="cta-btn cta-primary">
+                    <span>Our Services</span>
+                    <span>→</span>
+                </a>
+                <a href="contact.html" class="cta-btn cta-secondary">
+                    <span>Get Started</span>
+                </a>
             </div>
         </div>
     </section>
 
     <div class="stats">
         <div class="stat-card">
-            <div class="stat-number">100%</div>
-            <div class="stat-label">Level 1 B-BBEE</div>
+            <span class="stat-icon">🏆</span>
+            <div class="stat-number">Level 1</div>
+            <div class="stat-label">B-BBEE Status</div>
         </div>
         <div class="stat-card">
+            <span class="stat-icon">⏰</span>
             <div class="stat-number">24/7</div>
-            <div class="stat-label">Support Available</div>
+            <div class="stat-label">Support</div>
         </div>
         <div class="stat-card">
+            <span class="stat-icon">✓</span>
             <div class="stat-number">100%</div>
             <div class="stat-label">On-Time Delivery</div>
         </div>
         <div class="stat-card">
+            <span class="stat-icon">📅</span>
             <div class="stat-number">2022</div>
-            <div class="stat-label">Established</div>
+            <div class="stat-label">Est. Since</div>
         </div>
     </div>
 
     <section class="services" id="services">
-        <h2 class="section-title">Our Services</h2>
-        <p class="section-subtitle">Comprehensive logistics solutions tailored to your business needs</p>
+        <div class="section-header">
+            <div class="section-tag">What We Offer</div>
+            <h2 class="section-title">Comprehensive Logistics Solutions</h2>
+            <p class="section-description">End-to-end transportation and supply chain services designed to optimize your operations and drive business growth.</p>
+        </div>
         <div class="services-grid">
             <div class="service-card">
                 <div class="service-icon">🚛</div>
                 <h3>Freight Transport</h3>
-                <p>Reliable road freight services across South Africa with real-time tracking and dedicated fleet management.</p>
+                <p>Reliable nationwide road freight services with real-time GPS tracking, dedicated fleet management, and flexible scheduling to meet your delivery requirements.</p>
             </div>
             <div class="service-card">
                 <div class="service-icon">📦</div>
-                <h3>Warehousing</h3>
-                <p>Secure storage solutions with advanced inventory management systems and flexible distribution options.</p>
+                <h3>Warehousing Solutions</h3>
+                <p>Secure, climate-controlled storage facilities with advanced inventory management systems, pick-and-pack services, and strategic distribution capabilities.</p>
             </div>
             <div class="service-card">
                 <div class="service-icon">🔗</div>
-                <h3>Supply Chain</h3>
-                <p>End-to-end supply chain optimization ensuring efficiency and cost-effectiveness at every touchpoint.</p>
+                <h3>Supply Chain Management</h3>
+                <p>Comprehensive supply chain optimization services ensuring seamless coordination, cost efficiency, and improved operational performance across your network.</p>
             </div>
             <div class="service-card">
                 <div class="service-icon">⚡</div>
                 <h3>Express Delivery</h3>
-                <p>Time-critical deliveries with guaranteed arrival times for your most urgent shipments.</p>
+                <p>Time-critical courier services with guaranteed delivery windows, priority handling, and dedicated transport for your most urgent shipments.</p>
             </div>
             <div class="service-card">
                 <div class="service-icon">🌍</div>
-                <h3>Regional Logistics</h3>
-                <p>Specialized Mpumalanga region expertise with connections to major distribution centers nationwide.</p>
+                <h3>Regional Expertise</h3>
+                <p>Deep knowledge of Mpumalanga logistics corridors with established connections to major distribution hubs and industrial centers nationwide.</p>
             </div>
             <div class="service-card">
                 <div class="service-icon">📊</div>
                 <h3>Logistics Consulting</h3>
-                <p>Strategic planning and optimization services to streamline your logistics operations.</p>
+                <p>Strategic advisory services including route optimization, fleet management, cost reduction analysis, and operational efficiency improvements.</p>
             </div>
         </div>
     </section>
@@ -817,38 +1185,77 @@
         <div class="why-content">
             <div class="why-text">
                 <h2>Why Choose Namrhali Projects</h2>
-                <p>Founded in 2022 and based in Middelburg, Mpumalanga, Namrhali Projects has rapidly established itself as a trusted logistics partner in South Africa.</p>
-                <p>Our commitment to excellence is reflected in our Level 1 B-BBEE status, ensuring that we contribute meaningfully to economic transformation while maintaining the highest standards of service delivery.</p>
+                <p>Since our establishment in 2022, Namrhali Projects has rapidly positioned itself as a premier logistics provider in South Africa, operating from our strategic base in Middelburg, Mpumalanga.</p>
+                <p>Our Level 1 B-BBEE certification demonstrates our commitment to transformation and economic empowerment, while our modern fleet and technology infrastructure ensure world-class service delivery on every shipment.</p>
                 
                 <ul class="features-list">
                     <li>Level 1 B-BBEE Contributor with 135% procurement recognition</li>
-                    <li>Modern fleet with real-time tracking technology</li>
-                    <li>Experienced logistics professionals</li>
-                    <li>Nationwide coverage with regional expertise</li>
-                    <li>24/7 customer support and emergency services</li>
+                    <li>State-of-the-art fleet with real-time GPS tracking and telematics</li>
+                    <li>Experienced logistics professionals with decades of combined expertise</li>
+                    <li>Comprehensive insurance coverage on all shipments</li>
+                    <li>24/7 customer support and emergency dispatch services</li>
+                    <li>Nationwide network with regional specialization</li>
                 </ul>
                 
-                <div class="certification-badge">🏆 B-BBEE Level 1 Contributor</div>
+                <div class="certification-badge">
+                    <span>🏆</span>
+                    <span>B-BBEE Level 1 Certified Until June 2026</span>
+                </div>
             </div>
             <div class="why-visual">
                 <div class="visual-card">
+                    <div class="visual-card-icon">🎯</div>
                     <h4>Our Mission</h4>
-                    <p>Delivering exceptional logistics solutions with integrity and precision</p>
+                    <p>Delivering exceptional logistics solutions with unwavering integrity, precision, and commitment to excellence.</p>
                 </div>
                 <div class="visual-card">
-                    <h4>Based in Mpumalanga</h4>
-                    <p>41 Sapphire Crescent, Middelburg<br>Serving all of South Africa</p>
+                    <div class="visual-card-icon">📍</div>
+                    <h4>Mpumalanga Based</h4>
+                    <p>41 Sapphire Crescent<br>Middelburg, 1050<br>Serving all of South Africa</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <section class="process" id="process">
+        <div class="section-header">
+            <div class="section-tag">How It Works</div>
+            <h2 class="section-title">Our Process</h2>
+            <p class="section-description">Streamlined logistics operations from quote to delivery.</p>
+        </div>
+        <div class="process-grid">
+            <div class="process-step">
+                <div class="process-number">1</div>
+                <h3>Request Quote</h3>
+                <p>Contact us with your requirements. We'll provide a competitive quote tailored to your specific logistics needs within 24 hours.</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">2</div>
+                <h3>Plan & Schedule</h3>
+                <p>Our team develops an optimized transport plan, coordinates pickup schedules, and assigns dedicated resources to your shipment.</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">3</div>
+                <h3>Track & Monitor</h3>
+                <p>Real-time GPS tracking keeps you informed every step of the way with automated updates and live location monitoring.</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">4</div>
+                <h3>Deliver Excellence</h3>
+                <p>Professional delivery with proof of delivery documentation, customer confirmation, and complete shipment accountability.</p>
+            </div>
+        </div>
+    </section>
+
     <section class="gallery" id="gallery">
-        <h2 class="section-title">Our Fleet in Action</h2>
-        <p class="section-subtitle">Experience excellence in motion with our modern logistics solutions</p>
+        <div class="section-header">
+            <div class="section-tag">Our Operations</div>
+            <h2 class="section-title">Fleet in Action</h2>
+            <p class="section-description">Experience logistics excellence through our modern fleet and professional operations.</p>
+        </div>
         <div class="gallery-grid">
             <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800" alt="Modern truck fleet" class="gallery-img">
+                <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800" alt="Modern logistics fleet" class="gallery-img">
                 <div class="gallery-overlay">
                     <div class="gallery-text">Modern Fleet</div>
                 </div>
@@ -856,32 +1263,35 @@
             <div class="gallery-item">
                 <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800" alt="Warehouse operations" class="gallery-img">
                 <div class="gallery-overlay">
-                    <div class="gallery-text">Warehouse Operations</div>
+                    <div class="gallery-text">Warehouse Solutions</div>
                 </div>
             </div>
             <div class="gallery-item">
                 <img src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?w=800" alt="Loading operations" class="gallery-img">
                 <div class="gallery-overlay">
-                    <div class="gallery-text">Efficient Loading</div>
+                    <div class="gallery-text">Professional Loading</div>
                 </div>
             </div>
             <div class="gallery-item">
                 <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800" alt="Highway transport" class="gallery-img">
                 <div class="gallery-overlay">
-                    <div class="gallery-text">Long Haul Excellence</div>
+                    <div class="gallery-text">Long-Distance Transport</div>
                 </div>
             </div>
         </div>
     </section>
 
     <section class="testimonials" id="testimonials">
-        <h2 class="section-title">What Our Clients Say</h2>
-        <p class="section-subtitle">Don't just take our word for it - hear from our satisfied clients</p>
+        <div class="section-header">
+            <div class="section-tag">Client Feedback</div>
+            <h2 class="section-title">What Our Clients Say</h2>
+            <p class="section-description">Trusted by businesses across South Africa for reliable, professional logistics services.</p>
+        </div>
         
         <div class="testimonial-grid">
             <div class="testimonial-card">
                 <div class="testimonial-text">
-                    Namrhali Projects has transformed our supply chain operations. Their reliability and professionalism are unmatched in the industry.
+                    Namrhali Projects has completely transformed our distribution network. Their reliability, professionalism, and Level 1 B-BBEE status make them an invaluable partner for our operations.
                 </div>
                 <div class="testimonial-author">
                     <div class="author-avatar">TM</div>
@@ -893,7 +1303,7 @@
             </div>
             <div class="testimonial-card">
                 <div class="testimonial-text">
-                    The team at Namrhali goes above and beyond to ensure our deliveries are always on time. Their Level 1 B-BBEE status is an added bonus for our procurement goals.
+                    The team at Namrhali consistently delivers exceptional service. Their real-time tracking and proactive communication give us complete confidence in every shipment.
                 </div>
                 <div class="testimonial-author">
                     <div class="author-avatar">SN</div>
@@ -905,13 +1315,13 @@
             </div>
             <div class="testimonial-card">
                 <div class="testimonial-text">
-                    As a growing business, we needed a logistics partner we could trust. Namrhali Projects has exceeded our expectations with their efficient service and competitive pricing.
+                    As our business expanded, we needed a logistics partner who could scale with us. Namrhali has exceeded expectations with competitive pricing and outstanding reliability.
                 </div>
                 <div class="testimonial-author">
                     <div class="author-avatar">DM</div>
                     <div class="author-info">
                         <h4>David Moloi</h4>
-                        <p>CEO, Tech Startup</p>
+                        <p>CEO, E-Commerce Startup</p>
                     </div>
                 </div>
             </div>
@@ -921,8 +1331,11 @@
     <section class="cta-section">
         <div class="cta-content">
             <h2>Ready to Optimize Your Logistics?</h2>
-            <p>Partner with Namrhali Projects for reliable, efficient logistics solutions that drive your business forward.</p>
-            <a href="contact.html" class="cta-btn">Get Started Today</a>
+            <p>Partner with Namrhali Projects for reliable, efficient, and professional logistics solutions that keep your business moving forward. Get your customized quote today.</p>
+            <a href="contact.html" class="cta-btn cta-primary">
+                <span>Get Your Quote</span>
+                <span>→</span>
+            </a>
         </div>
     </section>
 
@@ -930,50 +1343,68 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h3>Namrhali Projects</h3>
-                <p>Your trusted partner in logistics excellence. Level 1 B-BBEE Contributor.</p>
+                <p>Your trusted partner in logistics excellence. Proudly Level 1 B-BBEE Certified.</p>
                 <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
             <div class="footer-section">
-                <h3>Contact</h3>
+                <h3>Contact Us</h3>
                 <p>41 Sapphire Crescent<br>Middelburg, Mpumalanga<br>1050, South Africa</p>
-                <p>info@namrhali.co.za</p>
-                <p>+27 13 123 4567</p>
+                <p><br>Email: info@namrhali.co.za</p>
+                <p>Phone: +27 13 123 4567</p>
             </div>
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <a href="#home">Home</a>
                 <a href="services.html">Services</a>
-                <!--<a href="#why-us">Why Choose Us</a>-->
-                <!--<a href="#gallery">Gallery</a>-->
-                <!--<a href="#testimonials">Testimonials</a>-->
+                <a href="about.html">About Us</a>
+                <a href="#gallery">Gallery</a>
                 <a href="contact.html">Contact</a>
             </div>
             <div class="footer-section">
                 <h3>Certifications</h3>
-                <p>B-BBEE Level 1 Contributor<br>Registration: 2022/808593/07<br>Valid until June 2026</p>
+                <p><strong>B-BBEE Level 1 Contributor</strong><br>135% Procurement Recognition<br><br>Registration: 2022/808593/07<br>Valid Until: June 2026</p>
             </div>
         </div>
+        <div class="footer-divider"></div>
         <div class="footer-bottom">
-            <p>&copy; 2025 Namrhali Projects (Pty) Ltd. All rights reserved.</p>
+            <p>&copy; 2025 Namrhali Projects (Pty) Ltd. All rights reserved. | Moving South Africa Forward</p>
         </div>
     </footer>
 
     <script>
-        // Simple scroll effect for header
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.98)';
-                header.style.boxShadow = '0 5px 30px rgba(0,0,0,0.1)';
+        // Header scroll effect
+        const header = document.getElementById('header');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                header.classList.add('scrolled');
             } else {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.05)';
+                header.classList.remove('scrolled');
             }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
         });
     </script>
 </body>

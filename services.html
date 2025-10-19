@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Services | Namrhali Projects</title>
+    <title>Our Services | Namrhali Projects - Logistics Excellence</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -11,11 +12,23 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --primary: #1e40af;
+            --primary-dark: #1e3a8a;
+            --secondary: #3b82f6;
+            --accent: #60a5fa;
+            --orange: #f97316;
+            --dark: #0f172a;
+            --gray: #475569;
+            --light-gray: #f1f5f9;
+            --white: #ffffff;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #1a1a1a;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--dark);
             overflow-x: hidden;
-            background: #f8f9fa;
+            background: var(--white);
             line-height: 1.6;
         }
 
@@ -25,122 +38,237 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(30, 64, 175, 0.1);
             transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         }
 
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 5%;
+            padding: 1.2rem 8%;
             max-width: 1400px;
             margin: 0 auto;
         }
 
         .logo {
             font-size: 1.8rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-weight: 800;
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-decoration: none;
         }
 
         .nav-links {
             display: flex;
             gap: 2.5rem;
             list-style: none;
+            align-items: center;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: #333;
+            color: var(--dark);
             font-weight: 500;
+            font-size: 0.95rem;
             position: relative;
             transition: color 0.3s ease;
         }
 
-        .nav-links a::after {
+        .nav-links a:not(.nav-cta)::after {
             content: '';
             position: absolute;
             bottom: -5px;
-            left: 0;
+            left: 50%;
+            transform: translateX(-50%);
             width: 0;
             height: 2px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: var(--orange);
             transition: width 0.3s ease;
         }
 
-        .nav-links a:hover::after {
+        .nav-links a:not(.nav-cta):hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:not(.nav-cta):hover::after {
             width: 100%;
+        }
+
+        .nav-cta {
+            padding: 0.7rem 1.8rem;
+            background: linear-gradient(135deg, var(--orange) 0%, #ea580c 100%);
+            color: white;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(249, 115, 22, 0.4);
         }
 
         /* Hero Section */
         .services-hero {
-            height: 50vh;
+            min-height: 60vh;
             position: relative;
             overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-top: 80px;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--secondary) 100%);
             color: white;
             text-align: center;
+        }
+
+        .hero-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .particle-dot {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float-particle 15s infinite ease-in-out;
+        }
+
+        .particle-dot:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; }
+        .particle-dot:nth-child(2) { left: 30%; top: 40%; animation-delay: 2s; }
+        .particle-dot:nth-child(3) { left: 50%; top: 60%; animation-delay: 4s; }
+        .particle-dot:nth-child(4) { left: 70%; top: 30%; animation-delay: 6s; }
+        .particle-dot:nth-child(5) { left: 90%; top: 50%; animation-delay: 8s; }
+
+        @keyframes float-particle {
+            0%, 100% {
+                transform: translate(0, 0);
+                opacity: 0.3;
+            }
+            50% {
+                transform: translate(50px, -50px);
+                opacity: 0.6;
+            }
         }
 
         .services-hero-content {
             position: relative;
             z-index: 2;
             max-width: 900px;
-            padding: 2rem;
+            padding: 4rem 2rem;
         }
 
         .services-hero h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+            animation: slideUp 0.8s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .services-hero p {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             opacity: 0.9;
+            margin-bottom: 2rem;
+            animation: slideUp 0.8s ease 0.2s backwards;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.5rem;
+            background: rgba(59, 130, 246, 0.15);
+            border: 1px solid rgba(96, 165, 250, 0.3);
+            border-radius: 50px;
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            animation: slideUp 0.8s ease 0.4s backwards;
         }
 
         /* Breadcrumb */
         .breadcrumb {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 1rem 5%;
-            background: white;
-            border-bottom: 1px solid #eee;
+            padding: 1.5rem 8%;
+            background: var(--white);
+            border-bottom: 1px solid var(--light-gray);
         }
 
         .breadcrumb a {
-            color: #667eea;
+            color: var(--primary);
             text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--orange);
         }
 
         .breadcrumb span {
-            color: #666;
+            color: var(--gray);
         }
 
         /* Main Content */
         .services-content {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 5rem 5%;
+            padding: 5rem 8%;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 5rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            font-size: 0.85rem;
+            color: var(--orange);
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
         }
 
         .section-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            color: #1a1a1a;
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
             position: relative;
             display: inline-block;
         }
@@ -148,27 +276,27 @@
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 60px;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
             height: 4px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(90deg, var(--orange), var(--primary));
             border-radius: 2px;
         }
 
-        .section-subtitle {
-            color: #666;
+        .section-description {
             font-size: 1.1rem;
-            margin-bottom: 3rem;
-            max-width: 700px;
+            color: var(--gray);
+            line-height: 1.8;
         }
 
         /* Services Grid */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
             gap: 2.5rem;
-            margin-bottom: 6rem;
+            margin-bottom: 8rem;
         }
 
         .service-card {
@@ -178,17 +306,29 @@
             box-shadow: 0 10px 40px rgba(0,0,0,0.08);
             transition: all 0.4s ease;
             position: relative;
+            border: 2px solid transparent;
         }
 
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 50px rgba(102, 126, 234, 0.15);
+            box-shadow: 0 20px 60px rgba(30, 64, 175, 0.15);
+            border-color: var(--accent);
         }
 
         .service-header {
-            height: 200px;
+            height: 220px;
             overflow: hidden;
             position: relative;
+        }
+
+        .service-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(transparent, rgba(0,0,0,0.1));
         }
 
         .service-header img {
@@ -208,14 +348,21 @@
             left: 30px;
             width: 70px;
             height: 70px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.8rem;
             color: white;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 10px 30px rgba(30, 64, 175, 0.3);
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+
+        .service-card:hover .service-icon {
+            background: linear-gradient(135deg, var(--orange) 0%, #ea580c 100%);
+            transform: scale(1.1) rotate(5deg);
         }
 
         .service-body {
@@ -225,11 +372,12 @@
         .service-body h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
-            color: #1a1a1a;
+            color: var(--dark);
+            font-weight: 700;
         }
 
         .service-body p {
-            color: #666;
+            color: var(--gray);
             margin-bottom: 1.5rem;
             line-height: 1.7;
         }
@@ -241,104 +389,133 @@
 
         .service-features li {
             margin-bottom: 0.5rem;
-            color: #666;
+            color: var(--gray);
             position: relative;
             padding-left: 1.5rem;
+            line-height: 1.6;
         }
 
         .service-features li::before {
             content: '✓';
             position: absolute;
             left: 0;
-            color: #667eea;
+            color: var(--primary);
             font-weight: bold;
         }
 
         .service-cta {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
             padding: 0.8rem 1.5rem;
             background: transparent;
-            color: #667eea;
+            color: var(--primary);
             text-decoration: none;
-            border: 2px solid #667eea;
-            border-radius: 50px;
+            border: 2px solid var(--primary);
+            border-radius: 8px;
             font-weight: 600;
             transition: all 0.3s ease;
         }
 
         .service-cta:hover {
-            background: #667eea;
+            background: var(--primary);
             color: white;
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 10px 25px rgba(30, 64, 175, 0.3);
         }
 
         /* Process Section */
         .process-section {
-            margin-bottom: 6rem;
+            margin-bottom: 8rem;
         }
 
         .process-steps {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            gap: 2.5rem;
             counter-reset: step-counter;
         }
 
         .process-step {
             background: white;
-            padding: 2.5rem 2rem;
-            border-radius: 20px;
-            box-shadow: 0 5px 30px rgba(0,0,0,0.05);
+            padding: 3rem 2rem;
+            border-radius: 16px;
+            border: 2px solid transparent;
+            transition: all 0.4s ease;
             position: relative;
             text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .process-step:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.1);
         }
 
         .process-step::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, var(--orange), var(--primary));
+            border-radius: 16px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
+        }
+
+        .process-step:hover::before {
+            opacity: 1;
+        }
+
+        .process-step:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(30, 64, 175, 0.12);
+        }
+
+        .process-step::after {
             counter-increment: step-counter;
             content: counter(step-counter);
             position: absolute;
             top: -20px;
             left: 50%;
             transform: translateX(-50%);
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--orange) 0%, #ea580c 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-weight: 700;
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+            font-weight: 800;
+            box-shadow: 0 5px 15px rgba(249, 115, 22, 0.3);
         }
 
         .process-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #667eea;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .process-step:hover .process-icon {
+            color: var(--orange);
+            transform: scale(1.1);
         }
 
         .process-step h3 {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             margin-bottom: 1rem;
-            color: #1a1a1a;
+            color: var(--dark);
+            font-weight: 700;
         }
 
         .process-step p {
-            color: #666;
-            line-height: 1.6;
+            color: var(--gray);
+            line-height: 1.7;
+            font-size: 0.95rem;
         }
 
         /* Industries Section */
         .industries-section {
-            margin-bottom: 6rem;
+            margin-bottom: 8rem;
         }
 
         .industries-grid {
@@ -350,79 +527,47 @@
         .industry-card {
             background: white;
             padding: 2.5rem 1.5rem;
-            border-radius: 15px;
+            border-radius: 16px;
             text-align: center;
             box-shadow: 0 5px 25px rgba(0,0,0,0.05);
             transition: all 0.3s ease;
+            border: 2px solid transparent;
         }
 
         .industry-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 35px rgba(102, 126, 234, 0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(30, 64, 175, 0.15);
+            border-color: var(--accent);
         }
 
         .industry-icon {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
+            font-size: 2rem;
             margin: 0 auto 1.5rem;
             color: white;
+            transition: all 0.3s ease;
+        }
+
+        .industry-card:hover .industry-icon {
+            background: linear-gradient(135deg, var(--orange) 0%, #ea580c 100%);
+            transform: scale(1.1);
         }
 
         .industry-card h3 {
             font-size: 1.2rem;
-            color: #1a1a1a;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            text-align: center;
-            padding: 4rem 2rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border-radius: 20px;
-            margin-bottom: 6rem;
-        }
-
-        .cta-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .cta-section p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta-btn {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background: white;
-            color: #667eea;
-            text-decoration: none;
-            border-radius: 50px;
+            color: var(--dark);
             font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .cta-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
         }
 
         /* FAQ Section */
         .faq-section {
-            margin-bottom: 6rem;
+            margin-bottom: 8rem;
         }
 
         .faq-grid {
@@ -432,17 +577,23 @@
 
         .faq-item {
             background: white;
-            margin-bottom: 1rem;
-            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--accent);
         }
 
         .faq-question {
-            padding: 1.5rem 2rem;
+            padding: 1.8rem 2.5rem;
             font-size: 1.1rem;
             font-weight: 600;
-            color: #1a1a1a;
+            color: var(--dark);
             cursor: pointer;
             display: flex;
             justify-content: space-between;
@@ -451,85 +602,193 @@
         }
 
         .faq-question:hover {
-            background: #f8f9fa;
+            background: var(--light-gray);
         }
 
         .faq-question::after {
             content: '+';
             font-size: 1.5rem;
-            color: #667eea;
+            color: var(--primary);
             transition: transform 0.3s ease;
         }
 
         .faq-item.active .faq-question::after {
             transform: rotate(45deg);
+            color: var(--orange);
         }
 
         .faq-answer {
-            padding: 0 2rem;
+            padding: 0 2.5rem;
             max-height: 0;
             overflow: hidden;
             transition: all 0.3s ease;
         }
 
         .faq-item.active .faq-answer {
-            padding: 0 2rem 1.5rem;
+            padding: 0 2.5rem 2rem;
             max-height: 500px;
         }
 
         .faq-answer p {
-            color: #666;
+            color: var(--gray);
             line-height: 1.7;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--orange) 0%, #ea580c 100%);
+            color: white;
+            border-radius: 20px;
+            margin-bottom: 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '🚛';
+            position: absolute;
+            font-size: 20rem;
+            opacity: 0.05;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            line-height: 1.8;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            padding: 1.2rem 2.8rem;
+            background: white;
+            color: var(--orange);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            background: var(--primary);
+            color: white;
         }
 
         /* Footer */
         footer {
-            background: #1a1a1a;
+            background: var(--dark);
             color: white;
-            padding: 4rem 5%;
+            padding: 5rem 8% 2rem;
         }
 
         .footer-content {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 3rem;
+            margin-bottom: 3rem;
         }
 
         .footer-section h3 {
             margin-bottom: 1.5rem;
             font-size: 1.3rem;
+            font-weight: 700;
         }
 
-        .footer-section p, .footer-section a {
-            color: #aaa;
+        .footer-section p {
+            color: #94a3b8;
             line-height: 2;
+            font-size: 0.95rem;
+        }
+
+        .footer-section a {
+            color: #94a3b8;
             text-decoration: none;
             display: block;
+            line-height: 2;
             transition: color 0.3s ease;
+            font-size: 0.95rem;
         }
 
         .footer-section a:hover {
-            color: #667eea;
+            color: var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--orange);
+            transform: translateY(-3px);
+        }
+
+        .footer-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 3rem 0 2rem;
         }
 
         .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
             text-align: center;
-            margin-top: 3rem;
             padding-top: 2rem;
-            border-top: 1px solid #333;
-            color: #666;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #64748b;
+            font-size: 0.9rem;
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
+        @media (max-width: 968px) {
             .services-hero h1 {
-                font-size: 2.5rem;
+                font-size: 3rem;
             }
 
-            .nav-links {
-                display: none;
+            .section-title {
+                font-size: 2.5rem;
             }
 
             .services-grid {
@@ -544,28 +803,69 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .cta-section h2 {
+            .nav-links {
+                display: none;
+            }
+        }
+
+        @media (max-width: 640px) {
+            nav {
+                padding: 1rem 5%;
+            }
+
+            .services-hero {
+                margin-top: 70px;
+                padding: 3rem 5%;
+            }
+
+            .services-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .services-content {
+                padding: 3rem 5%;
+            }
+
+            .section-title {
                 font-size: 2rem;
+            }
+
+            .industries-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-section h2 {
+                font-size: 2.2rem;
             }
         }
     </style>
 </head>
 <body>
-    <header>
+    <header id="header">
         <nav>
-            <a href="index.html" class="logo"><img src="assets/NamrhaliLogo.png" height="80" width="80"></a>
+            <a href="index.html" class="logo">NAMRHALI</a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="services.html">Services</a></li>
-                <!--<li><a href="index.html#gallery">Gallery</a></li>-->
                 <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="contact.html" class="nav-cta">Get Quote</a></li>
             </ul>
         </nav>
     </header>
 
     <section class="services-hero">
+        <div class="hero-particles">
+            <div class="particle-dot"></div>
+            <div class="particle-dot"></div>
+            <div class="particle-dot"></div>
+            <div class="particle-dot"></div>
+            <div class="particle-dot"></div>
+        </div>
         <div class="services-hero-content">
+            <div class="hero-badge">
+                <span>🏆</span>
+                <span>Level 1 B-BBEE Certified</span>
+            </div>
             <h1>Our Services</h1>
             <p>Comprehensive logistics solutions tailored to your business needs</p>
         </div>
@@ -577,8 +877,11 @@
 
     <main class="services-content">
         <section class="services-intro">
-            <h2 class="section-title">Logistics Excellence</h2>
-            <p class="section-subtitle">From freight transport to supply chain management, we offer end-to-end logistics solutions that drive efficiency, reliability, and growth for your business.</p>
+            <div class="section-header">
+                <div class="section-tag">What We Offer</div>
+                <h2 class="section-title">Logistics Excellence</h2>
+                <p class="section-description">From freight transport to supply chain management, we offer end-to-end logistics solutions that drive efficiency, reliability, and growth for your business.</p>
+            </div>
             
             <div class="services-grid">
                 <div class="service-card">
@@ -595,7 +898,10 @@
                             <li>Dedicated fleet management</li>
                             <li>Flexible scheduling</li>
                         </ul>
-                        <a href="#contact" class="service-cta">Learn More</a>
+                        <a href="contact.html" class="service-cta">
+                            <span>Learn More</span>
+                            <span>→</span>
+                        </a>
                     </div>
                 </div>
 
@@ -605,7 +911,7 @@
                         <div class="service-icon">📦</div>
                     </div>
                     <div class="service-body">
-                        <h3>Warehousing</h3>
+                        <h3>Warehousing Solutions</h3>
                         <p>Secure storage solutions with advanced inventory management systems. Our facilities offer flexible distribution options to meet your business requirements.</p>
                         <ul class="service-features">
                             <li>Secure storage facilities</li>
@@ -613,7 +919,10 @@
                             <li>Temperature-controlled options</li>
                             <li>Just-in-time distribution</li>
                         </ul>
-                        <a href="#contact" class="service-cta">Learn More</a>
+                        <a href="contact.html" class="service-cta">
+                            <span>Learn More</span>
+                            <span>→</span>
+                        </a>
                     </div>
                 </div>
 
@@ -631,7 +940,10 @@
                             <li>Vendor management</li>
                             <li>Performance analytics</li>
                         </ul>
-                        <a href="#contact" class="service-cta">Learn More</a>
+                        <a href="contact.html" class="service-cta">
+                            <span>Learn More</span>
+                            <span>→</span>
+                        </a>
                     </div>
                 </div>
 
@@ -649,7 +961,10 @@
                             <li>Priority handling</li>
                             <li>24/7 dispatch</li>
                         </ul>
-                        <a href="#contact" class="service-cta">Learn More</a>
+                        <a href="contact.html" class="service-cta">
+                            <span>Learn More</span>
+                            <span>→</span>
+                        </a>
                     </div>
                 </div>
 
@@ -667,7 +982,10 @@
                             <li>Local market expertise</li>
                             <li>Cross-border capabilities</li>
                         </ul>
-                        <a href="#contact" class="service-cta">Learn More</a>
+                        <a href="contact.html" class="service-cta">
+                            <span>Learn More</span>
+                            <span>→</span>
+                        </a>
                     </div>
                 </div>
 
@@ -685,15 +1003,21 @@
                             <li>Technology implementation</li>
                             <li>Performance benchmarking</li>
                         </ul>
-                        <a href="#contact" class="service-cta">Learn More</a>
+                        <a href="contact.html" class="service-cta">
+                            <span>Learn More</span>
+                            <span>→</span>
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
 
         <section class="process-section">
-            <h2 class="section-title">Our Process</h2>
-            <p class="section-subtitle">A streamlined approach to ensure your logistics operations run smoothly from start to finish</p>
+            <div class="section-header">
+                <div class="section-tag">How We Work</div>
+                <h2 class="section-title">Our Process</h2>
+                <p class="section-description">A streamlined approach to ensure your logistics operations run smoothly from start to finish</p>
+            </div>
             
             <div class="process-steps">
                 <div class="process-step">
@@ -720,8 +1044,11 @@
         </section>
 
         <section class="industries-section">
-            <h2 class="section-title">Industries We Serve</h2>
-            <p class="section-subtitle">We provide specialized logistics solutions for various industries across South Africa</p>
+            <div class="section-header">
+                <div class="section-tag">Our Expertise</div>
+                <h2 class="section-title">Industries We Serve</h2>
+                <p class="section-description">We provide specialized logistics solutions for various industries across South Africa</p>
+            </div>
             
             <div class="industries-grid">
                 <div class="industry-card">
@@ -752,8 +1079,11 @@
         </section>
 
         <section class="faq-section">
-            <h2 class="section-title">Frequently Asked Questions</h2>
-            <p class="section-subtitle">Find answers to common questions about our logistics services</p>
+            <div class="section-header">
+                <div class="section-tag">Need Help?</div>
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-description">Find answers to common questions about our logistics services</p>
+            </div>
             
             <div class="faq-grid">
                 <div class="faq-item">
@@ -790,46 +1120,89 @@
         </section>
 
         <section class="cta-section">
-            <h2>Ready to Optimize Your Logistics?</h2>
-            <p>Partner with Namrhali Projects for reliable, efficient logistics solutions that drive your business forward.</p>
-            <a href="index.html#contact" class="cta-btn">Get a Quote</a>
+            <div class="cta-content">
+                <h2>Ready to Optimize Your Logistics?</h2>
+                <p>Partner with Namrhali Projects for reliable, efficient logistics solutions that drive your business forward.</p>
+                <a href="contact.html" class="cta-btn">
+                    <span>Get a Quote</span>
+                    <span>→</span>
+                </a>
+            </div>
         </section>
     </main>
 
-    <footer id="contact">
+    <footer>
         <div class="footer-content">
             <div class="footer-section">
                 <h3>Namrhali Projects</h3>
-                <p>Your trusted partner in logistics excellence. Level 1 B-BBEE Contributor.</p>
+                <p>Your trusted partner in logistics excellence. Proudly Level 1 B-BBEE Certified.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
             </div>
             <div class="footer-section">
-                <h3>Contact</h3>
+                <h3>Contact Us</h3>
                 <p>41 Sapphire Crescent<br>Middelburg, Mpumalanga<br>1050, South Africa</p>
-                <p>info@namrhali.co.za</p>
+                <p><br>Email: info@namrhali.co.za</p>
+                <p>Phone: +27 13 123 4567</p>
             </div>
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <a href="index.html">Home</a>
                 <a href="services.html">Services</a>
-                <a href="index.html#gallery">Gallery</a>
                 <a href="about.html">About Us</a>
+                <a href="contact.html">Contact</a>
             </div>
             <div class="footer-section">
                 <h3>Certifications</h3>
-                <p>B-BBEE Level 1 Contributor<br>Registration: 2022/808593/07<br>Valid until June 2026</p>
+                <p><strong>B-BBEE Level 1 Contributor</strong><br>135% Procurement Recognition<br><br>Registration: 2022/808593/07<br>Valid Until: June 2026</p>
             </div>
         </div>
+        <div class="footer-divider"></div>
         <div class="footer-bottom">
-            <p>&copy; 2025 Namrhali Projects (Pty) Ltd. All rights reserved.</p>
+            <p>&copy; 2025 Namrhali Projects (Pty) Ltd. All rights reserved. | Moving South Africa Forward</p>
         </div>
     </footer>
 
     <script>
+        // Header scroll effect
+        const header = document.getElementById('header');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            lastScroll = currentScroll;
+        });
+
         // FAQ functionality
         document.querySelectorAll('.faq-question').forEach(question => {
             question.addEventListener('click', () => {
                 const item = question.parentNode;
                 item.classList.toggle('active');
+            });
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
         });
     </script>

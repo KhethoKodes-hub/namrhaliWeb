@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | Namrhali Projects</title>
+    <title>Contact Us | Namrhali Projects - Logistics Excellence</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -11,11 +12,23 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --primary: #1e40af;
+            --primary-dark: #1e3a8a;
+            --secondary: #3b82f6;
+            --accent: #60a5fa;
+            --orange: #f97316;
+            --dark: #0f172a;
+            --gray: #475569;
+            --light-gray: #f1f5f9;
+            --white: #ffffff;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #1a1a1a;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--dark);
             overflow-x: hidden;
-            background: #f8f9fa;
+            background: var(--white);
             line-height: 1.6;
         }
 
@@ -25,122 +38,237 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(30, 64, 175, 0.1);
             transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         }
 
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 5%;
+            padding: 1.2rem 8%;
             max-width: 1400px;
             margin: 0 auto;
         }
 
         .logo {
             font-size: 1.8rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-weight: 800;
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-decoration: none;
         }
 
         .nav-links {
             display: flex;
             gap: 2.5rem;
             list-style: none;
+            align-items: center;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: #333;
+            color: var(--dark);
             font-weight: 500;
+            font-size: 0.95rem;
             position: relative;
             transition: color 0.3s ease;
         }
 
-        .nav-links a::after {
+        .nav-links a:not(.nav-cta)::after {
             content: '';
             position: absolute;
             bottom: -5px;
-            left: 0;
+            left: 50%;
+            transform: translateX(-50%);
             width: 0;
             height: 2px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: var(--orange);
             transition: width 0.3s ease;
         }
 
-        .nav-links a:hover::after {
+        .nav-links a:not(.nav-cta):hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:not(.nav-cta):hover::after {
             width: 100%;
+        }
+
+        .nav-cta {
+            padding: 0.7rem 1.8rem;
+            background: linear-gradient(135deg, var(--orange) 0%, #ea580c 100%);
+            color: white;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(249, 115, 22, 0.4);
         }
 
         /* Hero Section */
         .contact-hero {
-            height: 50vh;
+            min-height: 60vh;
             position: relative;
             overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-top: 80px;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--secondary) 100%);
             color: white;
             text-align: center;
+        }
+
+        .hero-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .particle-dot {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float-particle 15s infinite ease-in-out;
+        }
+
+        .particle-dot:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; }
+        .particle-dot:nth-child(2) { left: 30%; top: 40%; animation-delay: 2s; }
+        .particle-dot:nth-child(3) { left: 50%; top: 60%; animation-delay: 4s; }
+        .particle-dot:nth-child(4) { left: 70%; top: 30%; animation-delay: 6s; }
+        .particle-dot:nth-child(5) { left: 90%; top: 50%; animation-delay: 8s; }
+
+        @keyframes float-particle {
+            0%, 100% {
+                transform: translate(0, 0);
+                opacity: 0.3;
+            }
+            50% {
+                transform: translate(50px, -50px);
+                opacity: 0.6;
+            }
         }
 
         .contact-hero-content {
             position: relative;
             z-index: 2;
             max-width: 900px;
-            padding: 2rem;
+            padding: 4rem 2rem;
         }
 
         .contact-hero h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+            animation: slideUp 0.8s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .contact-hero p {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             opacity: 0.9;
+            margin-bottom: 2rem;
+            animation: slideUp 0.8s ease 0.2s backwards;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.5rem;
+            background: rgba(59, 130, 246, 0.15);
+            border: 1px solid rgba(96, 165, 250, 0.3);
+            border-radius: 50px;
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            animation: slideUp 0.8s ease 0.4s backwards;
         }
 
         /* Breadcrumb */
         .breadcrumb {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 1rem 5%;
-            background: white;
-            border-bottom: 1px solid #eee;
+            padding: 1.5rem 8%;
+            background: var(--white);
+            border-bottom: 1px solid var(--light-gray);
         }
 
         .breadcrumb a {
-            color: #667eea;
+            color: var(--primary);
             text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--orange);
         }
 
         .breadcrumb span {
-            color: #666;
+            color: var(--gray);
         }
 
         /* Main Content */
         .contact-content {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 5rem 5%;
+            padding: 5rem 8%;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 5rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            font-size: 0.85rem;
+            color: var(--orange);
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
         }
 
         .section-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            color: #1a1a1a;
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
             position: relative;
             display: inline-block;
         }
@@ -148,19 +276,19 @@
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 60px;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
             height: 4px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(90deg, var(--orange), var(--primary));
             border-radius: 2px;
         }
 
-        .section-subtitle {
-            color: #666;
+        .section-description {
             font-size: 1.1rem;
-            margin-bottom: 3rem;
-            max-width: 700px;
+            color: var(--gray);
+            line-height: 1.8;
         }
 
         /* Contact Layout */
@@ -168,7 +296,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
-            margin-bottom: 6rem;
+            margin-bottom: 8rem;
         }
 
         /* Contact Info */
@@ -177,60 +305,82 @@
             padding: 3rem;
             border-radius: 20px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .contact-info:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(30, 64, 175, 0.15);
         }
 
         .info-item {
             display: flex;
             align-items: flex-start;
             margin-bottom: 2.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .info-item:hover {
+            transform: translateX(5px);
         }
 
         .info-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             color: white;
             margin-right: 1.5rem;
             flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .info-item:hover .info-icon {
+            background: linear-gradient(135deg, var(--orange) 0%, #ea580c 100%);
+            transform: scale(1.1);
         }
 
         .info-content h3 {
             font-size: 1.3rem;
             margin-bottom: 0.5rem;
-            color: #1a1a1a;
+            color: var(--dark);
+            font-weight: 700;
         }
 
         .info-content p {
-            color: #666;
+            color: var(--gray);
             line-height: 1.7;
         }
 
         .info-content a {
-            color: #667eea;
+            color: var(--primary);
             text-decoration: none;
             transition: color 0.3s ease;
+            font-weight: 500;
         }
 
         .info-content a:hover {
-            color: #764ba2;
+            color: var(--orange);
         }
 
         /* Business Hours */
         .business-hours {
             margin-top: 2rem;
             padding-top: 2rem;
-            border-top: 1px solid #eee;
+            border-top: 1px solid var(--light-gray);
         }
 
         .hours-title {
             font-size: 1.3rem;
             margin-bottom: 1rem;
-            color: #1a1a1a;
+            color: var(--dark);
+            font-weight: 700;
         }
 
         .hours-list {
@@ -241,10 +391,21 @@
             display: flex;
             justify-content: space-between;
             margin-bottom: 0.8rem;
-            color: #666;
+            color: var(--gray);
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .hours-list li:last-child {
+            border-bottom: none;
         }
 
         .hours-list .day {
+            font-weight: 600;
+        }
+
+        .hours-list .time {
+            color: var(--primary);
             font-weight: 500;
         }
 
@@ -254,12 +415,21 @@
             padding: 3rem;
             border-radius: 20px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .contact-form-container:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(30, 64, 175, 0.15);
         }
 
         .form-title {
             font-size: 1.8rem;
             margin-bottom: 1.5rem;
-            color: #1a1a1a;
+            color: var(--dark);
+            font-weight: 800;
         }
 
         .contact-form {
@@ -282,12 +452,12 @@
         .form-label {
             margin-bottom: 0.5rem;
             font-weight: 600;
-            color: #333;
+            color: var(--dark);
         }
 
         .form-input, .form-textarea, .form-select {
             padding: 1rem 1.5rem;
-            border: 2px solid #eaeaea;
+            border: 2px solid var(--light-gray);
             border-radius: 10px;
             font-size: 1rem;
             transition: all 0.3s ease;
@@ -296,8 +466,8 @@
 
         .form-input:focus, .form-textarea:focus, .form-select:focus {
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
         }
 
         .form-textarea {
@@ -306,8 +476,8 @@
         }
 
         .form-submit {
-            padding: 1rem 2rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 1.2rem 2rem;
+            background: linear-gradient(135deg, var(--orange) 0%, #ea580c 100%);
             color: white;
             border: none;
             border-radius: 10px;
@@ -316,34 +486,145 @@
             cursor: pointer;
             transition: all 0.3s ease;
             margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
         }
 
         .form-submit:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 10px 25px rgba(249, 115, 22, 0.4);
         }
 
         /* Map Section */
         .map-section {
-            margin-bottom: 6rem;
+            margin-bottom: 8rem;
         }
 
         .map-container {
-            height: 400px;
+            height: 450px;
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-            background: #eaeaea;
+            background: var(--light-gray);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #666;
+            color: var(--gray);
             font-size: 1.1rem;
+            position: relative;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .map-container:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(30, 64, 175, 0.15);
+        }
+
+        .map-placeholder {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .map-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        /* Emergency Section */
+        .emergency-section {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: white;
+            padding: 4rem 3rem;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 8rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .emergency-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+        }
+
+        .emergency-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .emergency-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        .emergency-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .emergency-section p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .emergency-phone {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            letter-spacing: 1px;
+        }
+
+        .emergency-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            padding: 1.2rem 2.5rem;
+            background: white;
+            color: #ef4444;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .emergency-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            background: var(--primary);
+            color: white;
         }
 
         /* FAQ Section */
         .faq-section {
-            margin-bottom: 6rem;
+            margin-bottom: 8rem;
         }
 
         .faq-grid {
@@ -353,17 +634,23 @@
 
         .faq-item {
             background: white;
-            margin-bottom: 1rem;
-            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--accent);
         }
 
         .faq-question {
-            padding: 1.5rem 2rem;
+            padding: 1.8rem 2.5rem;
             font-size: 1.1rem;
             font-weight: 600;
-            color: #1a1a1a;
+            color: var(--dark);
             cursor: pointer;
             display: flex;
             justify-content: space-between;
@@ -372,133 +659,125 @@
         }
 
         .faq-question:hover {
-            background: #f8f9fa;
+            background: var(--light-gray);
         }
 
         .faq-question::after {
             content: '+';
             font-size: 1.5rem;
-            color: #667eea;
+            color: var(--primary);
             transition: transform 0.3s ease;
         }
 
         .faq-item.active .faq-question::after {
             transform: rotate(45deg);
+            color: var(--orange);
         }
 
         .faq-answer {
-            padding: 0 2rem;
+            padding: 0 2.5rem;
             max-height: 0;
             overflow: hidden;
             transition: all 0.3s ease;
         }
 
         .faq-item.active .faq-answer {
-            padding: 0 2rem 1.5rem;
+            padding: 0 2.5rem 2rem;
             max-height: 500px;
         }
 
         .faq-answer p {
-            color: #666;
+            color: var(--gray);
             line-height: 1.7;
-        }
-
-        /* Emergency Section */
-        .emergency-section {
-            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
-            color: white;
-            padding: 3rem;
-            border-radius: 20px;
-            text-align: center;
-            margin-bottom: 6rem;
-        }
-
-        .emergency-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .emergency-section h2 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .emergency-section p {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            opacity: 0.9;
-        }
-
-        .emergency-phone {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-        }
-
-        .emergency-btn {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background: white;
-            color: #ff6b6b;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .emergency-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
 
         /* Footer */
         footer {
-            background: #1a1a1a;
+            background: var(--dark);
             color: white;
-            padding: 4rem 5%;
+            padding: 5rem 8% 2rem;
         }
 
         .footer-content {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 3rem;
+            margin-bottom: 3rem;
         }
 
         .footer-section h3 {
             margin-bottom: 1.5rem;
             font-size: 1.3rem;
+            font-weight: 700;
         }
 
-        .footer-section p, .footer-section a {
-            color: #aaa;
+        .footer-section p {
+            color: #94a3b8;
             line-height: 2;
+            font-size: 0.95rem;
+        }
+
+        .footer-section a {
+            color: #94a3b8;
             text-decoration: none;
             display: block;
+            line-height: 2;
             transition: color 0.3s ease;
+            font-size: 0.95rem;
         }
 
         .footer-section a:hover {
-            color: #667eea;
+            color: var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--orange);
+            transform: translateY(-3px);
+        }
+
+        .footer-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 3rem 0 2rem;
         }
 
         .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
             text-align: center;
-            margin-top: 3rem;
             padding-top: 2rem;
-            border-top: 1px solid #333;
-            color: #666;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #64748b;
+            font-size: 0.9rem;
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
+        @media (max-width: 968px) {
             .contact-hero h1 {
-                font-size: 2.5rem;
+                font-size: 3rem;
             }
 
-            .nav-links {
-                display: none;
+            .section-title {
+                font-size: 2.5rem;
             }
 
             .contact-layout {
@@ -510,27 +789,76 @@
             }
 
             .contact-info, .contact-form-container {
-                padding: 2rem;
+                padding: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+        @media (max-width: 640px) {
+            nav {
+                padding: 1rem 5%;
+            }
+
+            .contact-hero {
+                margin-top: 70px;
+                padding: 3rem 5%;
+            }
+
+            .contact-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .contact-content {
+                padding: 3rem 5%;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .emergency-section {
+                padding: 3rem 2rem;
+            }
+
+            .emergency-section h2 {
+                font-size: 2rem;
+            }
+
+            .emergency-phone {
+                font-size: 1.8rem;
             }
         }
     </style>
 </head>
 <body>
-    <header>
+    <header id="header">
         <nav>
-            <a href="index.html" class="logo"><img src="assets/NamrhaliLogo.png" height="80" width="80"></a>
+            <a href="index.html" class="logo">NAMRHALI</a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="services.html">Services</a></li>
-                <!--<li><a href="index.html#gallery">Gallery</a></li>-->
                 <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="contact.html" class="nav-cta">Get Quote</a></li>
             </ul>
         </nav>
     </header>
 
     <section class="contact-hero">
+        <div class="hero-particles">
+            <div class="particle-dot"></div>
+            <div class="particle-dot"></div>
+            <div class="particle-dot"></div>
+            <div class="particle-dot"></div>
+            <div class="particle-dot"></div>
+        </div>
         <div class="contact-hero-content">
+            <div class="hero-badge">
+                <span>🏆</span>
+                <span>Level 1 B-BBEE Certified</span>
+            </div>
             <h1>Get In Touch</h1>
             <p>We're here to help with all your logistics needs. Reach out to us today.</p>
         </div>
@@ -542,8 +870,11 @@
 
     <main class="contact-content">
         <section class="contact-intro">
-            <h2 class="section-title">Contact Namrhali Projects</h2>
-            <p class="section-subtitle">Have questions about our logistics services? Need a quote for your next shipment? Our team is ready to assist you with prompt, professional service.</p>
+            <div class="section-header">
+                <div class="section-tag">Connect With Us</div>
+                <h2 class="section-title">Contact Namrhali Projects</h2>
+                <p class="section-description">Have questions about our logistics services? Need a quote for your next shipment? Our team is ready to assist you with prompt, professional service.</p>
+            </div>
         </section>
 
         <div class="contact-layout">
@@ -634,7 +965,7 @@
                         <select id="service" class="form-select">
                             <option value="">Select a service</option>
                             <option value="freight">Freight Transport</option>
-                            <option value="warehousing">Warehousing</option>
+                            <option value="warehousing">Warehousing Solutions</option>
                             <option value="supply-chain">Supply Chain Management</option>
                             <option value="express">Express Delivery</option>
                             <option value="regional">Regional Logistics</option>
@@ -648,36 +979,51 @@
                         <textarea id="message" class="form-textarea" placeholder="Tell us about your logistics needs..." required></textarea>
                     </div>
 
-                    <button type="submit" class="form-submit">Send Message</button>
+                    <button type="submit" class="form-submit">
+                        <span>Send Message</span>
+                        <span>→</span>
+                    </button>
                 </form>
             </div>
         </div>
 
         <section class="map-section">
-            <h2 class="section-title">Find Us</h2>
-            <p class="section-subtitle">Visit our office in Middelburg, Mpumalanga</p>
+            <div class="section-header">
+                <div class="section-tag">Visit Us</div>
+                <h2 class="section-title">Find Our Office</h2>
+                <p class="section-description">Visit our office in Middelburg, Mpumalanga for personalized logistics solutions</p>
+            </div>
             
             <div class="map-container">
                 <!-- In a real implementation, you would embed a Google Maps iframe here -->
-                <div style="text-align: center;">
-                    <div style="font-size: 3rem; margin-bottom: 1rem;">🗺️</div>
-                    <p>Interactive Map</p>
+                <div class="map-placeholder">
+                    <div class="map-icon">🗺️</div>
+                    <h3>Interactive Map</h3>
                     <p>41 Sapphire Crescent, Middelburg, Mpumalanga</p>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--gray);">Map integration would be implemented here</p>
                 </div>
             </div>
         </section>
 
         <section class="emergency-section">
-            <div class="emergency-icon">🚨</div>
-            <h2>24/7 Emergency Logistics Support</h2>
-            <p>For urgent shipments and time-critical logistics needs, our emergency team is available around the clock.</p>
-            <div class="emergency-phone">+27 82 123 4567</div>
-            <a href="tel:+27821234567" class="emergency-btn">Call Now</a>
+            <div class="emergency-content">
+                <div class="emergency-icon">🚨</div>
+                <h2>24/7 Emergency Logistics Support</h2>
+                <p>For urgent shipments and time-critical logistics needs, our emergency team is available around the clock.</p>
+                <div class="emergency-phone">+27 82 123 4567</div>
+                <a href="tel:+27821234567" class="emergency-btn">
+                    <span>Call Now</span>
+                    <span>📞</span>
+                </a>
+            </div>
         </section>
 
         <section class="faq-section">
-            <h2 class="section-title">Contact FAQs</h2>
-            <p class="section-subtitle">Quick answers to common contact questions</p>
+            <div class="section-header">
+                <div class="section-tag">Need Help?</div>
+                <h2 class="section-title">Contact FAQs</h2>
+                <p class="section-description">Quick answers to common contact questions</p>
+            </div>
             
             <div class="faq-grid">
                 <div class="faq-item">
@@ -712,31 +1058,55 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h3>Namrhali Projects</h3>
-                <p>Your trusted partner in logistics excellence. Level 1 B-BBEE Contributor.</p>
+                <p>Your trusted partner in logistics excellence. Proudly Level 1 B-BBEE Certified.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
             </div>
             <div class="footer-section">
-                <h3>Contact</h3>
+                <h3>Contact Us</h3>
                 <p>41 Sapphire Crescent<br>Middelburg, Mpumalanga<br>1050, South Africa</p>
-                <p>info@namrhali.co.za</p>
+                <p><br>Email: info@namrhali.co.za</p>
+                <p>Phone: +27 13 123 4567</p>
             </div>
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <a href="index.html">Home</a>
                 <a href="services.html">Services</a>
-                <a href="index.html#gallery">Gallery</a>
                 <a href="about.html">About Us</a>
+                <a href="contact.html">Contact</a>
             </div>
             <div class="footer-section">
                 <h3>Certifications</h3>
-                <p>B-BBEE Level 1 Contributor<br>Registration: 2022/808593/07<br>Valid until June 2026</p>
+                <p><strong>B-BBEE Level 1 Contributor</strong><br>135% Procurement Recognition<br><br>Registration: 2022/808593/07<br>Valid Until: June 2026</p>
             </div>
         </div>
+        <div class="footer-divider"></div>
         <div class="footer-bottom">
-            <p>&copy; 2025 Namrhali Projects (Pty) Ltd. All rights reserved.</p>
+            <p>&copy; 2025 Namrhali Projects (Pty) Ltd. All rights reserved. | Moving South Africa Forward</p>
         </div>
     </footer>
 
     <script>
+        // Header scroll effect
+        const header = document.getElementById('header');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            lastScroll = currentScroll;
+        });
+
         // FAQ functionality
         document.querySelectorAll('.faq-question').forEach(question => {
             question.addEventListener('click', () => {
@@ -749,9 +1119,45 @@
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
+            // Simple form validation
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            if (!firstName || !lastName || !email || !message) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
             // In a real implementation, you would send the form data to a server here
-            alert('Thank you for your message! We will get back to you soon.');
-            this.reset();
+            // For now, we'll just show a success message
+            const submitBtn = this.querySelector('.form-submit');
+            const originalText = submitBtn.innerHTML;
+            
+            submitBtn.innerHTML = '<span>Sending...</span>';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                alert('Thank you for your message! We will get back to you soon.');
+                this.reset();
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }, 1500);
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
         });
     </script>
 </body>
