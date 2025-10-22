@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us | Namrhali Projects - Logistics Excellence</title>
+    <title>About Us - NAMRHALI PROJECTS | Innovative Solutions for Excellence</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-        <link rel="icon" href="assets/NamrhaliLogo.png" type="image/png">
-
     <style>
         * {
             margin: 0;
@@ -20,6 +18,7 @@
             --secondary: #3b82f6;
             --accent: #60a5fa;
             --orange: #f97316;
+            --orange-dark: #ea580c;
             --dark: #0f172a;
             --gray: #475569;
             --light-gray: #f1f5f9;
@@ -107,7 +106,7 @@
 
         .nav-cta {
             padding: 0.7rem 1.8rem;
-            background: linear-gradient(135deg, var(--orange) 0%, #ea580c 100%);
+            background: linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 100%);
             color: white;
             border-radius: 8px;
             font-weight: 600;
@@ -120,66 +119,59 @@
             box-shadow: 0 6px 25px rgba(249, 115, 22, 0.4);
         }
 
-        /* Hero Section */
-        .about-hero {
-            min-height: 70vh;
+        /* Page Header */
+        .page-header {
+            min-height: 60vh;
             position: relative;
             overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-top: 80px;
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--secondary) 100%);
-            color: white;
-            text-align: center;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
         }
 
-        .hero-particles {
+        .page-header::before {
+            content: '';
             position: absolute;
-            width: 100%;
-            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(96, 165, 250, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(249, 115, 22, 0.1) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
         }
 
-        .particle-dot {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: var(--accent);
-            border-radius: 50%;
-            opacity: 0.3;
-            animation: float-particle 15s infinite ease-in-out;
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
         }
 
-        .particle-dot:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; }
-        .particle-dot:nth-child(2) { left: 30%; top: 40%; animation-delay: 2s; }
-        .particle-dot:nth-child(3) { left: 50%; top: 60%; animation-delay: 4s; }
-        .particle-dot:nth-child(4) { left: 70%; top: 30%; animation-delay: 6s; }
-        .particle-dot:nth-child(5) { left: 90%; top: 50%; animation-delay: 8s; }
-
-        @keyframes float-particle {
-            0%, 100% {
-                transform: translate(0, 0);
-                opacity: 0.3;
-            }
-            50% {
-                transform: translate(50px, -50px);
-                opacity: 0.6;
-            }
-        }
-
-        .about-hero-content {
+        .page-header-content {
             position: relative;
             z-index: 2;
-            max-width: 900px;
+            text-align: center;
+            max-width: 1000px;
             padding: 4rem 2rem;
+            color: white;
         }
 
-        .about-hero h1 {
-            font-size: 4rem;
+        .page-header h1 {
+            font-size: 4.5rem;
             font-weight: 900;
             margin-bottom: 1.5rem;
-            letter-spacing: -1px;
+            letter-spacing: -2px;
+            line-height: 1.1;
             animation: slideUp 0.8s ease;
+        }
+
+        .page-header h1 .highlight {
+            background: linear-gradient(135deg, var(--orange) 0%, #ef4444 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         @keyframes slideUp {
@@ -193,65 +185,26 @@
             }
         }
 
-        .about-hero p {
-            font-size: 1.4rem;
-            opacity: 0.9;
-            margin-bottom: 2rem;
+        .page-header p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
             animation: slideUp 0.8s ease 0.2s backwards;
         }
 
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.6rem 1.5rem;
-            background: rgba(59, 130, 246, 0.15);
-            border: 1px solid rgba(96, 165, 250, 0.3);
-            border-radius: 50px;
-            color: var(--accent);
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            margin-bottom: 2rem;
-            backdrop-filter: blur(10px);
-            animation: slideUp 0.8s ease 0.4s backwards;
-        }
-
-        /* Breadcrumb */
-        .breadcrumb {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1.5rem 8%;
-            background: var(--white);
-            border-bottom: 1px solid var(--light-gray);
-        }
-
-        .breadcrumb a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .breadcrumb a:hover {
-            color: var(--orange);
-        }
-
-        .breadcrumb span {
-            color: var(--gray);
-        }
-
-        /* Main Content */
+        /* About Content */
         .about-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 5rem 8%;
+            padding: 8rem 8%;
+            background: var(--white);
         }
 
         .section-header {
             text-align: center;
-            max-width: 800px;
+            max-width: 700px;
             margin: 0 auto 5rem;
         }
 
@@ -271,20 +224,6 @@
             color: var(--dark);
             margin-bottom: 1.5rem;
             letter-spacing: -1px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--orange), var(--primary));
-            border-radius: 2px;
         }
 
         .section-description {
@@ -293,102 +232,168 @@
             line-height: 1.8;
         }
 
-        /* Story Section */
-        .story-section {
+        .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 5rem;
-            margin-bottom: 8rem;
+            max-width: 1200px;
+            margin: 0 auto;
             align-items: center;
         }
 
-        .story-text h2 {
-            font-size: 2.5rem;
+        .about-text h2 {
+            font-size: 2.2rem;
             font-weight: 800;
-            margin-bottom: 1.5rem;
             color: var(--dark);
-        }
-
-        .story-text p {
-            color: var(--gray);
             margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .about-text p {
             font-size: 1.05rem;
-            line-height: 1.8;
-        }
-
-        .milestone-highlights {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-top: 2.5rem;
-        }
-
-        .milestone {
-            text-align: center;
-            padding: 1.5rem;
-            border-radius: 12px;
-            background: var(--light-gray);
-            transition: all 0.3s ease;
-        }
-
-        .milestone:hover {
-            background: var(--white);
-            box-shadow: 0 10px 30px rgba(30, 64, 175, 0.1);
-            transform: translateY(-5px);
-        }
-
-        .milestone-number {
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .milestone-text {
-            font-size: 0.9rem;
             color: var(--gray);
-            font-weight: 600;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
         }
 
-        .story-image {
+        .about-image {
             position: relative;
-            border-radius: 20px;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-            height: 500px;
+            box-shadow: 0 20px 60px rgba(30, 64, 175, 0.15);
         }
 
-        .story-image img {
+        .about-image img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
         }
 
-        .story-image:hover img {
+        .about-image:hover img {
             transform: scale(1.05);
         }
 
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.1) 0%, rgba(249, 115, 22, 0.1) 100%);
+            z-index: 1;
+        }
+
+        /* Vision Mission */
+        .vision-mission {
+            padding: 8rem 8%;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vision-mission::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(96, 165, 250, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(249, 115, 22, 0.1) 0%, transparent 50%);
+        }
+
+        .vision-mission-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .vm-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .vm-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 3rem;
+            border-radius: 16px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vm-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.1) 0%, rgba(30, 64, 175, 0.1) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .vm-card:hover::before {
+            opacity: 1;
+        }
+
+        .vm-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--orange);
+        }
+
+        .vm-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .vm-card h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--orange);
+        }
+
+        .vm-card p {
+            line-height: 1.8;
+            opacity: 0.95;
+            font-size: 1.05rem;
+        }
+
         /* Values Section */
-        .values-section {
-            margin-bottom: 8rem;
+        .values {
+            padding: 8rem 8%;
+            background: var(--white);
         }
 
         .values-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .value-card {
             background: white;
-            padding: 3rem 2.5rem;
+            padding: 2.5rem;
             border-radius: 16px;
             border: 2px solid var(--light-gray);
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
-            text-align: center;
         }
 
         .value-card::before {
@@ -415,21 +420,21 @@
         }
 
         .value-icon {
-            width: 80px;
-            height: 80px;
+            width: 70px;
+            height: 70px;
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            border-radius: 50%;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 2rem;
-            margin: 0 auto 1.5rem;
+            margin-bottom: 1.5rem;
             color: white;
             transition: all 0.3s ease;
         }
 
         .value-card:hover .value-icon {
-            background: linear-gradient(135deg, var(--orange) 0%, #ea580c 100%);
+            background: linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 100%);
             transform: scale(1.1) rotate(5deg);
         }
 
@@ -447,229 +452,78 @@
         }
 
         /* Team Section */
-        .team-section {
-            margin-bottom: 8rem;
+        .team {
+            padding: 8rem 8%;
+            background: var(--light-gray);
         }
 
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
-        }
-
-        .team-member {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-            transition: all 0.4s ease;
-            position: relative;
-        }
-
-        .team-member:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 50px rgba(30, 64, 175, 0.15);
-        }
-
-        .member-image {
-            height: 300px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .member-image::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 50%;
-            background: linear-gradient(transparent, rgba(0,0,0,0.1));
-        }
-
-        .member-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-
-        .team-member:hover .member-image img {
-            transform: scale(1.1);
-        }
-
-        .member-info {
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .member-info h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: var(--dark);
-            font-weight: 700;
-        }
-
-        .member-info .position {
-            color: var(--primary);
-            font-weight: 600;
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
-        }
-
-        .member-info .bio {
-            color: var(--gray);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .member-social {
-            display: flex;
-            justify-content: center;
-            gap: 0.8rem;
-            margin-top: 1.5rem;
-        }
-
-        .member-social a {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--light-gray);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            transition: all 0.3s ease;
-        }
-
-        .member-social a:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        /* Certification Section */
-        .certification-section {
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
-            padding: 6rem 8%;
-            border-radius: 20px;
-            margin-bottom: 8rem;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .certification-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                radial-gradient(circle at 20% 50%, rgba(96, 165, 250, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 50%, rgba(249, 115, 22, 0.1) 0%, transparent 50%);
-        }
-
-        .cert-content {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
             max-width: 1200px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-            align-items: center;
-            position: relative;
-            z-index: 1;
         }
 
-        .cert-badge {
-            text-align: center;
-            padding: 3rem 2rem;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
+        .team-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
         }
 
-        .cert-badge:hover {
-            transform: scale(1.05);
-            background: rgba(255, 255, 255, 0.15);
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
 
-        .badge-icon {
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(135deg, var(--orange) 0%, #ea580c 100%);
-            border-radius: 50%;
+        .team-image {
+            height: 300px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
-            margin: 0 auto 1.5rem;
             color: white;
-            box-shadow: 0 15px 40px rgba(249, 115, 22, 0.4);
+            font-size: 5rem;
         }
 
-        .cert-badge h3 {
-            font-size: 1.8rem;
+        .team-info {
+            padding: 2rem;
+        }
+
+        .team-info h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
             margin-bottom: 0.5rem;
+            color: var(--dark);
         }
 
-        .cert-badge p {
-            opacity: 0.9;
-            font-size: 1rem;
-        }
-
-        .cert-text h2 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-        }
-
-        .cert-text p {
-            opacity: 0.95;
-            margin-bottom: 1.5rem;
-            font-size: 1.05rem;
-            line-height: 1.8;
-        }
-
-        .cert-list {
-            list-style: none;
-            margin-top: 1.5rem;
-        }
-
-        .cert-list li {
-            margin-bottom: 0.8rem;
-            opacity: 0.95;
-            position: relative;
-            padding-left: 1.8rem;
-            line-height: 1.6;
-        }
-
-        .cert-list li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
+        .team-info .position {
             color: var(--orange);
-            font-weight: bold;
-            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .team-info p {
+            color: var(--gray);
+            line-height: 1.8;
+            font-size: 0.95rem;
         }
 
         /* CTA Section */
         .cta-section {
-            text-align: center;
-            padding: 6rem 2rem;
-            background: linear-gradient(135deg, var(--orange) 0%, #ea580c 100%);
+            padding: 8rem 8%;
+            background: linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 100%);
             color: white;
-            border-radius: 20px;
-            margin-bottom: 6rem;
+            text-align: center;
             position: relative;
             overflow: hidden;
         }
 
         .cta-section::before {
-            content: '🚛';
+            content: '🏗️';
             position: absolute;
             font-size: 20rem;
             opacity: 0.05;
@@ -679,10 +533,10 @@
         }
 
         .cta-content {
+            max-width: 900px;
+            margin: 0 auto;
             position: relative;
             z-index: 1;
-            max-width: 800px;
-            margin: 0 auto;
         }
 
         .cta-section h2 {
@@ -694,34 +548,51 @@
 
         .cta-section p {
             font-size: 1.2rem;
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem;
             opacity: 0.95;
             line-height: 1.8;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         .cta-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.7rem;
             padding: 1.2rem 2.8rem;
-            background: white;
-            color: var(--orange);
             text-decoration: none;
             border-radius: 8px;
             font-weight: 600;
             font-size: 1rem;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            letter-spacing: 0.3px;
         }
 
-        .cta-btn:hover {
+        .cta-primary {
+            background: white;
+            color: var(--orange);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.4);
+        }
+
+        .cta-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-            background: var(--primary);
+            box-shadow: 0 15px 40px rgba(255, 255, 255, 0.5);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            border: 2px solid white;
             color: white;
+        }
+
+        .cta-secondary:hover {
+            background: white;
+            color: var(--primary);
         }
 
         /* Footer */
@@ -744,6 +615,10 @@
             margin-bottom: 1.5rem;
             font-size: 1.3rem;
             font-weight: 700;
+            background: linear-gradient(135deg, var(--orange) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .footer-section p {
@@ -752,45 +627,14 @@
             font-size: 0.95rem;
         }
 
-        .footer-section a {
-            color: #94a3b8;
-            text-decoration: none;
-            display: block;
-            line-height: 2;
-            transition: color 0.3s ease;
-            font-size: 0.95rem;
-        }
-
-        .footer-section a:hover {
-            color: var(--accent);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .social-links a {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            background: var(--orange);
-            transform: translateY(-3px);
-        }
-
-        .footer-divider {
-            height: 1px;
-            background: rgba(255, 255, 255, 0.1);
-            margin: 3rem 0 2rem;
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--orange) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .footer-bottom {
@@ -805,31 +649,21 @@
 
         /* Responsive */
         @media (max-width: 968px) {
-            .about-hero h1 {
-                font-size: 3rem;
+            .page-header h1 {
+                font-size: 3.5rem;
             }
 
             .section-title {
                 font-size: 2.5rem;
             }
 
-            .story-section {
+            .about-grid {
                 grid-template-columns: 1fr;
                 gap: 3rem;
             }
 
-            .cert-content {
+            .vm-grid {
                 grid-template-columns: 1fr;
-                gap: 3rem;
-                text-align: center;
-            }
-
-            .milestone-highlights {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .nav-links {
-                display: none;
             }
         }
 
@@ -838,29 +672,29 @@
                 padding: 1rem 5%;
             }
 
-            .about-hero {
+            .nav-links {
+                display: none;
+            }
+
+            .page-header {
                 margin-top: 70px;
                 padding: 3rem 5%;
             }
 
-            .about-hero h1 {
+            .page-header h1 {
                 font-size: 2.5rem;
             }
 
-            .about-content {
-                padding: 3rem 5%;
+            .about-content, .vision-mission, .values, .team, .cta-section {
+                padding: 5rem 5%;
             }
 
-            .section-title {
-                font-size: 2rem;
+            .cta-buttons {
+                flex-direction: column;
             }
 
-            .milestone-highlights {
-                grid-template-columns: 1fr;
-            }
-
-            .cta-section h2 {
-                font-size: 2.2rem;
+            .cta-btn {
+                width: 100%;
             }
         }
     </style>
@@ -868,259 +702,195 @@
 <body>
     <header id="header">
         <nav>
-            <div class="logo"><a><img src="assets/NamrhaliLogo.png" height="80" width="80"></a></div>
+            <div class="logo">NAMRHALI PROJECTS</div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" style="color: var(--primary);">About</a></li>
                 <li><a href="services.html">Services</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html" class="nav-cta">Get Quote</a></li>
+                <li><a href="contact.html" class="nav-cta">Contact Us</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="about-hero" style="background-image: linear-gradient(135deg, rgba(30, 64, 175, 0.85) 0%, rgba(59, 130, 246, 0.85) 100%), url('./assets/abouthero.png'); background-size: cover; background-position: center;">
-        <div class="hero-particles">
-            <div class="particle-dot"></div>
-            <div class="particle-dot"></div>
-            <div class="particle-dot"></div>
-            <div class="particle-dot"></div>
-            <div class="particle-dot"></div>
-        </div>
-        <div class="about-hero-content">
-            <div class="hero-badge">
-                <span>🏆</span>
-                <span>Level 1 B-BBEE Certified</span>
-            </div>
-            <h1>Our Story</h1>
-            <p>Building South Africa's logistics future with integrity and excellence</p>
+    <section class="page-header">
+        <div class="page-header-content">
+            <h1>Our <span class="highlight">Story</span></h1>
+            <p>Founded in 2022, Namrhali Projects is a vibrant growing firm focusing on finding innovative ways to do business. We deliver exceptional services in cleaning, construction, maintenance, and supply.</p>
         </div>
     </section>
 
-    <div class="breadcrumb">
-        <a href="index.html">Home</a> > <span>About Us</span>
-    </div>
+    <section class="about-content">
+        <div class="section-header">
+            <div class="section-tag">Who We Are</div>
+            <h2 class="section-title">About Namrhali Projects</h2>
+            <p class="section-description">A dedicated team committed to excellence, innovation, and closing the scarcity gap of professional service providers.</p>
+        </div>
+        <div class="about-grid">
+            <div class="about-text">
+                <h2>Excellence in Service Delivery Since 2022</h2>
+                <p>NAMRHALI PROJECTS was founded and established in 2022 by a young dedicated gentleman who carries great passion and drive in the business sector. With rapid growth of population and economic growth, our sectors remain to have a scarcity gap of professional service providers.</p>
+                <p>Our organization has well experienced personnel in sector expertise, enabling us to deliver exceptional services that meet and exceed client expectations. We aim at excellent service delivery and closing the scarcity of required resources in our industry.</p>
+                <p>At Namrhali Projects, we believe in finding innovative ways to do business, constantly evolving our methods and approaches to ensure we remain at the forefront of our industry.</p>
+            </div>
+            <div class="about-image">
+                <!-- Placeholder for company image -->
+                <div style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 5rem;">
+                    🏗️
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <main class="about-content">
-        <section class="story-section">
-            <div class="story-text">
-                <h2>From Humble Beginnings to Industry Leaders</h2>
-                <p>Founded in 2022 in Middelburg, Mpumalanga, Namrhali Projects began with a simple vision: to provide reliable, efficient logistics solutions that empower South African businesses to thrive. What started as a small local operation has rapidly grown into a trusted partner for companies across the nation.</p>
-                <p>Our founder, recognizing the critical role of logistics in economic development, established Namrhali Projects with a commitment to excellence, integrity, and community empowerment. This foundation has guided our growth and continues to shape our operations today.</p>
-                <p>As a Level 1 B-BBEE contributor, we're proud to be part of South Africa's economic transformation journey while maintaining the highest standards of service delivery and customer satisfaction.</p>
-                
-                <div class="milestone-highlights">
-                    <div class="milestone">
-                        <div class="milestone-number">2022</div>
-                        <div class="milestone-text">Year Established</div>
-                    </div>
-                    <div class="milestone">
-                        <div class="milestone-number">Level 1</div>
-                        <div class="milestone-text">B-BBEE Status</div>
-                    </div>
-                    <div class="milestone">
-                        <div class="milestone-number">100%</div>
-                        <div class="milestone-text">Client Satisfaction</div>
-                    </div>
+    <section class="vision-mission">
+        <div class="vision-mission-content">
+            <div class="section-header" style="margin-bottom: 0;">
+                <div class="section-tag" style="color: var(--orange);">Our Purpose</div>
+                <h2 class="section-title" style="color: white;">Vision & Mission</h2>
+                <p class="section-description" style="color: rgba(255,255,255,0.9);">The guiding principles that drive our company forward.</p>
+            </div>
+            <div class="vm-grid">
+                <div class="vm-card">
+                    <span class="vm-icon">🎯</span>
+                    <h3>Our Vision</h3>
+                    <p>To be the most reliable service provider that has a high quality service. We strive to set the standard for excellence in our industry and become the go-to partner for all our clients' needs.</p>
+                </div>
+                <div class="vm-card">
+                    <span class="vm-icon">🚀</span>
+                    <h3>Our Mission</h3>
+                    <p>To be recognised and acknowledged as the world's best class service provider in the sector. We are committed to delivering exceptional value, building lasting relationships, and making a positive impact in our communities.</p>
                 </div>
             </div>
-            <div class="story-image">
-                <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800" alt="Namrhali Projects warehouse">
-            </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="values-section">
-            <div class="section-header">
-                <div class="section-tag">Our Values</div>
-                <h2 class="section-title">The Principles That Guide Us</h2>
-                <p class="section-description">The core values that shape every decision we make and every service we deliver</p>
+    <section class="values">
+        <div class="section-header">
+            <div class="section-tag">Our Foundation</div>
+            <h2 class="section-title">Our Core Values</h2>
+            <p class="section-description">The principles that guide everything we do and define who we are as a company.</p>
+        </div>
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="value-icon">⚡</div>
+                <h3>Competency</h3>
+                <p>Our management and team members are always ready to work and deliver exceptional services in time.</p>
             </div>
-            
-            <div class="values-grid">
-                <div class="value-card">
-                    <div class="value-icon">✓</div>
-                    <h3>Integrity</h3>
-                    <p>We conduct business with honesty and transparency, building trust with every client interaction and maintaining the highest ethical standards.</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">⚡</div>
-                    <h3>Excellence</h3>
-                    <p>We strive for perfection in every delivery, continuously improving our processes and exceeding customer expectations at every opportunity.</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">🤝</div>
-                    <h3>Partnership</h3>
-                    <p>We view our clients as partners, working collaboratively to develop customized solutions that address their unique logistics challenges.</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">🌱</div>
-                    <h3>Sustainability</h3>
-                    <p>We're committed to environmentally responsible practices and contributing positively to the communities we serve.</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">🚀</div>
-                    <h3>Innovation</h3>
-                    <p>We embrace technology and new approaches to solve complex logistics challenges and deliver superior value to our clients.</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">🏆</div>
-                    <h3>Empowerment</h3>
-                    <p>As a Level 1 B-BBEE contributor, we're dedicated to economic transformation and creating opportunities for all South Africans.</p>
-                </div>
+            <div class="value-card">
+                <div class="value-icon">🔒</div>
+                <h3>Confidentiality</h3>
+                <p>We ensure that we keep our clients' information confidential at all costs.</p>
             </div>
-        </section>
+            <div class="value-card">
+                <div class="value-icon">🤝</div>
+                <h3>Inclusivity</h3>
+                <p>We ensure a welcoming and inclusive environment, treating people as we would like to be treated ourselves.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">✓</div>
+                <h3>Reliability</h3>
+                <p>We aim at being the most reliable and trusted service provider.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">💎</div>
+                <h3>Integrity</h3>
+                <p>We trust and respect everyone equally, acting ethically and encouraging honest and open communication.</p>
+            </div>
+        </div>
+    </section>
 
-        <!--<section class="team-section">
-            <div class="section-header">
-                <div class="section-tag">Our Leadership</div>
-                <h2 class="section-title">Meet Our Team</h2>
-                <p class="section-description">The dedicated professionals driving Namrhali Projects forward</p>
-            </div>
-            
-            <div class="team-grid">
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400" alt="CEO">
-                    </div>
-                    <div class="member-info">
-                        <h3>James Mbeki</h3>
-                        <p class="position">Founder & CEO</p>
-                        <p class="bio">With over 15 years in the logistics industry, James founded Namrhali Projects to create a company that combines operational excellence with meaningful social impact.</p>
-                        <div class="member-social">
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                        </div>
-                    </div>
+    <section class="team">
+        <div class="section-header">
+            <div class="section-tag">Our Leadership</div>
+            <h2 class="section-title">Founder & Team</h2>
+            <p class="section-description">The passionate individuals behind Namrhali Projects' success.</p>
+        </div>
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="team-image">
+                    👨‍💼
                 </div>
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400" alt="Operations Director">
-                    </div>
-                    <div class="member-info">
-                        <h3>Sarah Ndlovu</h3>
-                        <p class="position">Operations Director</p>
-                        <p class="bio">Sarah brings extensive experience in supply chain management and logistics optimization, ensuring our operations run smoothly and efficiently.</p>
-                        <div class="member-social">
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400" alt="Finance Manager">
-                    </div>
-                    <div class="member-info">
-                        <h3>Lerato Khumalo</h3>
-                        <p class="position">Finance Manager</p>
-                        <p class="bio">Lerato oversees our financial operations with precision and strategic insight, ensuring sustainable growth and fiscal responsibility.</p>
-                        <div class="member-social">
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="team-member">
-                    <div class="member-image">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400" alt="Client Relations Manager">
-                    </div>
-                    <div class="member-info">
-                        <h3>David van der Merwe</h3>
-                        <p class="position">Client Relations Manager</p>
-                        <p class="bio">David is dedicated to building strong, lasting relationships with our clients and ensuring their needs are met with exceptional service.</p>
-                        <div class="member-social">
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                        </div>
-                    </div>
+                <div class="team-info">
+                    <h3>Founder</h3>
+                    <span class="position">Visionary Leader</span>
+                    <p>A young dedicated gentleman who carries great passion and drive in the business sector. Founded Namrhali Projects in 2022 with a vision to close the scarcity gap of professional service providers.</p>
                 </div>
             </div>
-        </section>-->
+            <div class="team-card">
+                <div class="team-image">
+                    👷‍♂️
+                </div>
+                <div class="team-info">
+                    <h3>Management Team</h3>
+                    <span class="position">Experienced Professionals</span>
+                    <p>Our management team consists of well experienced personnel in sector expertise, dedicated to delivering exceptional services and ensuring client satisfaction across all our service offerings.</p>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="team-image">
+                    👥
+                </div>
+                <div class="team-info">
+                    <h3>Our Staff</h3>
+                    <span class="position">Skilled Workforce</span>
+                    <p>Our team members are trained professionals committed to upholding our company values and delivering quality work across all our service areas - from cleaning and construction to maintenance and supply.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <section class="certification-section">
-            <div class="cert-content">
-                <div class="cert-badge">
-                    <div class="badge-icon">🏆</div>
-                    <h3>B-BBEE Level 1</h3>
-                    <p>135% Procurement Recognition</p>
-                </div>
-                <div class="cert-text">
-                    <h2>Our Commitment to Transformation</h2>
-                    <p>As a Level 1 B-BBEE contributor, Namrhali Projects is deeply committed to South Africa's economic transformation. Our certification reflects our dedication to:</p>
-                    <ul class="cert-list">
-                        <li>Creating meaningful employment opportunities</li>
-                        <li>Developing skills within our workforce</li>
-                        <li>Supporting black-owned suppliers and partners</li>
-                        <li>Contributing to socio-economic development</li>
-                        <li>Promoting enterprise development initiatives</li>
-                    </ul>
-                    <p>Our B-BBEE status isn't just a certificate—it's a reflection of our core values and our commitment to building a more inclusive South African economy.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="cta-section">
-            <div class="cta-content">
-                <h2>Ready to Partner With Us?</h2>
-                <p>Join the growing list of satisfied clients who trust Namrhali Projects with their logistics needs. Let's discuss how we can support your business growth.</p>
-                <a href="contact.html" class="cta-btn">
-                    <span>Get In Touch</span>
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to Work With Us?</h2>
+            <p>Experience the Namrhali Projects difference. Let's discuss how we can help you achieve your goals with our innovative solutions and exceptional service delivery.</p>
+            <div class="cta-buttons">
+                <a href="contact.html" class="cta-btn cta-primary">
+                    <span>Contact Us</span>
                     <span>→</span>
                 </a>
+                <a href="services.html" class="cta-btn cta-secondary">
+                    <span>Our Services</span>
+                </a>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <h3>Namrhali Projects</h3>
-                <p>Your trusted partner in logistics excellence. Proudly Level 1 B-BBEE Certified.</p>
-                <div class="social-links">
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                </div>
+                <div class="footer-logo">NAMRHALI PROJECTS</div>
+                <p>A vibrant growing firm focusing on finding innovative ways to do business. Excellence in service delivery since 2022.</p>
             </div>
             <div class="footer-section">
-                <h3>Contact Us</h3>
-                <p>41 Sapphire Crescent<br>Middelburg, Mpumalanga<br>1050, South Africa</p>
-                <p><br>Email: info@namrhali.co.za</p>
-                <p>Phone: +27 13 123 4567</p>
+                <h3>Our Vision</h3>
+                <p>To be the most reliable service provider with high quality service. Recognized as the world's best class service provider in our sector.</p>
             </div>
             <div class="footer-section">
                 <h3>Quick Links</h3>
-                <a href="index.html">Home</a>
-                <a href="services.html">Services</a>
-                <a href="about.html">About Us</a>
-                <a href="contact.html">Contact</a>
+                <p><a href="index.html" style="color: #94a3b8; text-decoration: none; display: block; margin: 0.5rem 0;">Home</a></p>
+                <p><a href="about.html" style="color: #94a3b8; text-decoration: none; display: block; margin: 0.5rem 0;">About</a></p>
+                <p><a href="services.html" style="color: #94a3b8; text-decoration: none; display: block; margin: 0.5rem 0;">Services</a></p>
+                <p><a href="contact.html" style="color: #94a3b8; text-decoration: none; display: block; margin: 0.5rem 0;">Contact</a></p>
             </div>
             <div class="footer-section">
                 <h3>Certifications</h3>
-                <p><strong>B-BBEE Level 1 Contributor</strong><br>135% Procurement Recognition<br><br>Registration: 2022/808593/07<br>Valid Until: June 2026</p>
+                <p><strong style="color: var(--orange);">B-BBEE Level 1 Contributor</strong><br>135% Procurement Recognition<br><br>Established 2022<br>Middelburg, Mpumalanga</p>
             </div>
         </div>
-        <div class="footer-divider"></div>
         <div class="footer-bottom">
-            <p>&copy; 2025 Namrhali Projects (Pty) Ltd. All rights reserved. | Moving South Africa Forward</p>
+            <p>&copy; 2025 Namrhali Projects. All rights reserved. | Finding innovative ways to do business.</p>
         </div>
     </footer>
 
     <script>
         // Header scroll effect
         const header = document.getElementById('header');
-        let lastScroll = 0;
-
+        
         window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-            
-            if (currentScroll > 100) {
+            if (window.pageYOffset > 100) {
                 header.classList.add('scrolled');
             } else {
                 header.classList.remove('scrolled');
             }
-            
-            lastScroll = currentScroll;
         });
 
         // Smooth scrolling

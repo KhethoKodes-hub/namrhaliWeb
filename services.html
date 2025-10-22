@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Services | Namrhali Projects - Logistics Excellence</title>
+    <title>Our Services - NAMRHALI PROJECTS | Professional Cleaning, Construction & Supply</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" href="assets/NamrhaliLogo.png" type="image/png">
     <style>
         * {
             margin: 0;
@@ -19,6 +18,7 @@
             --secondary: #3b82f6;
             --accent: #60a5fa;
             --orange: #f97316;
+            --orange-dark: #ea580c;
             --dark: #0f172a;
             --gray: #475569;
             --light-gray: #f1f5f9;
@@ -106,7 +106,7 @@
 
         .nav-cta {
             padding: 0.7rem 1.8rem;
-            background: linear-gradient(135deg, var(--orange) 0%, #ea580c 100%);
+            background: linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 100%);
             color: white;
             border-radius: 8px;
             font-weight: 600;
@@ -119,58 +119,59 @@
             box-shadow: 0 6px 25px rgba(249, 115, 22, 0.4);
         }
 
-        /* Hero Section */
-       .services-hero {
-    min-height: 60vh;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 80px;
-    background-image: 
-        linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--secondary) 100%),
-        url('./assets/hero.png'); /* Replace with your actual image path */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    color: white;
-    text-align: center;
-}
-
-
-       .services-hero {
-    min-height: 60vh;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 80px;
-    background-image: 
-        linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--secondary) 100%),
-        url('./assets/hero.png'); /* Replace with your actual image path */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    color: white;
-    text-align: center;
-}
-
-
-        .services-hero-content {
+        /* Page Header */
+        .page-header {
+            min-height: 60vh;
             position: relative;
-            z-index: 2;
-            max-width: 900px;
-            padding: 4rem 2rem;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 80px;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
         }
 
-        .services-hero h1 {
-            font-size: 4rem;
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(96, 165, 250, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(249, 115, 22, 0.1) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .page-header-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 1000px;
+            padding: 4rem 2rem;
+            color: white;
+        }
+
+        .page-header h1 {
+            font-size: 4.5rem;
             font-weight: 900;
             margin-bottom: 1.5rem;
-            letter-spacing: -1px;
+            letter-spacing: -2px;
+            line-height: 1.1;
             animation: slideUp 0.8s ease;
+        }
+
+        .page-header h1 .highlight {
+            background: linear-gradient(135deg, var(--orange) 0%, #ef4444 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         @keyframes slideUp {
@@ -184,65 +185,26 @@
             }
         }
 
-        .services-hero p {
-            font-size: 1.4rem;
-            opacity: 0.9;
-            margin-bottom: 2rem;
+        .page-header p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
             animation: slideUp 0.8s ease 0.2s backwards;
         }
 
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.6rem 1.5rem;
-            background: rgba(59, 130, 246, 0.15);
-            border: 1px solid rgba(96, 165, 250, 0.3);
-            border-radius: 50px;
-            color: var(--accent);
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            margin-bottom: 2rem;
-            backdrop-filter: blur(10px);
-            animation: slideUp 0.8s ease 0.4s backwards;
-        }
-
-        /* Breadcrumb */
-        .breadcrumb {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1.5rem 8%;
+        /* Services Overview */
+        .services-overview {
+            padding: 8rem 8%;
             background: var(--white);
-            border-bottom: 1px solid var(--light-gray);
-        }
-
-        .breadcrumb a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .breadcrumb a:hover {
-            color: var(--orange);
-        }
-
-        .breadcrumb span {
-            color: var(--gray);
-        }
-
-        /* Main Content */
-        .services-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 5rem 8%;
         }
 
         .section-header {
             text-align: center;
-            max-width: 800px;
+            max-width: 700px;
             margin: 0 auto 5rem;
         }
 
@@ -262,20 +224,6 @@
             color: var(--dark);
             margin-bottom: 1.5rem;
             letter-spacing: -1px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--orange), var(--primary));
-            border-radius: 2px;
         }
 
         .section-description {
@@ -284,22 +232,40 @@
             line-height: 1.8;
         }
 
-        /* Services Grid */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2.5rem;
-            margin-bottom: 8rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .service-card {
             background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            padding: 3rem 2.5rem;
+            border-radius: 16px;
+            border: 2px solid var(--light-gray);
             transition: all 0.4s ease;
             position: relative;
-            border: 2px solid transparent;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--orange), var(--primary));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
         }
 
         .service-card:hover {
@@ -308,339 +274,272 @@
             border-color: var(--accent);
         }
 
-        .service-header {
-            height: 220px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .service-header::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 50%;
-            background: linear-gradient(transparent, rgba(0,0,0,0.1));
-        }
-
-        .service-header img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-
-        .service-card:hover .service-header img {
-            transform: scale(1.1);
-        }
-
         .service-icon {
-            position: absolute;
-            bottom: -30px;
-            left: 30px;
-            width: 70px;
-            height: 70px;
+            width: 100px;
+            height: 100px;
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            border-radius: 15px;
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
-            color: white;
-            box-shadow: 0 10px 30px rgba(30, 64, 175, 0.3);
-            transition: all 0.3s ease;
-            z-index: 2;
-        }
-
-        .service-card:hover .service-icon {
-            background: linear-gradient(135deg, var(--orange) 0%, #ea580c 100%);
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .service-body {
-            padding: 3rem 2rem 2rem;
-        }
-
-        .service-body h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--dark);
-            font-weight: 700;
-        }
-
-        .service-body p {
-            color: var(--gray);
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-
-        .service-features {
-            list-style: none;
-            margin-bottom: 1.5rem;
-        }
-
-        .service-features li {
-            margin-bottom: 0.5rem;
-            color: var(--gray);
-            position: relative;
-            padding-left: 1.5rem;
-            line-height: 1.6;
-        }
-
-        .service-features li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--primary);
-            font-weight: bold;
-        }
-
-        .service-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.8rem 1.5rem;
-            background: transparent;
-            color: var(--primary);
-            text-decoration: none;
-            border: 2px solid var(--primary);
-            border-radius: 8px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .service-cta:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(30, 64, 175, 0.3);
-        }
-
-        /* Process Section */
-        .process-section {
-            margin-bottom: 8rem;
-        }
-
-        .process-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2.5rem;
-            counter-reset: step-counter;
-        }
-
-        .process-step {
-            background: white;
-            padding: 3rem 2rem;
-            border-radius: 16px;
-            border: 2px solid transparent;
-            transition: all 0.4s ease;
-            position: relative;
-            text-align: center;
-        }
-
-        .process-step::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(135deg, var(--orange), var(--primary));
-            border-radius: 16px;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            z-index: -1;
-        }
-
-        .process-step:hover::before {
-            opacity: 1;
-        }
-
-        .process-step:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 50px rgba(30, 64, 175, 0.12);
-        }
-
-        .process-step::after {
-            counter-increment: step-counter;
-            content: counter(step-counter);
-            position: absolute;
-            top: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--orange) 0%, #ea580c 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 800;
-            box-shadow: 0 5px 15px rgba(249, 115, 22, 0.3);
-        }
-
-        .process-icon {
             font-size: 3rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
-            transition: all 0.3s ease;
-        }
-
-        .process-step:hover .process-icon {
-            color: var(--orange);
-            transform: scale(1.1);
-        }
-
-        .process-step h3 {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            color: var(--dark);
-            font-weight: 700;
-        }
-
-        .process-step p {
-            color: var(--gray);
-            line-height: 1.7;
-            font-size: 0.95rem;
-        }
-
-        /* Industries Section */
-        .industries-section {
-            margin-bottom: 8rem;
-        }
-
-        .industries-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-        }
-
-        .industry-card {
-            background: white;
-            padding: 2.5rem 1.5rem;
-            border-radius: 16px;
-            text-align: center;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-
-        .industry-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(30, 64, 175, 0.15);
-            border-color: var(--accent);
-        }
-
-        .industry-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
             margin: 0 auto 1.5rem;
             color: white;
             transition: all 0.3s ease;
         }
 
-        .industry-card:hover .industry-icon {
-            background: linear-gradient(135deg, var(--orange) 0%, #ea580c 100%);
-            transform: scale(1.1);
+        .service-card:hover .service-icon {
+            background: linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 100%);
+            transform: scale(1.1) rotate(5deg);
         }
 
-        .industry-card h3 {
-            font-size: 1.2rem;
+        .service-card h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
             color: var(--dark);
-            font-weight: 600;
         }
 
-        /* FAQ Section */
-        .faq-section {
-            margin-bottom: 8rem;
-        }
-
-        .faq-grid {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            background: white;
+        .service-card p {
+            color: var(--gray);
+            line-height: 1.8;
+            font-size: 1rem;
             margin-bottom: 1.5rem;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-            border: 2px solid transparent;
-            transition: all 0.3s ease;
         }
 
-        .faq-item:hover {
-            border-color: var(--accent);
+        .service-features {
+            list-style: none;
+            text-align: left;
+            margin-top: 1.5rem;
         }
 
-        .faq-question {
-            padding: 1.8rem 2.5rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--dark);
-            cursor: pointer;
+        .service-features li {
+            padding: 0.5rem 0;
+            color: var(--gray);
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.3s ease;
+            align-items: start;
+            gap: 0.7rem;
         }
 
-        .faq-question:hover {
+        .service-features li::before {
+            content: '✓';
+            color: var(--orange);
+            font-weight: bold;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        /* Detailed Services */
+        .detailed-services {
+            padding: 8rem 8%;
             background: var(--light-gray);
         }
 
-        .faq-question::after {
-            content: '+';
-            font-size: 1.5rem;
-            color: var(--primary);
-            transition: transform 0.3s ease;
+        .service-detail {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            max-width: 1200px;
+            margin: 0 auto 6rem;
+            align-items: center;
         }
 
-        .faq-item.active .faq-question::after {
-            transform: rotate(45deg);
+        .service-detail:last-child {
+            margin-bottom: 0;
+        }
+
+        .service-detail.reverse {
+            direction: rtl;
+        }
+
+        .service-detail.reverse > * {
+            direction: ltr;
+        }
+
+        .service-image {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .service-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .service-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.1) 0%, rgba(249, 115, 22, 0.1) 100%);
+            z-index: 1;
+        }
+
+        .service-text h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .service-text p {
+            font-size: 1.05rem;
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+        }
+
+        .benefit-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .benefit-text h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .benefit-text p {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Why Choose Us */
+        .why-choose {
+            padding: 8rem 8%;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .why-choose::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(96, 165, 250, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(249, 115, 22, 0.1) 0%, transparent 50%);
+        }
+
+        .why-choose-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .advantage-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 2.5rem;
+            border-radius: 16px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .advantage-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.1) 0%, rgba(30, 64, 175, 0.1) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .advantage-card:hover::before {
+            opacity: 1;
+        }
+
+        .advantage-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--orange);
+        }
+
+        .advantage-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .advantage-card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
             color: var(--orange);
         }
 
-        .faq-answer {
-            padding: 0 2.5rem;
-            max-height: 0;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .faq-item.active .faq-answer {
-            padding: 0 2.5rem 2rem;
-            max-height: 500px;
-        }
-
-        .faq-answer p {
-            color: var(--gray);
-            line-height: 1.7;
+        .advantage-card p {
+            line-height: 1.8;
+            opacity: 0.95;
+            font-size: 0.95rem;
         }
 
         /* CTA Section */
         .cta-section {
-            text-align: center;
-            padding: 6rem 2rem;
-            background: linear-gradient(135deg, var(--orange) 0%, #ea580c 100%);
+            padding: 8rem 8%;
+            background: linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 100%);
             color: white;
-            border-radius: 20px;
-            margin-bottom: 6rem;
+            text-align: center;
             position: relative;
             overflow: hidden;
         }
 
         .cta-section::before {
-            content: '🚛';
+            content: '🔧';
             position: absolute;
             font-size: 20rem;
             opacity: 0.05;
@@ -650,10 +549,10 @@
         }
 
         .cta-content {
+            max-width: 900px;
+            margin: 0 auto;
             position: relative;
             z-index: 1;
-            max-width: 800px;
-            margin: 0 auto;
         }
 
         .cta-section h2 {
@@ -665,34 +564,51 @@
 
         .cta-section p {
             font-size: 1.2rem;
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem;
             opacity: 0.95;
             line-height: 1.8;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         .cta-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.7rem;
             padding: 1.2rem 2.8rem;
-            background: white;
-            color: var(--orange);
             text-decoration: none;
             border-radius: 8px;
             font-weight: 600;
             font-size: 1rem;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            letter-spacing: 0.3px;
         }
 
-        .cta-btn:hover {
+        .cta-primary {
+            background: white;
+            color: var(--orange);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.4);
+        }
+
+        .cta-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-            background: var(--primary);
+            box-shadow: 0 15px 40px rgba(255, 255, 255, 0.5);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            border: 2px solid white;
             color: white;
+        }
+
+        .cta-secondary:hover {
+            background: white;
+            color: var(--primary);
         }
 
         /* Footer */
@@ -715,6 +631,10 @@
             margin-bottom: 1.5rem;
             font-size: 1.3rem;
             font-weight: 700;
+            background: linear-gradient(135deg, var(--orange) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .footer-section p {
@@ -723,45 +643,14 @@
             font-size: 0.95rem;
         }
 
-        .footer-section a {
-            color: #94a3b8;
-            text-decoration: none;
-            display: block;
-            line-height: 2;
-            transition: color 0.3s ease;
-            font-size: 0.95rem;
-        }
-
-        .footer-section a:hover {
-            color: var(--accent);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .social-links a {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            background: var(--orange);
-            transform: translateY(-3px);
-        }
-
-        .footer-divider {
-            height: 1px;
-            background: rgba(255, 255, 255, 0.1);
-            margin: 3rem 0 2rem;
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--orange) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .footer-bottom {
@@ -776,28 +665,21 @@
 
         /* Responsive */
         @media (max-width: 968px) {
-            .services-hero h1 {
-                font-size: 3rem;
+            .page-header h1 {
+                font-size: 3.5rem;
             }
 
             .section-title {
                 font-size: 2.5rem;
             }
 
-            .services-grid {
+            .service-detail {
                 grid-template-columns: 1fr;
+                gap: 3rem;
             }
 
-            .process-steps {
-                grid-template-columns: 1fr;
-            }
-
-            .industries-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .nav-links {
-                display: none;
+            .service-detail.reverse {
+                direction: ltr;
             }
         }
 
@@ -806,29 +688,29 @@
                 padding: 1rem 5%;
             }
 
-            .services-hero {
+            .nav-links {
+                display: none;
+            }
+
+            .page-header {
                 margin-top: 70px;
                 padding: 3rem 5%;
             }
 
-            .services-hero h1 {
+            .page-header h1 {
                 font-size: 2.5rem;
             }
 
-            .services-content {
-                padding: 3rem 5%;
+            .services-overview, .detailed-services, .why-choose, .cta-section {
+                padding: 5rem 5%;
             }
 
-            .section-title {
-                font-size: 2rem;
+            .cta-buttons {
+                flex-direction: column;
             }
 
-            .industries-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .cta-section h2 {
-                font-size: 2.2rem;
+            .cta-btn {
+                width: 100%;
             }
         }
     </style>
@@ -836,353 +718,351 @@
 <body>
     <header id="header">
         <nav>
-            <div class="logo"><a><img src="assets/NamrhaliLogo.png" height="80" width="80"></a></div>
+            <div class="logo">NAMRHALI PROJECTS</div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="services.html">Services</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="contact.html" class="nav-cta">Get Quote</a></li>
+                <li><a href="services.html" style="color: var(--primary);">Services</a></li>
+                <li><a href="contact.html" class="nav-cta">Contact Us</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="services-hero" style="background-image: linear-gradient(135deg, rgba(30, 64, 175, 0.85) 0%, rgba(59, 130, 246, 0.85) 100%), url('assets/hero.png');">
-        <div class="hero-particles">
-            <div class="particle-dot"></div>
-            <div class="particle-dot"></div>
-            <div class="particle-dot"></div>
-            <div class="particle-dot"></div>
-            <div class="particle-dot"></div>
-        </div>
-        <div class="services-hero-content">
-            <div class="hero-badge">
-                <span>🏆</span>
-                <span>Level 1 B-BBEE Certified</span>
-            </div>
-            <h1>Our Services</h1>
-            <p>Comprehensive logistics solutions tailored to your business needs</p>
+    <section class="page-header">
+        <div class="page-header-content">
+            <h1>Our <span class="highlight">Services</span></h1>
+            <p>Comprehensive solutions designed to meet your organizational and household needs with excellence and reliability. From cleaning to construction, we deliver exceptional services.</p>
         </div>
     </section>
 
-    <div class="breadcrumb">
-        <a href="index.html">Home</a> > <span>Services</span>
-    </div>
-
-    <main class="services-content">
-        <section class="services-intro">
-            <div class="section-header">
-                <div class="section-tag">What We Offer</div>
-                <h2 class="section-title">Logistics Excellence</h2>
-                <p class="section-description">From freight transport to supply chain management, we offer end-to-end logistics solutions that drive efficiency, reliability, and growth for your business.</p>
+    <section class="services-overview">
+        <div class="section-header">
+            <div class="section-tag">What We Offer</div>
+            <h2 class="section-title">Our Service Portfolio</h2>
+            <p class="section-description">We offer a wide range of professional services to meet diverse needs across various sectors. Our experienced team ensures quality delivery in every project.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🧹</div>
+                <h3>Cleaning Services</h3>
+                <p>Professional hygiene and industrial cleaning services for organizations and households at large.</p>
+                <ul class="service-features">
+                    <li>Industrial cleaning</li>
+                    <li>Commercial cleaning</li>
+                    <li>Residential cleaning</li>
+                    <li>Specialized hygiene services</li>
+                </ul>
             </div>
-            
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-header">
-                        <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=600" alt="Freight Transport">
-                        <div class="service-icon">🚛</div>
-                    </div>
-                    <div class="service-body">
-                        <h3>Freight Transport</h3>
-                        <p>Reliable road freight services across South Africa with our modern fleet and experienced drivers. We ensure your goods reach their destination safely and on time.</p>
-                        <ul class="service-features">
-                            <li>Nationwide coverage</li>
-                            <li>Real-time tracking</li>
-                            <li>Dedicated fleet management</li>
-                            <li>Flexible scheduling</li>
-                        </ul>
-                        <a href="contact.html" class="service-cta">
-                            <span>Learn More</span>
-                            <span>→</span>
-                        </a>
-                    </div>
-                </div>
+            <div class="service-card">
+                <div class="service-icon">🔧</div>
+                <h3>Maintenance</h3>
+                <p>Routine maintenance, repair and replacement of existing facilities, structures, buildings and real property.</p>
+                <ul class="service-features">
+                    <li>Preventive maintenance</li>
+                    <li>Corrective repairs</li>
+                    <li>Facility upgrades</li>
+                    <li>Property preservation</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🏗️</div>
+                <h3>Construction</h3>
+                <p>Professional engineering services dealing with design, construction and maintenance of physical structures.</p>
+                <ul class="service-features">
+                    <li>Tiling & flooring</li>
+                    <li>Building construction</li>
+                    <li>Renovations & upgrades</li>
+                    <li>Painting & finishing</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📦</div>
+                <h3>Supply Services</h3>
+                <p>Comprehensive supply solutions for various industries and organizational needs.</p>
+                <ul class="service-features">
+                    <li>Stationery supply</li>
+                    <li>Office furniture</li>
+                    <li>Bolts and nuts</li>
+                    <li>Pumps & equipment</li>
+                    <li>Mining & construction supplies</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-                <div class="service-card">
-                    <div class="service-header">
-                        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600" alt="Warehousing">
-                        <div class="service-icon">📦</div>
-                    </div>
-                    <div class="service-body">
-                        <h3>Warehousing Solutions</h3>
-                        <p>Secure storage solutions with advanced inventory management systems. Our facilities offer flexible distribution options to meet your business requirements.</p>
-                        <ul class="service-features">
-                            <li>Secure storage facilities</li>
-                            <li>Advanced inventory systems</li>
-                            <li>Temperature-controlled options</li>
-                            <li>Just-in-time distribution</li>
-                        </ul>
-                        <a href="contact.html" class="service-cta">
-                            <span>Learn More</span>
-                            <span>→</span>
-                        </a>
-                    </div>
+    <section class="detailed-services">
+        <div class="service-detail">
+            <div class="service-image">
+                <!-- Placeholder for cleaning service image -->
+                <div style="background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%); height: 400px; display: flex; align-items: center; justify-content: center; color: white; font-size: 5rem;">
+                    🧹
                 </div>
-
-                <div class="service-card">
-                    <div class="service-header">
-                        <img src="assets/supply.png" alt="Supply Chain">
-                        <div class="service-icon">🔗</div>
+            </div>
+            <div class="service-text">
+                <h2>Cleaning Services</h2>
+                <p>We offer a variety of hygiene and industrial cleaning services for organizations and households at large. Our professional cleaning teams are trained to deliver exceptional results while maintaining the highest standards of safety and efficiency.</p>
+                <p>Whether you need routine office cleaning, specialized industrial cleaning, or residential deep cleaning services, we have the expertise and equipment to meet your specific requirements.</p>
+                <div class="service-benefits">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">✓</div>
+                        <div class="benefit-text">
+                            <h4>Thorough Cleaning</h4>
+                            <p>Comprehensive cleaning solutions for all environments</p>
+                        </div>
                     </div>
-                    <div class="service-body">
-                        <h3>Supply Chain Management</h3>
-                        <p>End-to-end supply chain optimization ensuring efficiency and cost-effectiveness at every touchpoint from sourcing to delivery.</p>
-                        <ul class="service-features">
-                            <li>End-to-end visibility</li>
-                            <li>Inventory optimization</li>
-                            <li>Vendor management</li>
-                            <li>Performance analytics</li>
-                        </ul>
-                        <a href="contact.html" class="service-cta">
-                            <span>Learn More</span>
-                            <span>→</span>
-                        </a>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">⏱️</div>
+                        <div class="benefit-text">
+                            <h4>Time Efficient</h4>
+                            <p>Minimal disruption to your operations</p>
+                        </div>
                     </div>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-header">
-                        <img src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?w=600" alt="Express Delivery">
-                        <div class="service-icon">⚡</div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🌿</div>
+                        <div class="benefit-text">
+                            <h4>Eco-Friendly</h4>
+                            <p>Environmentally conscious cleaning products</p>
+                        </div>
                     </div>
-                    <div class="service-body">
-                        <h3>Express Delivery</h3>
-                        <p>Time-critical deliveries with guaranteed arrival times for your most urgent shipments. When every minute counts, we deliver.</p>
-                        <ul class="service-features">
-                            <li>Same-day delivery options</li>
-                            <li>Guaranteed time windows</li>
-                            <li>Priority handling</li>
-                            <li>24/7 dispatch</li>
-                        </ul>
-                        <a href="contact.html" class="service-cta">
-                            <span>Learn More</span>
-                            <span>→</span>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-header">
-                        <img src="assets/logis.png" alt="Regional Logistics">
-                        <div class="service-icon">🌍</div>
-                    </div>
-                    <div class="service-body">
-                        <h3>Regional Logistics</h3>
-                        <p>Specialized Mpumalanga region expertise with connections to major distribution centers nationwide. Local knowledge with national reach.</p>
-                        <ul class="service-features">
-                            <li>Mpumalanga specialization</li>
-                            <li>Regional distribution hubs</li>
-                            <li>Local market expertise</li>
-                            <li>Cross-border capabilities</li>
-                        </ul>
-                        <a href="contact.html" class="service-cta">
-                            <span>Learn More</span>
-                            <span>→</span>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-header">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600" alt="Logistics Consulting">
-                        <div class="service-icon">📊</div>
-                    </div>
-                    <div class="service-body">
-                        <h3>Logistics Consulting</h3>
-                        <p>Strategic planning and optimization services to streamline your logistics operations, reduce costs, and improve efficiency.</p>
-                        <ul class="service-features">
-                            <li>Process optimization</li>
-                            <li>Cost reduction analysis</li>
-                            <li>Technology implementation</li>
-                            <li>Performance benchmarking</li>
-                        </ul>
-                        <a href="contact.html" class="service-cta">
-                            <span>Learn More</span>
-                            <span>→</span>
-                        </a>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🛡️</div>
+                        <div class="benefit-text">
+                            <h4>Quality Assured</h4>
+                            <p>Rigorous quality control standards</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <section class="process-section">
-            <div class="section-header">
-                <div class="section-tag">How We Work</div>
-                <h2 class="section-title">Our Process</h2>
-                <p class="section-description">A streamlined approach to ensure your logistics operations run smoothly from start to finish</p>
-            </div>
-            
-            <div class="process-steps">
-                <div class="process-step">
-                    <div class="process-icon">📋</div>
-                    <h3>Consultation & Planning</h3>
-                    <p>We begin by understanding your specific requirements and developing a customized logistics strategy.</p>
-                </div>
-                <div class="process-step">
-                    <div class="process-icon">🚚</div>
-                    <h3>Collection & Transport</h3>
-                    <p>Our team collects your goods and transports them using the most efficient routes and methods.</p>
-                </div>
-                <div class="process-step">
-                    <div class="process-icon">🏭</div>
-                    <h3>Warehousing & Storage</h3>
-                    <p>If needed, your goods are securely stored in our facilities with advanced inventory management.</p>
-                </div>
-                <div class="process-step">
-                    <div class="process-icon">📍</div>
-                    <h3>Final Delivery</h3>
-                    <p>Your shipment is delivered to its final destination with precision and care.</p>
+        <div class="service-detail reverse">
+            <div class="service-image">
+                <!-- Placeholder for maintenance service image -->
+                <div style="background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); height: 400px; display: flex; align-items: center; justify-content: center; color: white; font-size: 5rem;">
+                    🔧
                 </div>
             </div>
-        </section>
+            <div class="service-text">
+                <h2>Maintenance Services</h2>
+                <p>We offer routine maintenance services, repair and replacement of existing facilities, structures, buildings or real property. Our maintenance team ensures your assets remain in optimal condition, preventing costly breakdowns and extending their lifespan.</p>
+                <p>From scheduled preventive maintenance to emergency repairs, we provide comprehensive solutions tailored to your specific needs and budget.</p>
+                <div class="service-benefits">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🔍</div>
+                        <div class="benefit-text">
+                            <h4>Proactive Approach</h4>
+                            <p>Prevent issues before they become problems</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">⚡</div>
+                        <div class="benefit-text">
+                            <h4>Rapid Response</h4>
+                            <p>Quick turnaround for urgent repairs</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">💎</div>
+                        <div class="benefit-text">
+                            <h4>Quality Workmanship</h4>
+                            <p>Skilled technicians with proper training</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">💰</div>
+                        <div class="benefit-text">
+                            <h4>Cost Effective</h4>
+                            <p>Save money with preventive maintenance</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <section class="industries-section">
-            <div class="section-header">
-                <div class="section-tag">Our Expertise</div>
-                <h2 class="section-title">Industries We Serve</h2>
-                <p class="section-description">We provide specialized logistics solutions for various industries across South Africa</p>
-            </div>
-            
-            <div class="industries-grid">
-                <div class="industry-card">
-                    <div class="industry-icon">🏭</div>
-                    <h3>Manufacturing</h3>
-                </div>
-                <div class="industry-card">
-                    <div class="industry-icon">🛒</div>
-                    <h3>Retail</h3>
-                </div>
-                <div class="industry-card">
-                    <div class="industry-icon">🏥</div>
-                    <h3>Healthcare</h3>
-                </div>
-                <div class="industry-card">
-                    <div class="industry-icon">⚡</div>
-                    <h3>Energy</h3>
-                </div>
-                <div class="industry-card">
-                    <div class="industry-icon">🏗️</div>
-                    <h3>Construction</h3>
-                </div>
-                <div class="industry-card">
-                    <div class="industry-icon">🍎</div>
-                    <h3>Agriculture</h3>
+        <div class="service-detail">
+            <div class="service-image">
+                <!-- Placeholder for construction service image -->
+                <div style="background: linear-gradient(135deg, #0ea5e9 0%, #0369a1 100%); height: 400px; display: flex; align-items: center; justify-content: center; color: white; font-size: 5rem;">
+                    🏗️
                 </div>
             </div>
-        </section>
+            <div class="service-text">
+                <h2>Construction Services</h2>
+                <p>We offer professional engineering services that deal with the design, construction and maintenance of the physical and naturally built environment. Our construction team brings expertise and precision to every project, regardless of size.</p>
+                <p>From initial planning to final execution, we manage all aspects of construction projects to ensure they are completed on time, within budget, and to the highest quality standards.</p>
+                <div class="service-benefits">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">📐</div>
+                        <div class="benefit-text">
+                            <h4>Expert Design</h4>
+                            <p>Professional planning and engineering</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🔄</div>
+                        <div class="benefit-text">
+                            <h4>Renovations</h4>
+                            <p>Transform and upgrade existing spaces</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🎨</div>
+                        <div class="benefit-text">
+                            <h4>Finishing Work</h4>
+                            <p>Professional painting and final touches</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">⏰</div>
+                        <div class="benefit-text">
+                            <h4>Timely Delivery</h4>
+                            <p>Projects completed as scheduled</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <section class="faq-section">
-            <div class="section-header">
-                <div class="section-tag">Need Help?</div>
-                <h2 class="section-title">Frequently Asked Questions</h2>
-                <p class="section-description">Find answers to common questions about our logistics services</p>
-            </div>
-            
-            <div class="faq-grid">
-                <div class="faq-item">
-                    <div class="faq-question">What areas do you serve?</div>
-                    <div class="faq-answer">
-                        <p>We provide logistics services across South Africa with specialized expertise in the Mpumalanga region. Our national network allows us to serve clients throughout the country efficiently.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">How do you ensure on-time delivery?</div>
-                    <div class="faq-answer">
-                        <p>We utilize advanced route planning technology, real-time tracking, and maintain buffer capacity to handle unexpected delays. Our 24/7 operations center monitors all shipments to ensure they stay on schedule.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">What is your B-BBEE status?</div>
-                    <div class="faq-answer">
-                        <p>We are proud to be a Level 1 B-BBEE contributor with 135% procurement recognition. Our certification is valid until June 2026.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Do you offer temperature-controlled transport?</div>
-                    <div class="faq-answer">
-                        <p>Yes, we have a fleet of temperature-controlled vehicles and specialized warehousing facilities to handle perishable goods, pharmaceuticals, and other temperature-sensitive products.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">How can I track my shipment?</div>
-                    <div class="faq-answer">
-                        <p>We provide real-time tracking through our customer portal. Once your shipment is booked, you'll receive login credentials to monitor your goods throughout the delivery process.</p>
-                    </div>
+        <div class="service-detail reverse">
+            <div class="service-image">
+                <!-- Placeholder for supply service image -->
+                <div style="background: linear-gradient(135deg, #10b981 0%, #047857 100%); height: 400px; display: flex; align-items: center; justify-content: center; color: white; font-size: 5rem;">
+                    📦
                 </div>
             </div>
-        </section>
+            <div class="service-text">
+                <h2>Supply Services</h2>
+                <p>We offer variety of supply services which include: Stationery supply, Office furniture, Bolts and nuts, Pumps, Mining and construction equipment. Our comprehensive supply solutions ensure you have access to quality products when you need them.</p>
+                <p>With established relationships with trusted suppliers and manufacturers, we can source and deliver the materials and equipment you require efficiently and cost-effectively.</p>
+                <div class="service-benefits">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">📝</div>
+                        <div class="benefit-text">
+                            <h4>Office Supplies</h4>
+                            <p>Complete stationery and furniture solutions</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">⚙️</div>
+                        <div class="benefit-text">
+                            <h4>Industrial Parts</h4>
+                            <p>Bolts, nuts, and specialized components</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🚜</div>
+                        <div class="benefit-text">
+                            <h4>Equipment Supply</h4>
+                            <p>Pumps and construction machinery</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">⛏️</div>
+                        <div class="benefit-text">
+                            <h4>Mining Supplies</h4>
+                            <p>Specialized equipment for mining operations</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <section class="cta-section">
-            <div class="cta-content">
-                <h2>Ready to Optimize Your Logistics?</h2>
-                <p>Partner with Namrhali Projects for reliable, efficient logistics solutions that drive your business forward.</p>
-                <a href="contact.html" class="cta-btn">
+    <section class="why-choose">
+        <div class="why-choose-content">
+            <div class="section-header" style="margin-bottom: 0;">
+                <div class="section-tag" style="color: var(--orange);">Our Advantage</div>
+                <h2 class="section-title" style="color: white;">Why Choose Namrhali Projects</h2>
+                <p class="section-description" style="color: rgba(255,255,255,0.9);">What sets us apart and makes us your trusted service partner.</p>
+            </div>
+            <div class="advantages-grid">
+                <div class="advantage-card">
+                    <span class="advantage-icon">🏆</span>
+                    <h3>Exceptional Quality</h3>
+                    <p>We deliver exceptional services with quality products and attention to detail in every project we undertake.</p>
+                </div>
+                <div class="advantage-card">
+                    <span class="advantage-icon">💰</span>
+                    <h3>Affordable Pricing</h3>
+                    <p>Our services are competitively priced to provide excellent value while maintaining the highest quality standards.</p>
+                </div>
+                <div class="advantage-card">
+                    <span class="advantage-icon">🎓</span>
+                    <h3>Expert Team</h3>
+                    <p>We are well trained in the industry with experienced personnel who bring expertise to every project.</p>
+                </div>
+                <div class="advantage-card">
+                    <span class="advantage-icon">⚡</span>
+                    <h3>Timely Delivery</h3>
+                    <p>We are personally accountable for delivering all our services in time, ensuring minimal disruption to your operations.</p>
+                </div>
+                <div class="advantage-card">
+                    <span class="advantage-icon">🤝</span>
+                    <h3>Customer Focus</h3>
+                    <p>We develop customer relationships that make a positive difference in our customers' lives.</p>
+                </div>
+                <div class="advantage-card">
+                    <span class="advantage-icon">📋</span>
+                    <h3>Compliance</h3>
+                    <p>We are compliant with all relevant regulations and standards, ensuring safe and legal operations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to Get Started?</h2>
+            <p>Contact us today to discuss your project requirements and discover how our comprehensive services can meet your needs with excellence and reliability.</p>
+            <div class="cta-buttons">
+                <a href="contact.html" class="cta-btn cta-primary">
                     <span>Get a Quote</span>
                     <span>→</span>
                 </a>
+                <a href="tel:0824405518" class="cta-btn cta-secondary">
+                    <span>Call Us Now</span>
+                </a>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <h3>Namrhali Projects</h3>
-                <p>Your trusted partner in logistics excellence. Proudly Level 1 B-BBEE Certified.</p>
-                <div class="social-links">
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                </div>
+                <div class="footer-logo">NAMRHALI PROJECTS</div>
+                <p>A vibrant growing firm focusing on finding innovative ways to do business. Excellence in service delivery since 2022.</p>
             </div>
             <div class="footer-section">
-                <h3>Contact Us</h3>
-                <p>41 Sapphire Crescent<br>Middelburg, Mpumalanga<br>1050, South Africa</p>
-                <p><br>Email: info@namrhali.co.za</p>
-                <p>Phone: +27 13 123 4567</p>
+                <h3>Our Services</h3>
+                <p>Cleaning Services<br>Maintenance<br>Construction<br>Supply Services</p>
             </div>
             <div class="footer-section">
                 <h3>Quick Links</h3>
-                <a href="index.html">Home</a>
-                <a href="services.html">Services</a>
-                <a href="about.html">About Us</a>
-                <a href="contact.html">Contact</a>
+                <p><a href="index.html" style="color: #94a3b8; text-decoration: none; display: block; margin: 0.5rem 0;">Home</a></p>
+                <p><a href="about.html" style="color: #94a3b8; text-decoration: none; display: block; margin: 0.5rem 0;">About</a></p>
+                <p><a href="services.html" style="color: #94a3b8; text-decoration: none; display: block; margin: 0.5rem 0;">Services</a></p>
+                <p><a href="contact.html" style="color: #94a3b8; text-decoration: none; display: block; margin: 0.5rem 0;">Contact</a></p>
             </div>
             <div class="footer-section">
-                <h3>Certifications</h3>
-                <p><strong>B-BBEE Level 1 Contributor</strong><br>135% Procurement Recognition<br><br>Registration: 2022/808593/07<br>Valid Until: June 2026</p>
+                <h3>Contact Info</h3>
+                <p>Phone: 082 440 5518<br>Email: thulaniskhosana01@gmail.com<br>Address: 41 Sapphire Crescent, Middelburg, Mpumalanga, 1050</p>
             </div>
         </div>
-        <div class="footer-divider"></div>
         <div class="footer-bottom">
-            <p>&copy; 2025 Namrhali Projects (Pty) Ltd. All rights reserved. | Moving South Africa Forward</p>
+            <p>&copy; 2025 Namrhali Projects. All rights reserved. | Finding innovative ways to do business.</p>
         </div>
     </footer>
 
     <script>
         // Header scroll effect
         const header = document.getElementById('header');
-        let lastScroll = 0;
-
+        
         window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-            
-            if (currentScroll > 100) {
+            if (window.pageYOffset > 100) {
                 header.classList.add('scrolled');
             } else {
                 header.classList.remove('scrolled');
             }
-            
-            lastScroll = currentScroll;
-        });
-
-        // FAQ functionality
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const item = question.parentNode;
-                item.classList.toggle('active');
-            });
         });
 
         // Smooth scrolling
