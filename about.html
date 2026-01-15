@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - NAMRHALI PROJECTS | Innovative Solutions for Excellence</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-        <link rel="icon" href="assets/namrhaliProjectsLogo.png" type="image/png">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="assets/namrhaliProjectsLogo.png" type="image/png">
     <style>
         * {
             margin: 0;
@@ -25,6 +27,8 @@
             --gray: #475569;
             --light-gray: #f1f5f9;
             --white: #ffffff;
+            --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            --gradient-orange: linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 100%);
         }
 
         body {
@@ -33,9 +37,10 @@
             overflow-x: hidden;
             background: var(--white);
             line-height: 1.6;
+            scroll-behavior: smooth;
         }
 
-        /* Header */
+        /* Modern Header */
         header {
             position: fixed;
             width: 100%;
@@ -43,12 +48,13 @@
             z-index: 1000;
             background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(30, 64, 175, 0.1);
-            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(30, 64, 175, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         header.scrolled {
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            background: rgba(255, 255, 255, 0.95);
         }
 
         nav {
@@ -60,11 +66,23 @@
             margin: 0 auto;
         }
 
-        .logo {
-            font-size: 1.8rem;
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
             font-weight: 800;
             letter-spacing: 1px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            background: var(--gradient-primary);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -84,14 +102,14 @@
             font-size: 0.95rem;
             position: relative;
             transition: color 0.3s ease;
+            padding: 0.5rem 0;
         }
 
         .nav-links a:not(.nav-cta)::after {
             content: '';
             position: absolute;
-            bottom: -5px;
-            left: 50%;
-            transform: translateX(-50%);
+            bottom: 0;
+            left: 0;
             width: 0;
             height: 2px;
             background: var(--orange);
@@ -107,31 +125,46 @@
         }
 
         .nav-cta {
-            padding: 0.7rem 1.8rem;
-            background: linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 100%);
+            padding: 0.8rem 2rem;
+            background: var(--gradient-orange);
             color: white;
             border-radius: 8px;
             font-weight: 600;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
+            border: none;
+            cursor: pointer;
         }
 
         .nav-cta:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 25px rgba(249, 115, 22, 0.4);
+            box-shadow: 0 8px 25px rgba(249, 115, 22, 0.4);
         }
 
-        /* Page Header */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+
+        /* Page Header with Construction Background */
         .page-header {
-            min-height: 60vh;
+            min-height: 70vh;
             position: relative;
             overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-top: 80px;
-                        background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.9) 50%, rgba(51, 65, 85, 0.9) 100%), url('./assets/hero2.png') no-repeat center center/cover;
-
+            background: 
+                linear-gradient(135deg, 
+                    rgba(15, 23, 42, 0.85) 0%, 
+                    rgba(30, 41, 59, 0.85) 50%, 
+                    rgba(51, 65, 85, 0.85) 100%), 
+                url('https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
         }
 
         .page-header::before {
@@ -141,9 +174,9 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: 
-                radial-gradient(circle at 20% 50%, rgba(96, 165, 250, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 50%, rgba(249, 115, 22, 0.1) 0%, transparent 50%);
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(96, 165, 250, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(249, 115, 22, 0.15) 0%, transparent 50%);
             animation: pulse 8s ease-in-out infinite;
         }
 
@@ -171,16 +204,31 @@
         }
 
         .page-header h1 .highlight {
-            background: linear-gradient(135deg, var(--orange) 0%, #ef4444 100%);
+            background: var(--gradient-orange);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            position: relative;
+            display: inline-block;
+        }
+
+        .page-header h1 .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: var(--gradient-orange);
+            opacity: 0.2;
+            z-index: -1;
+            border-radius: 4px;
         }
 
         @keyframes slideUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(40px);
             }
             to {
                 opacity: 1;
@@ -189,7 +237,7 @@
         }
 
         .page-header p {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             line-height: 1.8;
             margin-bottom: 3rem;
             opacity: 0.95;
@@ -199,16 +247,61 @@
             animation: slideUp 0.8s ease 0.2s backwards;
         }
 
+        /* Stats Banner */
+        .stats-banner {
+            background: white;
+            padding: 2rem 8%;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            margin-top: -60px;
+            position: relative;
+            z-index: 10;
+            border-radius: 16px;
+            margin-left: 8%;
+            margin-right: 8%;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            color: var(--gray);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 0.9rem;
+        }
+
         /* About Content */
         .about-content {
             padding: 8rem 8%;
-            background: var(--white);
+            background: 
+                linear-gradient(135deg, 
+                    rgba(255, 255, 255, 0.95) 0%, 
+                    rgba(255, 255, 255, 0.98) 100%), 
+                url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80') no-repeat center center/cover;
+            position: relative;
         }
 
         .section-header {
             text-align: center;
             max-width: 700px;
             margin: 0 auto 5rem;
+            position: relative;
+            z-index: 1;
         }
 
         .section-tag {
@@ -219,18 +312,32 @@
             letter-spacing: 2px;
             text-transform: uppercase;
             margin-bottom: 1rem;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .section-tag::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 1.5rem;
+            height: 2px;
+            background: var(--orange);
+            transform: translateY(-50%);
         }
 
         .section-title {
-            font-size: 3rem;
+            font-size: 3.2rem;
             font-weight: 900;
             color: var(--dark);
             margin-bottom: 1.5rem;
             letter-spacing: -1px;
+            line-height: 1.2;
         }
 
         .section-description {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             color: var(--gray);
             line-height: 1.8;
         }
@@ -242,14 +349,20 @@
             max-width: 1200px;
             margin: 0 auto;
             align-items: center;
+            position: relative;
+            z-index: 1;
         }
 
         .about-text h2 {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             font-weight: 800;
             color: var(--dark);
             margin-bottom: 1.5rem;
             line-height: 1.2;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .about-text p {
@@ -259,22 +372,59 @@
             margin-bottom: 1.5rem;
         }
 
+        .about-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(30, 64, 175, 0.05);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            background: rgba(30, 64, 175, 0.1);
+            transform: translateX(5px);
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-orange);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .feature-text h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.2rem;
+        }
+
+        .feature-text p {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin: 0;
+        }
+
         .about-image {
             position: relative;
-            border-radius: 16px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 20px 60px rgba(30, 64, 175, 0.15);
-        }
-
-        .about-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.5s ease;
-        }
-
-        .about-image:hover img {
-            transform: scale(1.05);
+            box-shadow: 0 25px 50px rgba(30, 64, 175, 0.15);
+            height: 500px;
         }
 
         .about-image::before {
@@ -284,14 +434,30 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(30, 64, 175, 0.1) 0%, rgba(249, 115, 22, 0.1) 100%);
+            background: var(--gradient-primary);
+            opacity: 0.1;
             z-index: 1;
         }
 
-        /* Vision Mission */
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Vision Mission with Construction Background */
         .vision-mission {
             padding: 8rem 8%;
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            background: 
+                linear-gradient(135deg, 
+                    rgba(30, 58, 138, 0.95) 0%, 
+                    rgba(30, 64, 175, 0.95) 100%), 
+                url('https://images.unsplash.com/photo-1503387769-00a112127ca0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
             color: white;
             position: relative;
             overflow: hidden;
@@ -305,8 +471,8 @@
             right: 0;
             bottom: 0;
             background-image: 
-                radial-gradient(circle at 20% 50%, rgba(96, 165, 250, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 50%, rgba(249, 115, 22, 0.1) 0%, transparent 50%);
+                radial-gradient(circle at 20% 50%, rgba(96, 165, 250, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(249, 115, 22, 0.2) 0%, transparent 50%);
         }
 
         .vision-mission-content {
@@ -325,13 +491,14 @@
 
         .vm-card {
             background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             padding: 3rem;
-            border-radius: 16px;
-            transition: all 0.4s ease;
+            border-radius: 20px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
+            height: 100%;
         }
 
         .vm-card::before {
@@ -341,7 +508,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(249, 115, 22, 0.1) 0%, rgba(30, 64, 175, 0.1) 100%);
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.15) 0%, rgba(30, 64, 175, 0.15) 100%);
             opacity: 0;
             transition: opacity 0.4s ease;
         }
@@ -351,34 +518,45 @@
         }
 
         .vm-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-10px);
             background: rgba(255, 255, 255, 0.15);
             border-color: var(--orange);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
         }
 
         .vm-icon {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 1.5rem;
             display: block;
+            background: var(--gradient-orange);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .vm-card h3 {
-            font-size: 1.8rem;
-            font-weight: 700;
+            font-size: 2rem;
+            font-weight: 800;
             margin-bottom: 1.5rem;
             color: var(--orange);
+            line-height: 1.2;
         }
 
         .vm-card p {
             line-height: 1.8;
             opacity: 0.95;
-            font-size: 1.05rem;
+            font-size: 1.1rem;
         }
 
-        /* Values Section */
+        /* Values Section with Construction Background */
         .values {
             padding: 8rem 8%;
-            background: var(--white);
+            background: 
+                linear-gradient(135deg, 
+                    rgba(255, 255, 255, 0.95) 0%, 
+                    rgba(255, 255, 255, 0.98) 100%), 
+                url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            position: relative;
         }
 
         .values-grid {
@@ -387,16 +565,19 @@
             gap: 2rem;
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .value-card {
             background: white;
-            padding: 2.5rem;
-            border-radius: 16px;
+            padding: 3rem 2.5rem;
+            border-radius: 20px;
             border: 2px solid var(--light-gray);
-            transition: all 0.4s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(10px);
         }
 
         .value-card::before {
@@ -406,7 +587,7 @@
             left: 0;
             width: 100%;
             height: 4px;
-            background: linear-gradient(90deg, var(--orange), var(--primary));
+            background: var(--gradient-orange);
             transform: scaleX(0);
             transform-origin: left;
             transition: transform 0.4s ease;
@@ -417,32 +598,34 @@
         }
 
         .value-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(30, 64, 175, 0.15);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(30, 64, 175, 0.15);
             border-color: var(--accent);
         }
 
         .value-icon {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            border-radius: 12px;
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-primary);
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
+            font-size: 2.2rem;
             margin-bottom: 1.5rem;
             color: white;
             transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(30, 64, 175, 0.2);
         }
 
         .value-card:hover .value-icon {
-            background: linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 100%);
+            background: var(--gradient-orange);
             transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 15px 30px rgba(249, 115, 22, 0.3);
         }
 
         .value-card h3 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 700;
             margin-bottom: 1rem;
             color: var(--dark);
@@ -451,74 +634,103 @@
         .value-card p {
             color: var(--gray);
             line-height: 1.8;
-            font-size: 0.95rem;
+            font-size: 1rem;
         }
 
-        /* Team Section */
-        .team {
+        /* Milestones Timeline */
+        .milestones {
             padding: 8rem 8%;
-            background: var(--light-gray);
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .team-card {
-            background: white;
-            border-radius: 16px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            position: relative;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.4s ease;
         }
 
-        .team-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        .milestones::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            opacity: 0.1;
         }
 
-        .team-image {
-            height: 300px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        .timeline {
+            max-width: 800px;
+            margin: 4rem auto 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--orange);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 80px;
+        }
+
+        .timeline-year {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-orange);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 5rem;
+            font-weight: 900;
+            font-size: 1.2rem;
+            box-shadow: 0 10px 20px rgba(249, 115, 22, 0.3);
+            border: 4px solid white;
         }
 
-        .team-info {
+        .timeline-content {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             padding: 2rem;
+            border-radius: 16px;
+            transition: all 0.3s ease;
         }
 
-        .team-info h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
+        .timeline-content:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateX(10px);
+        }
+
+        .timeline-content h4 {
+            font-size: 1.3rem;
             margin-bottom: 0.5rem;
-            color: var(--dark);
-        }
-
-        .team-info .position {
             color: var(--orange);
-            font-weight: 600;
-            margin-bottom: 1rem;
-            display: block;
         }
 
-        .team-info p {
-            color: var(--gray);
-            line-height: 1.8;
-            font-size: 0.95rem;
+        .timeline-content p {
+            opacity: 0.9;
+            font-size: 1rem;
         }
 
-        /* CTA Section */
+        /* CTA Section with Construction Background */
         .cta-section {
             padding: 8rem 8%;
-            background: linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 100%);
+            background: 
+                linear-gradient(135deg, 
+                    rgba(249, 115, 22, 0.95) 0%, 
+                    rgba(234, 88, 12, 0.95) 100%), 
+                url('https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80') no-repeat center center/cover;
             color: white;
             text-align: center;
             position: relative;
@@ -526,13 +738,13 @@
         }
 
         .cta-section::before {
-            content: '🏗️';
+            content: '';
             position: absolute;
-            font-size: 20rem;
-            opacity: 0.05;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, transparent 70%);
         }
 
         .cta-content {
@@ -543,14 +755,15 @@
         }
 
         .cta-section h2 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 900;
             margin-bottom: 1.5rem;
             letter-spacing: -1px;
+            line-height: 1.2;
         }
 
         .cta-section p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-bottom: 3rem;
             opacity: 0.95;
             line-height: 1.8;
@@ -574,6 +787,23 @@
             align-items: center;
             gap: 0.7rem;
             letter-spacing: 0.3px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .cta-btn:hover::before {
+            left: 100%;
         }
 
         .cta-primary {
@@ -596,13 +826,26 @@
         .cta-secondary:hover {
             background: white;
             color: var(--primary);
+            transform: translateY(-3px);
         }
 
-        /* Footer */
+        /* Modern Footer */
         footer {
             background: var(--dark);
             color: white;
             padding: 5rem 8% 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-orange);
         }
 
         .footer-content {
@@ -612,13 +855,15 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 3rem;
             margin-bottom: 3rem;
+            position: relative;
+            z-index: 1;
         }
 
         .footer-section h3 {
             margin-bottom: 1.5rem;
             font-size: 1.3rem;
             font-weight: 700;
-            background: linear-gradient(135deg, var(--orange) 0%, var(--accent) 100%);
+            background: var(--gradient-orange);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -626,15 +871,28 @@
 
         .footer-section p {
             color: #94a3b8;
-            line-height: 2;
+            line-height: 1.8;
             font-size: 0.95rem;
         }
 
         .footer-logo {
-            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo img {
+            height: 70px;
+            width: 70px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-logo-text {
+            font-size: 1.2rem;
             font-weight: 800;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--orange) 0%, var(--accent) 100%);
+            background: var(--gradient-orange);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -648,16 +906,53 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: #64748b;
             font-size: 0.9rem;
+            position: relative;
+            z-index: 1;
         }
 
-        /* Responsive */
-        @media (max-width: 968px) {
+        /* Scroll to Top Button */
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-orange);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(249, 115, 22, 0.3);
+            z-index: 1000;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(249, 115, 22, 0.4);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
             .page-header h1 {
                 font-size: 3.5rem;
             }
 
             .section-title {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
             }
 
             .about-grid {
@@ -668,27 +963,67 @@
             .vm-grid {
                 grid-template-columns: 1fr;
             }
+
+            .timeline::before {
+                left: 25px;
+            }
+
+            .timeline-item {
+                padding-left: 70px;
+            }
+
+            .timeline-year {
+                width: 50px;
+                height: 50px;
+                font-size: 1rem;
+            }
         }
 
-        @media (max-width: 640px) {
+        @media (max-width: 768px) {
             nav {
                 padding: 1rem 5%;
             }
 
             .nav-links {
                 display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                border-top: 1px solid var(--light-gray);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
             }
 
             .page-header {
                 margin-top: 70px;
-                padding: 3rem 5%;
+                padding: 2rem 5%;
             }
 
             .page-header h1 {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
             }
 
-            .about-content, .vision-mission, .values, .team, .cta-section {
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .stats-banner {
+                margin: -40px 5% 0;
+                padding: 1.5rem;
+            }
+
+            .about-content, .vision-mission, .values, .milestones, .cta-section {
                 padding: 5rem 5%;
             }
 
@@ -698,6 +1033,55 @@
 
             .cta-btn {
                 width: 100%;
+                justify-content: center;
+            }
+
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-section h2 {
+                font-size: 2.5rem;
+            }
+
+            .cta-section p {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+
+            .page-header p {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .stat-item h3 {
+                font-size: 2rem;
+            }
+
+            .vm-card, .value-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                padding-left: 60px;
+            }
+
+            .timeline-year {
+                width: 40px;
+                height: 40px;
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -705,8 +1089,14 @@
 <body>
     <header id="header">
         <nav>
-            <div class="footer-logo">NAMRHALI PROJECTS</div>
-            <ul class="nav-links">
+            <div class="logo-container">
+                <img src="assets/namrhaliProjectsLogo.png" alt="Namrhali Projects Logo" class="logo-img">
+                <div class="logo-text">NAMRHALI PROJECTS</div>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html" style="color: var(--primary);">About</a></li>
                 <li><a href="services.html">Services</a></li>
@@ -717,29 +1107,78 @@
 
     <section class="page-header">
         <div class="page-header-content">
-            <h1>Our <span class="highlight">Story</span></h1>
+            <h1>Our <span class="highlight">Journey</span></h1>
             <p>Founded in 2022, Namrhali Projects is a vibrant growing firm focusing on finding innovative ways to do business. We deliver exceptional services in cleaning, construction, maintenance, and supply.</p>
         </div>
     </section>
 
+    <div class="stats-banner">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h3 data-count="2022">0</h3>
+                <p>Year Established</p>
+            </div>
+            <div class="stat-item">
+                <h3 data-count="4">0</h3>
+                <p>Core Services</p>
+            </div>
+            <div class="stat-item">
+                <h3 data-count="135">0</h3>
+                <p>B-BBEE Level</p>
+            </div>
+            <div class="stat-item">
+                <h3 data-count="100">0</h3>
+                <p>Client Satisfaction</p>
+            </div>
+        </div>
+    </div>
+
     <section class="about-content">
         <div class="section-header">
             <div class="section-tag">Who We Are</div>
-            <h2 class="section-title">About Namrhali Projects</h2>
+            <h2 class="section-title">Building Excellence Since 2022</h2>
             <p class="section-description">A dedicated team committed to excellence, innovation, and closing the scarcity gap of professional service providers.</p>
         </div>
         <div class="about-grid">
             <div class="about-text">
-                <h2>Excellence in Service Delivery Since 2022</h2>
-                <p>NAMRHALI PROJECTS was founded and established in 2022 by a young dedicated gentleman who carries great passion and drive in the business sector. With rapid growth of population and economic growth, our sectors remain to have a scarcity gap of professional service providers.</p>
+                <h2>Excellence in Service Delivery</h2>
+                <p>NAMRHALI PROJECTS was founded and established in 2022 by a young dedicated gentleman who carries great passion and drive in the business sector. With rapid growth of population and economic development, our sectors remain to have a scarcity gap of professional service providers.</p>
                 <p>Our organization has well experienced personnel in sector expertise, enabling us to deliver exceptional services that meet and exceed client expectations. We aim at excellent service delivery and closing the scarcity of required resources in our industry.</p>
                 <p>At Namrhali Projects, we believe in finding innovative ways to do business, constantly evolving our methods and approaches to ensure we remain at the forefront of our industry.</p>
+                
+                <div class="about-features">
+                    <div class="feature-item">
+                        <div class="feature-icon">🏆</div>
+                        <div class="feature-text">
+                            <h4>B-BBEE Level 1</h4>
+                            <p>135% Contributor Status</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">⚡</div>
+                        <div class="feature-text">
+                            <h4>Rapid Growth</h4>
+                            <p>Established 2022</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🤝</div>
+                        <div class="feature-text">
+                            <h4>Client Focused</h4>
+                            <p>100% Satisfaction Rate</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">📈</div>
+                        <div class="feature-text">
+                            <h4>Innovative Solutions</h4>
+                            <p>Modern Approaches</p>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="about-image">
-                <!-- Placeholder for company image -->
-                <div style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 5rem;">
-                    🏗️
-                </div>
+                <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Namrhali Projects Team">
             </div>
         </div>
     </section>
@@ -755,12 +1194,12 @@
                 <div class="vm-card">
                     <span class="vm-icon">🎯</span>
                     <h3>Our Vision</h3>
-                    <p>To be the most reliable service provider that has a high quality service. We strive to set the standard for excellence in our industry and become the go-to partner for all our clients' needs.</p>
+                    <p>To be the most reliable service provider that has a high quality service. We strive to set the standard for excellence in our industry and become the go-to partner for all our clients' needs, recognized globally for our innovative solutions and exceptional service delivery.</p>
                 </div>
                 <div class="vm-card">
                     <span class="vm-icon">🚀</span>
                     <h3>Our Mission</h3>
-                    <p>To be recognised and acknowledged as the world's best class service provider in the sector. We are committed to delivering exceptional value, building lasting relationships, and making a positive impact in our communities.</p>
+                    <p>To be recognised and acknowledged as the world's best class service provider in the sector. We are committed to delivering exceptional value, building lasting relationships, and making a positive impact in our communities through sustainable practices and continuous innovation.</p>
                 </div>
             </div>
         </div>
@@ -776,66 +1215,64 @@
             <div class="value-card">
                 <div class="value-icon">⚡</div>
                 <h3>Competency</h3>
-                <p>Our management and team members are always ready to work and deliver exceptional services in time.</p>
+                <p>Our management and team members are always ready to work and deliver exceptional services on time, every time with expert precision.</p>
             </div>
             <div class="value-card">
                 <div class="value-icon">🔒</div>
                 <h3>Confidentiality</h3>
-                <p>We ensure that we keep our clients' information confidential at all costs.</p>
+                <p>We ensure that we keep our clients' information confidential at all costs, building trust through absolute discretion and professionalism.</p>
             </div>
             <div class="value-card">
                 <div class="value-icon">🤝</div>
                 <h3>Inclusivity</h3>
-                <p>We ensure a welcoming and inclusive environment, treating people as we would like to be treated ourselves.</p>
+                <p>We ensure a welcoming and inclusive environment, treating people as we would like to be treated ourselves, fostering diversity and respect.</p>
             </div>
             <div class="value-card">
                 <div class="value-icon">✓</div>
                 <h3>Reliability</h3>
-                <p>We aim at being the most reliable and trusted service provider.</p>
+                <p>We aim at being the most reliable and trusted service provider, delivering on our promises consistently with unwavering commitment.</p>
             </div>
             <div class="value-card">
                 <div class="value-icon">💎</div>
                 <h3>Integrity</h3>
-                <p>We trust and respect everyone equally, acting ethically and encouraging honest and open communication.</p>
+                <p>We trust and respect everyone equally, acting ethically and encouraging honest and open communication in all our business dealings.</p>
             </div>
         </div>
     </section>
 
-    <section class="team">
+    <section class="milestones">
         <div class="section-header">
-            <div class="section-tag">Our Leadership</div>
-            <h2 class="section-title">Founder & Team</h2>
-            <p class="section-description">The passionate individuals behind Namrhali Projects' success.</p>
+            <div class="section-tag" style="color: var(--orange);">Our Journey</div>
+            <h2 class="section-title" style="color: white;">Milestones & Growth</h2>
+            <p class="section-description" style="color: rgba(255,255,255,0.9);">Key moments that shaped our journey to excellence.</p>
         </div>
-        <div class="team-grid">
-            <div class="team-card">
-                <div class="team-image">
-                    👨‍💼
-                </div>
-                <div class="team-info">
-                    <h3>Founder</h3>
-                    <span class="position">Visionary Leader</span>
-                    <p>A young dedicated gentleman who carries great passion and drive in the business sector. Founded Namrhali Projects in 2022 with a vision to close the scarcity gap of professional service providers.</p>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-year">2022</div>
+                <div class="timeline-content">
+                    <h4>Foundation Year</h4>
+                    <p>Namrhali Projects was established with a vision to bridge the scarcity gap of professional service providers in the market.</p>
                 </div>
             </div>
-            <div class="team-card">
-                <div class="team-image">
-                    👷‍♂️
-                </div>
-                <div class="team-info">
-                    <h3>Management Team</h3>
-                    <span class="position">Experienced Professionals</span>
-                    <p>Our management team consists of well experienced personnel in sector expertise, dedicated to delivering exceptional services and ensuring client satisfaction across all our service offerings.</p>
+            <div class="timeline-item">
+                <div class="timeline-year">2023</div>
+                <div class="timeline-content">
+                    <h4>Service Expansion</h4>
+                    <p>Successfully expanded our service offerings to include all four core areas: cleaning, construction, maintenance, and supply services.</p>
                 </div>
             </div>
-            <div class="team-card">
-                <div class="team-image">
-                    👥
+            <div class="timeline-item">
+                <div class="timeline-year">2024</div>
+                <div class="timeline-content">
+                    <h4>B-BBEE Certification</h4>
+                    <p>Achieved Level 1 B-BBEE certification with 135% procurement recognition, demonstrating our commitment to empowerment.</p>
                 </div>
-                <div class="team-info">
-                    <h3>Our Staff</h3>
-                    <span class="position">Skilled Workforce</span>
-                    <p>Our team members are trained professionals committed to upholding our company values and delivering quality work across all our service areas - from cleaning and construction to maintenance and supply.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2025</div>
+                <div class="timeline-content">
+                    <h4>National Recognition</h4>
+                    <p>Gained national recognition for excellence in service delivery and innovative business approaches in the construction sector.</p>
                 </div>
             </div>
         </div>
@@ -843,24 +1280,31 @@
 
     <section class="cta-section">
         <div class="cta-content">
-            <h2>Ready to Work With Us?</h2>
+            <h2>Partner With Excellence</h2>
             <p>Experience the Namrhali Projects difference. Let's discuss how we can help you achieve your goals with our innovative solutions and exceptional service delivery.</p>
             <div class="cta-buttons">
                 <a href="contact.html" class="cta-btn cta-primary">
-                    <span>Contact Us</span>
+                    <span>Get in Touch</span>
                     <span>→</span>
                 </a>
                 <a href="services.html" class="cta-btn cta-secondary">
-                    <span>Our Services</span>
+                    <span>Explore Services</span>
                 </a>
             </div>
         </div>
     </section>
 
+    <button class="scroll-top" id="scrollTopBtn">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <div class="footer-logo"><a><img src="assets/namrhaliProjectsLogo.png" height="95" width="95"></a></div>
+                <div class="footer-logo">
+                    <img src="assets/namrhaliProjectsLogo.png" alt="Namrhali Projects Logo">
+                    <div class="footer-logo-text">NAMRHALI PROJECTS</div>
+                </div>
                 <p>A vibrant growing firm focusing on finding innovative ways to do business. Excellence in service delivery since 2022.</p>
             </div>
             <div class="footer-section">
@@ -908,6 +1352,103 @@
                     });
                 }
             });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+
+        // Scroll to top button
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Animated counter for stats
+        const animateCounters = () => {
+            const counters = document.querySelectorAll('[data-count]');
+            const speed = 200; // Lower number = faster
+            
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-count');
+                    const count = +counter.innerText.replace('%', '');
+                    const increment = target / speed;
+                    
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + increment) + (counter.getAttribute('data-count') > 100 ? '%' : '');
+                        setTimeout(updateCount, 1);
+                    } else {
+                        counter.innerText = target + (target > 100 ? '%' : '');
+                    }
+                };
+                
+                updateCount();
+            });
+        };
+
+        // Initialize animations when page loads
+        window.addEventListener('DOMContentLoaded', () => {
+            animateCounters();
+            
+            // Add intersection observer for fade-in animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe animated elements
+            document.querySelectorAll('.value-card, .vm-card, .timeline-item').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(el);
+            });
+        });
+
+        // Parallax effect for page header
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const header = document.querySelector('.page-header');
+            if (header) {
+                header.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
         });
     </script>
 </body>
