@@ -2,12 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | Namrhali Projects - Logistics Excellence</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="#1e40af">
+    <title>Contact Us | NAMRHALI PROJECTS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-        <link rel="icon" href="assets/namrhaliProjectsLogo.png" type="image/png">
-
+    <link rel="icon" href="assets/namrhaliProjectsLogo.png" type="image/png">
+    <link rel="apple-touch-icon" href="assets/namrhaliProjectsLogo.png">
     <style>
+        /* Import all the same styles from index.html */
         * {
             margin: 0;
             padding: 0;
@@ -20,30 +22,48 @@
             --secondary: #3b82f6;
             --accent: #60a5fa;
             --orange: #f97316;
+            --orange-dark: #ea580c;
             --dark: #0f172a;
             --gray: #475569;
             --light-gray: #f1f5f9;
             --white: #ffffff;
+            --safe-area-top: env(safe-area-inset-top, 0px);
+            --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+            --safe-area-left: env(safe-area-inset-left, 0px);
+            --safe-area-right: env(safe-area-inset-right, 0px);
+        }
+
+        html {
+            font-size: 16px;
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: transparent;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', system-ui, sans-serif;
             color: var(--dark);
-            overflow-x: hidden;
             background: var(--white);
             line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
         }
 
-        /* Header */
+        /* Improved Header - EXACTLY SAME AS INDEX */
         header {
             position: fixed;
             width: 100%;
             top: 0;
+            left: 0;
             z-index: 1000;
             background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(30, 64, 175, 0.1);
             transition: all 0.3s ease;
+            padding: 0;
         }
 
         header.scrolled {
@@ -54,51 +74,94 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.2rem 8%;
+            padding: 1rem max(5%, var(--safe-area-right));
             max-width: 1400px;
             margin: 0 auto;
+            min-height: 70px;
+            padding-left: max(5%, var(--safe-area-left));
+            padding-right: max(5%, var(--safe-area-right));
         }
 
-        .logo {
-            font-size: 1.8rem;
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            min-height: 50px;
+            flex-shrink: 0;
+        }
+
+        .logo-img {
+            height: 40px;
+            width: auto;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-size: clamp(1.2rem, 4vw, 1.8rem);
             font-weight: 800;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
+        /* Mobile Menu Button - EXACTLY SAME AS INDEX */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+            width: 44px;
+            height: 44px;
+            border-radius: 8px;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1002;
+            flex-shrink: 0;
+        }
+
+        .mobile-menu-btn:hover {
+            background: rgba(30, 64, 175, 0.1);
+        }
+
+        /* Navigation Links - Hidden on mobile */
         .nav-links {
             display: flex;
-            gap: 2.5rem;
+            gap: clamp(1rem, 2vw, 2rem);
             list-style: none;
             align-items: center;
+            margin-left: auto;
         }
 
         .nav-links a {
             text-decoration: none;
             color: var(--dark);
             font-weight: 500;
-            font-size: 0.95rem;
+            font-size: clamp(0.9rem, 2vw, 1rem);
             position: relative;
             transition: color 0.3s ease;
+            padding: 0.5rem 0;
+            white-space: nowrap;
         }
 
         .nav-links a:not(.nav-cta)::after {
             content: '';
             position: absolute;
-            bottom: -5px;
-            left: 50%;
-            transform: translateX(-50%);
+            bottom: 0;
+            left: 0;
             width: 0;
             height: 2px;
             background: var(--orange);
             transition: width 0.3s ease;
-        }
-
-        .nav-links a:not(.nav-cta):hover {
-            color: var(--primary);
         }
 
         .nav-links a:not(.nav-cta):hover::after {
@@ -106,80 +169,194 @@
         }
 
         .nav-cta {
-            padding: 0.7rem 1.8rem;
-            background: linear-gradient(135deg, var(--orange) 0%, #ea580c 100%);
+            padding: clamp(0.6rem, 2vw, 0.8rem) clamp(1rem, 2vw, 1.5rem);
+            background: linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 100%);
             color: white;
             border-radius: 8px;
             font-weight: 600;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
+            min-width: 120px;
+            text-align: center;
+            display: inline-block;
         }
 
-        .nav-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 25px rgba(249, 115, 22, 0.4);
+        /* Mobile Navigation - EXACTLY SAME AS INDEX */
+        .mobile-nav-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            backdrop-filter: blur(5px);
         }
 
-        /* Hero Section */
+        .mobile-nav-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .mobile-nav-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: min(85vw, 320px);
+            height: 100%;
+            background: white;
+            z-index: 1000;
+            padding: 5rem 1.5rem 2rem;
+            overflow-y: auto;
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: -5px 0 30px rgba(0, 0, 0, 0.15);
+            display: flex;
+            flex-direction: column;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .mobile-nav-menu.active {
+            right: 0;
+        }
+
+        .mobile-nav-close {
+            position: absolute;
+            top: max(1rem, var(--safe-area-top));
+            right: 1.5rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+            width: 44px;
+            height: 44px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .mobile-nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            display: block;
+            background: rgba(30, 64, 175, 0.05);
+            border-left: 4px solid transparent;
+        }
+
+        .mobile-nav-links a:hover,
+        .mobile-nav-links a:active {
+            background: rgba(30, 64, 175, 0.1);
+            color: var(--primary);
+            border-left-color: var(--orange);
+            transform: translateX(-5px);
+        }
+
+        .mobile-nav-cta {
+            background: linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 100%);
+            color: white;
+            padding: 1.2rem 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 600;
+            margin-top: auto;
+            box-shadow: 0 4px 20px rgba(249, 115, 22, 0.4);
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .mobile-nav-cta:active {
+            transform: scale(0.98);
+        }
+
+        /* Contact Hero Section */
         .contact-hero {
             min-height: 60vh;
+            min-height: calc(60dvh - 70px);
             position: relative;
             overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-top: 80px;
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--secondary) 100%);
-            color: white;
+            margin-top: 70px;
+            background: linear-gradient(135deg, 
+                rgba(30, 64, 175, 0.95) 0%, 
+                rgba(30, 58, 138, 0.92) 50%, 
+                rgba(59, 130, 246, 0.9) 100%),
+                linear-gradient(to bottom right, rgba(96, 165, 250, 0.1), rgba(249, 115, 22, 0.1)),
+                url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            padding: 2rem max(5%, var(--safe-area-right));
+            padding-left: max(5%, var(--safe-area-left));
             text-align: center;
-        }
-
-        .hero-particles {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-
-        .particle-dot {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: var(--accent);
-            border-radius: 50%;
-            opacity: 0.3;
-            animation: float-particle 15s infinite ease-in-out;
-        }
-
-        .particle-dot:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; }
-        .particle-dot:nth-child(2) { left: 30%; top: 40%; animation-delay: 2s; }
-        .particle-dot:nth-child(3) { left: 50%; top: 60%; animation-delay: 4s; }
-        .particle-dot:nth-child(4) { left: 70%; top: 30%; animation-delay: 6s; }
-        .particle-dot:nth-child(5) { left: 90%; top: 50%; animation-delay: 8s; }
-
-        @keyframes float-particle {
-            0%, 100% {
-                transform: translate(0, 0);
-                opacity: 0.3;
-            }
-            50% {
-                transform: translate(50px, -50px);
-                opacity: 0.6;
-            }
         }
 
         .contact-hero-content {
             position: relative;
             z-index: 2;
-            max-width: 900px;
-            padding: 4rem 2rem;
+            max-width: 1200px;
+            width: 100%;
+            padding: 2rem 0;
+            color: white;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: clamp(0.6rem, 2vw, 0.8rem) clamp(1rem, 2vw, 1.5rem);
+            background: rgba(59, 130, 246, 0.15);
+            border: 1px solid rgba(96, 165, 250, 0.3);
+            border-radius: 50px;
+            color: var(--accent);
+            font-size: clamp(0.75rem, 2vw, 0.9rem);
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .contact-hero h1 {
-            font-size: 4rem;
+            font-size: clamp(2.2rem, 8vw, 4.5rem);
             font-weight: 900;
             margin-bottom: 1.5rem;
-            letter-spacing: -1px;
+            line-height: 1.1;
+            letter-spacing: -0.5px;
             animation: slideUp 0.8s ease;
+        }
+
+        .contact-hero p {
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 1rem;
+            animation: slideUp 0.8s ease 0.2s backwards;
         }
 
         @keyframes slideUp {
@@ -193,178 +370,138 @@
             }
         }
 
-        .contact-hero p {
-            font-size: 1.4rem;
-            opacity: 0.9;
-            margin-bottom: 2rem;
-            animation: slideUp 0.8s ease 0.2s backwards;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.6rem 1.5rem;
-            background: rgba(59, 130, 246, 0.15);
-            border: 1px solid rgba(96, 165, 250, 0.3);
-            border-radius: 50px;
-            color: var(--accent);
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            margin-bottom: 2rem;
-            backdrop-filter: blur(10px);
-            animation: slideUp 0.8s ease 0.4s backwards;
-        }
-
-        /* Breadcrumb */
-        .breadcrumb {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1.5rem 8%;
-            background: var(--white);
-            border-bottom: 1px solid var(--light-gray);
-        }
-
-        .breadcrumb a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .breadcrumb a:hover {
-            color: var(--orange);
-        }
-
-        .breadcrumb span {
-            color: var(--gray);
-        }
-
-        /* Main Content */
+        /* Contact Content */
         .contact-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 5rem 8%;
+            padding: clamp(3rem, 6vw, 8rem) max(5%, var(--safe-area-right));
+            padding-left: max(5%, var(--safe-area-left));
+            background: var(--white);
         }
 
         .section-header {
             text-align: center;
             max-width: 800px;
-            margin: 0 auto 5rem;
+            margin: 0 auto clamp(2.5rem, 5vw, 5rem);
         }
 
         .section-tag {
             display: inline-block;
-            font-size: 0.85rem;
+            font-size: clamp(0.75rem, 2vw, 0.9rem);
             color: var(--orange);
             font-weight: 700;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
             margin-bottom: 1rem;
+            padding: 0.5rem 1.5rem;
+            border: 2px solid rgba(249, 115, 22, 0.2);
+            border-radius: 50px;
         }
 
         .section-title {
-            font-size: 3rem;
+            font-size: clamp(2rem, 5vw, 3.5rem);
             font-weight: 900;
             color: var(--dark);
-            margin-bottom: 1.5rem;
-            letter-spacing: -1px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--orange), var(--primary));
-            border-radius: 2px;
+            margin-bottom: 1.2rem;
+            line-height: 1.2;
         }
 
         .section-description {
-            font-size: 1.1rem;
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
             color: var(--gray);
-            line-height: 1.8;
+            line-height: 1.7;
+            padding: 0 clamp(1rem, 3vw, 0);
         }
 
         /* Contact Layout */
         .contact-layout {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            margin-bottom: 8rem;
+            grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
+            gap: clamp(2rem, 4vw, 4rem);
+            max-width: 1200px;
+            margin: 0 auto clamp(5rem, 8vw, 8rem);
         }
 
-        /* Contact Info */
-        .contact-info {
-            background: white;
-            padding: 3rem;
+        /* Contact Info Cards */
+        .contact-info-card {
+            background: var(--white);
+            padding: clamp(2rem, 4vw, 3rem);
             border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-            border: 2px solid transparent;
+            border: 2px solid var(--light-gray);
             transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            height: 100%;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        .contact-info:hover {
-            border-color: var(--accent);
+        .contact-info-card:active {
             transform: translateY(-5px);
-            box-shadow: 0 15px 50px rgba(30, 64, 175, 0.15);
+            box-shadow: 0 20px 40px rgba(30, 64, 175, 0.1);
+            border-color: var(--accent);
+        }
+
+        .contact-info-card h3 {
+            font-size: clamp(1.3rem, 3vw, 1.6rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .contact-info-card h3 i {
+            color: var(--orange);
+            font-size: 1.4em;
         }
 
         .info-item {
             display: flex;
             align-items: flex-start;
-            margin-bottom: 2.5rem;
-            transition: all 0.3s ease;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--light-gray);
         }
 
-        .info-item:hover {
-            transform: translateX(5px);
+        .info-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
         }
 
         .info-icon {
-            width: 70px;
-            height: 70px;
+            width: clamp(50px, 6vw, 60px);
+            height: clamp(50px, 6vw, 60px);
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            border-radius: 15px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
+            font-size: clamp(1.2rem, 2vw, 1.5rem);
             color: white;
-            margin-right: 1.5rem;
             flex-shrink: 0;
             transition: all 0.3s ease;
         }
 
-        .info-item:hover .info-icon {
-            background: linear-gradient(135deg, var(--orange) 0%, #ea580c 100%);
-            transform: scale(1.1);
+        .contact-info-card:active .info-icon {
+            background: linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 100%);
+            transform: scale(1.05);
         }
 
-        .info-content h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
+        .info-content h4 {
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+            font-weight: 600;
+            margin-bottom: 0.25rem;
             color: var(--dark);
-            font-weight: 700;
         }
 
-        .info-content p {
+        .info-content p,
+        .info-content a {
             color: var(--gray);
             line-height: 1.7;
-        }
-
-        .info-content a {
-            color: var(--primary);
+            font-size: clamp(0.9rem, 2vw, 1rem);
             text-decoration: none;
             transition: color 0.3s ease;
-            font-weight: 500;
         }
 
         .info-content a:hover {
@@ -378,13 +515,6 @@
             border-top: 1px solid var(--light-gray);
         }
 
-        .hours-title {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: var(--dark);
-            font-weight: 700;
-        }
-
         .hours-list {
             list-style: none;
         }
@@ -392,10 +522,10 @@
         .hours-list li {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 0.8rem;
-            color: var(--gray);
-            padding: 0.5rem 0;
+            align-items: center;
+            padding: 0.75rem 0;
             border-bottom: 1px solid var(--light-gray);
+            font-size: clamp(0.9rem, 2vw, 1rem);
         }
 
         .hours-list li:last-child {
@@ -403,35 +533,29 @@
         }
 
         .hours-list .day {
-            font-weight: 600;
+            color: var(--dark);
+            font-weight: 500;
         }
 
         .hours-list .time {
             color: var(--primary);
-            font-weight: 500;
+            font-weight: 600;
         }
 
         /* Contact Form */
         .contact-form-container {
-            background: white;
-            padding: 3rem;
+            background: var(--white);
+            padding: clamp(2rem, 4vw, 3rem);
             border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-            border: 2px solid transparent;
-            transition: all 0.3s ease;
-        }
-
-        .contact-form-container:hover {
-            border-color: var(--accent);
-            transform: translateY(-5px);
-            box-shadow: 0 15px 50px rgba(30, 64, 175, 0.15);
+            border: 2px solid var(--light-gray);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
         }
 
         .form-title {
-            font-size: 1.8rem;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 700;
             margin-bottom: 1.5rem;
             color: var(--dark);
-            font-weight: 800;
         }
 
         .contact-form {
@@ -440,33 +564,39 @@
             gap: 1.5rem;
         }
 
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+            gap: 1.5rem;
+        }
+
         .form-group {
             display: flex;
             flex-direction: column;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
         }
 
         .form-label {
             margin-bottom: 0.5rem;
             font-weight: 600;
             color: var(--dark);
+            font-size: clamp(0.9rem, 2vw, 1rem);
         }
 
-        .form-input, .form-textarea, .form-select {
-            padding: 1rem 1.5rem;
+        .form-input,
+        .form-textarea,
+        .form-select {
+            padding: clamp(0.8rem, 2vw, 1rem) clamp(1rem, 2vw, 1.25rem);
             border: 2px solid var(--light-gray);
             border-radius: 10px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
+            font-size: clamp(0.9rem, 2vw, 1rem);
             font-family: inherit;
+            transition: all 0.3s ease;
+            background: var(--white);
         }
 
-        .form-input:focus, .form-textarea:focus, .form-select:focus {
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
             outline: none;
             border-color: var(--primary);
             box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
@@ -474,56 +604,116 @@
 
         .form-textarea {
             resize: vertical;
-            min-height: 120px;
+            min-height: 140px;
         }
 
         .form-submit {
-            padding: 1.2rem 2rem;
-            background: linear-gradient(135deg, var(--orange) 0%, #ea580c 100%);
+            padding: clamp(0.9rem, 2vw, 1.2rem) clamp(1.5rem, 3vw, 2rem);
+            background: linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 100%);
             color: white;
             border: none;
             border-radius: 10px;
-            font-size: 1rem;
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin-top: 1rem;
+            margin-top: 0.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
         }
 
-        .form-submit:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(249, 115, 22, 0.4);
+        .form-submit:active {
+            transform: scale(0.98);
+        }
+
+        /* Emergency Section */
+        .emergency-section {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: white;
+            padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 3vw, 3rem);
+            border-radius: 20px;
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .emergency-icon {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .emergency-section h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .emergency-section p {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .emergency-phone {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .emergency-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: clamp(0.9rem, 2vw, 1.2rem) clamp(1.5rem, 3vw, 2.5rem);
+            background: white;
+            color: #ef4444;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+        }
+
+        .emergency-btn:active {
+            transform: scale(0.98);
         }
 
         /* Map Section */
         .map-section {
-            margin-bottom: 8rem;
+            max-width: 1200px;
+            margin: 0 auto 5rem;
         }
 
         .map-container {
-            height: 450px;
+            height: 400px;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
             background: var(--light-gray);
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--gray);
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 2vw, 1.1rem);
             position: relative;
             border: 2px solid transparent;
             transition: all 0.3s ease;
         }
 
-        .map-container:hover {
+        .map-container:active {
             border-color: var(--accent);
             transform: translateY(-5px);
-            box-shadow: 0 15px 50px rgba(30, 64, 175, 0.15);
+            box-shadow: 0 20px 50px rgba(30, 64, 175, 0.15);
         }
 
         .map-placeholder {
@@ -532,136 +722,41 @@
         }
 
         .map-icon {
-            font-size: 4rem;
+            font-size: clamp(3rem, 5vw, 4rem);
             margin-bottom: 1rem;
             color: var(--primary);
         }
 
-        /* Emergency Section */
-        .emergency-section {
-            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-            color: white;
-            padding: 4rem 3rem;
-            border-radius: 20px;
-            text-align: center;
-            margin-bottom: 8rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .emergency-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
-        }
-
-        .emergency-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .emergency-icon {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.1);
-            }
-        }
-
-        .emergency-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            font-weight: 800;
-        }
-
-        .emergency-section p {
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-            opacity: 0.95;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .emergency-phone {
-            font-size: 2.2rem;
-            font-weight: 800;
-            margin-bottom: 2rem;
-            letter-spacing: 1px;
-        }
-
-        .emergency-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.7rem;
-            padding: 1.2rem 2.5rem;
-            background: white;
-            color: #ef4444;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 700;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        .emergency-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-            background: var(--primary);
-            color: white;
-        }
-
         /* FAQ Section */
         .faq-section {
-            margin-bottom: 8rem;
-        }
-
-        .faq-grid {
-            max-width: 900px;
+            max-width: 800px;
             margin: 0 auto;
         }
 
         .faq-item {
-            background: white;
-            margin-bottom: 1.5rem;
+            background: var(--white);
+            margin-bottom: 1rem;
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
             border: 2px solid transparent;
             transition: all 0.3s ease;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        .faq-item:hover {
+        .faq-item:active {
             border-color: var(--accent);
         }
 
         .faq-question {
-            padding: 1.8rem 2.5rem;
-            font-size: 1.1rem;
+            padding: clamp(1.2rem, 3vw, 1.5rem) clamp(1.5rem, 3vw, 2rem);
+            font-size: clamp(1rem, 2vw, 1.1rem);
             font-weight: 600;
             color: var(--dark);
-            cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
             transition: all 0.3s ease;
-        }
-
-        .faq-question:hover {
-            background: var(--light-gray);
         }
 
         .faq-question::after {
@@ -677,61 +772,87 @@
         }
 
         .faq-answer {
-            padding: 0 2.5rem;
+            padding: 0 clamp(1.5rem, 3vw, 2rem);
             max-height: 0;
             overflow: hidden;
             transition: all 0.3s ease;
         }
 
         .faq-item.active .faq-answer {
-            padding: 0 2.5rem 2rem;
+            padding: 0 clamp(1.5rem, 3vw, 2rem) clamp(1.5rem, 3vw, 2rem);
             max-height: 500px;
         }
 
         .faq-answer p {
             color: var(--gray);
             line-height: 1.7;
+            font-size: clamp(0.9rem, 2vw, 1rem);
         }
 
-        /* Footer */
+        /* Footer - Same as index */
         footer {
             background: var(--dark);
             color: white;
-            padding: 5rem 8% 2rem;
+            padding: clamp(3rem, 5vw, 5rem) max(5%, var(--safe-area-right)) 2rem;
+            padding-left: max(5%, var(--safe-area-left));
         }
 
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+            gap: clamp(2rem, 4vw, 3rem);
+            margin-bottom: clamp(2rem, 4vw, 3rem);
         }
 
         .footer-section h3 {
-            margin-bottom: 1.5rem;
-            font-size: 1.3rem;
+            margin-bottom: 1.2rem;
+            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
             font-weight: 700;
+            background: linear-gradient(135deg, var(--orange) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .footer-section p {
             color: #94a3b8;
-            line-height: 2;
-            font-size: 0.95rem;
+            line-height: 1.7;
+            font-size: clamp(0.9rem, 2vw, 1rem);
         }
 
-        .footer-section a {
-            color: #94a3b8;
-            text-decoration: none;
-            display: block;
-            line-height: 2;
-            transition: color 0.3s ease;
-            font-size: 0.95rem;
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
         }
 
-        .footer-section a:hover {
-            color: var(--accent);
+        .footer-logo img {
+            height: clamp(50px, 6vw, 70px);
+            width: clamp(50px, 6vw, 70px);
+            border-radius: 12px;
+            object-fit: contain;
+        }
+
+        .footer-logo-text {
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--orange) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: clamp(1.5rem, 3vw, 2rem);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #64748b;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
         }
 
         .social-links {
@@ -741,186 +862,196 @@
         }
 
         .social-links a {
-            width: 45px;
-            height: 45px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+            font-size: 1.2rem;
         }
 
-        .social-links a:hover {
-            background: var(--orange);
-            transform: translateY(-3px);
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .contact-hero {
+                margin-top: 70px;
+            }
         }
 
-        .footer-divider {
-            height: 1px;
-            background: rgba(255, 255, 255, 0.1);
-            margin: 3rem 0 2rem;
-        }
-
-        .footer-bottom {
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #64748b;
-            font-size: 0.9rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 968px) {
+        @media (max-width: 768px) {
             .contact-hero h1 {
-                font-size: 3rem;
+                font-size: clamp(2rem, 6vw, 3rem);
             }
 
             .section-title {
-                font-size: 2.5rem;
+                font-size: clamp(1.8rem, 4vw, 2.5rem);
             }
 
             .contact-layout {
-                grid-template-columns: 1fr;
+                gap: 2rem;
             }
 
             .form-row {
                 grid-template-columns: 1fr;
             }
 
-            .contact-info, .contact-form-container {
-                padding: 2.5rem;
-            }
-
-            .nav-links {
-                display: none;
+            .map-container {
+                height: 300px;
             }
         }
 
-        @media (max-width: 640px) {
-            nav {
-                padding: 1rem 5%;
-            }
-
-            .contact-hero {
-                margin-top: 70px;
-                padding: 3rem 5%;
-            }
-
-            .contact-hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .contact-content {
-                padding: 3rem 5%;
-            }
-
-            .section-title {
-                font-size: 2rem;
+        @media (max-width: 480px) {
+            .contact-info-card,
+            .contact-form-container {
+                padding: 1.5rem;
             }
 
             .emergency-section {
-                padding: 3rem 2rem;
-            }
-
-            .emergency-section h2 {
-                font-size: 2rem;
+                padding: 2rem 1.5rem;
             }
 
             .emergency-phone {
-                font-size: 1.8rem;
+                font-size: 1.5rem;
+            }
+
+            .hours-list li {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.25rem;
             }
         }
-         .footer-logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--orange) 0%, var(--accent) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+
+        /* Hover states for non-touch devices */
+        @media (hover: hover) {
+            .contact-info-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 20px 40px rgba(30, 64, 175, 0.1);
+                border-color: var(--accent);
+            }
+
+            .contact-info-card:hover .info-icon {
+                background: linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 100%);
+                transform: scale(1.1);
+            }
+
+            .form-submit:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 10px 25px rgba(249, 115, 22, 0.4);
+            }
+
+            .emergency-btn:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            }
+
+            .map-container:hover {
+                border-color: var(--accent);
+                transform: translateY(-5px);
+                box-shadow: 0 20px 50px rgba(30, 64, 175, 0.15);
+            }
+
+            .faq-item:hover {
+                border-color: var(--accent);
+            }
+
+            .nav-cta:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 25px rgba(249, 115, 22, 0.4);
+            }
+
+            .social-links a:hover {
+                background: var(--orange);
+                transform: translateY(-3px);
+            }
+        }
+
+        /* Focus styles for accessibility */
+        :focus-visible {
+            outline: 3px solid var(--orange);
+            outline-offset: 2px;
         }
     </style>
 </head>
 <body>
+    <!-- Header - Same as index -->
     <header id="header">
         <nav>
-                <div class="footer-logo">NAMRHALI PROJECTS</div>
+            <div class="logo-container">
+                <img src="assets/namrhaliProjectsLogo.png" alt="Namrhali Projects Logo" class="logo-img" loading="lazy">
+                <div class="logo-text">NAMRHALI PROJECTS</div>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                                <li><a href="about.html">About</a></li>
-
+                <li><a href="about.html">About</a></li>
                 <li><a href="services.html">Services</a></li>
                 <li><a href="contact.html" class="nav-cta">Contact Us</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="contact-hero" style="background-image: linear-gradient(135deg, rgba(30, 64, 175, 0.85) 0%, rgba(59, 130, 246, 0.85) 100%), url('./assets/conthero.png'); background-size: cover; background-position: center;">
-        <div class="hero-particles">
-            <div class="particle-dot"></div>
-            <div class="particle-dot"></div>
-            <div class="particle-dot"></div>
-            <div class="particle-dot"></div>
-            <div class="particle-dot"></div>
-        </div>
+    <!-- Mobile Navigation - Same as index -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+    <div class="mobile-nav-menu" id="mobileNavMenu">
+        <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close navigation menu">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul class="mobile-nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html" class="mobile-nav-cta">Contact Us</a></li>
+        </ul>
+    </div>
+
+    <!-- Contact Hero -->
+    <section class="contact-hero">
         <div class="contact-hero-content">
             <div class="hero-badge">
                 <span>🏆</span>
                 <span>Level 1 B-BBEE Certified</span>
             </div>
-            <h1>Get In Touch</h1>
-            <p>We're here to help with all your logistics needs. Reach out to us today.</p>
+            <h1>Get In Touch With Us</h1>
+            <p>We're here to help with all your project needs. Reach out to us today for innovative solutions and exceptional service delivery.</p>
         </div>
     </section>
 
-    <div class="breadcrumb">
-        <a href="index.html">Home</a> > <span>Contact Us</span>
-    </div>
-
+    <!-- Contact Content -->
     <main class="contact-content">
-        <section class="contact-intro">
-            <div class="section-header">
-                <div class="section-tag">Connect With Us</div>
-                <h2 class="section-title">Contact Namrhali Projects</h2>
-                <p class="section-description">Have questions about our logistics services? Need a quote for your next shipment? Our team is ready to assist you with prompt, professional service.</p>
-            </div>
-        </section>
+        <div class="section-header">
+            <div class="section-tag">Connect With Us</div>
+            <h2 class="section-title">Contact Namrhali Projects</h2>
+            <p class="section-description">Have questions about our services? Need a quote for your next project? Our team is ready to assist you with prompt, professional service.</p>
+        </div>
 
         <div class="contact-layout">
-            <div class="contact-info">
+            <!-- Contact Info -->
+            <div class="contact-info-card">
+                <h3><i class="fas fa-map-marker-alt"></i> Our Location</h3>
                 <div class="info-item">
                     <div class="info-icon">📍</div>
                     <div class="info-content">
-                        <h3>Our Location</h3>
+                        <h4>Office Address</h4>
                         <p>41 Sapphire Crescent<br>Middelburg, Mpumalanga<br>1050, South Africa</p>
                     </div>
                 </div>
-
-                <div class="info-item">
-                    <div class="info-icon">📞</div>
-                    <div class="info-content">
-                        <h3>Phone Numbers</h3>
-                        <p>Main Office: <a href="tel:+27131234567">+27 13 123 4567</a><br>
-                        Operations: <a href="tel:+27821234567">+27 82 123 4567</a><br>
-                        Fax: +27 86 123 4567</p>
-                    </div>
-                </div>
-
-                <div class="info-item">
-                    <div class="info-icon">✉️</div>
-                    <div class="info-content">
-                        <h3>Email Addresses</h3>
-                        <p>General Inquiries: <a href="mailto:info@namrhali.co.za">info@namrhali.co.za</a><br>
-                        Operations: <a href="mailto:operations@namrhali.co.za">operations@namrhali.co.za</a><br>
-                        Support: <a href="mailto:support@namrhali.co.za">support@namrhali.co.za</a></p>
-                    </div>
-                </div>
-
+                
                 <div class="business-hours">
-                    <h3 class="hours-title">Business Hours</h3>
+                    <h3><i class="fas fa-clock"></i> Business Hours</h3>
                     <ul class="hours-list">
                         <li>
                             <span class="day">Monday - Thursday</span>
@@ -942,6 +1073,7 @@
                 </div>
             </div>
 
+            <!-- Contact Form -->
             <div class="contact-form-container">
                 <h3 class="form-title">Send Us a Message</h3>
                 <form class="contact-form" id="contactForm">
@@ -962,8 +1094,8 @@
                             <input type="email" id="email" class="form-input" required>
                         </div>
                         <div class="form-group">
-                            <label class="form-label" for="phone">Phone Number</label>
-                            <input type="tel" id="phone" class="form-input">
+                            <label class="form-label" for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" class="form-input" required>
                         </div>
                     </div>
 
@@ -976,19 +1108,18 @@
                         <label class="form-label" for="service">Service Interested In</label>
                         <select id="service" class="form-select">
                             <option value="">Select a service</option>
-                            <option value="freight">Freight Transport</option>
-                            <option value="warehousing">Warehousing Solutions</option>
-                            <option value="supply-chain">Supply Chain Management</option>
-                            <option value="express">Express Delivery</option>
-                            <option value="regional">Regional Logistics</option>
-                            <option value="consulting">Logistics Consulting</option>
+                            <option value="cleaning">Cleaning Services</option>
+                            <option value="construction">Construction</option>
+                            <option value="maintenance">Maintenance</option>
+                            <option value="supply">Supply Services</option>
+                            <option value="multiple">Multiple Services</option>
                             <option value="other">Other</option>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label" for="message">Message *</label>
-                        <textarea id="message" class="form-textarea" placeholder="Tell us about your logistics needs..." required></textarea>
+                        <textarea id="message" class="form-textarea" placeholder="Tell us about your project needs..." required></textarea>
                     </div>
 
                     <button type="submit" class="form-submit">
@@ -999,37 +1130,56 @@
             </div>
         </div>
 
-        <section class="map-section">
-            <div class="section-header">
-                <div class="section-tag">Visit Us</div>
-                <h2 class="section-title">Find Our Office</h2>
-                <p class="section-description">Visit our office in Middelburg, Mpumalanga for personalized logistics solutions</p>
-            </div>
-            
-            <div class="map-container">
-                <!-- In a real implementation, you would embed a Google Maps iframe here -->
-                <div class="map-placeholder">
-                    <div class="map-icon">🗺️</div>
-                    <h3>Interactive Map</h3>
-                    <p>41 Sapphire Crescent, Middelburg, Mpumalanga</p>
-                    <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--gray);">Map integration would be implemented here</p>
+        <!-- Contact Details -->
+        <div class="contact-layout">
+            <div class="contact-info-card">
+                <h3><i class="fas fa-phone-alt"></i> Contact Details</h3>
+                <div class="info-item">
+                    <div class="info-icon">📞</div>
+                    <div class="info-content">
+                        <h4>Phone Numbers</h4>
+                        <p>Main: <a href="tel:0824405518">082 440 5518</a><br>
+                        Office: <a href="tel:0131234567">013 123 4567</a></p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">✉️</div>
+                    <div class="info-content">
+                        <h4>Email Addresses</h4>
+                        <p>General: <a href="mailto:thulaniskhosana01@gmail.com">thulaniskhosana01@gmail.com</a><br>
+                        Projects: <a href="mailto:projects@namrhali.co.za">projects@namrhali.co.za</a></p>
+                    </div>
                 </div>
             </div>
-        </section>
 
-        <section class="emergency-section">
-            <div class="emergency-content">
-                <div class="emergency-icon">🚨</div>
-                <h2>24/7 Emergency Logistics Support</h2>
-                <p>For urgent shipments and time-critical logistics needs, our emergency team is available around the clock.</p>
-                <div class="emergency-phone">+27 82 123 4567</div>
-                <a href="tel:+27821234567" class="emergency-btn">
-                    <span>Call Now</span>
-                    <span>📞</span>
-                </a>
+            <!-- Map Section -->
+            <div class="contact-info-card">
+                <h3><i class="fas fa-map-marked-alt"></i> Find Our Office</h3>
+                <div class="map-container">
+                    <div class="map-placeholder">
+                        <div class="map-icon">🗺️</div>
+                        <h4>Our Location</h4>
+                        <p>41 Sapphire Crescent<br>Middelburg, Mpumalanga</p>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--gray);">Map integration available upon request</p>
+                    </div>
+                </div>
             </div>
+        </div>
+
+        <!-- Emergency Section -->
+        <section class="emergency-section">
+            <div class="emergency-icon">🚨</div>
+            <h2>Emergency Service Support</h2>
+            <p>For urgent cleaning, construction, or maintenance needs, our emergency team is available to assist you.</p>
+            <div class="emergency-phone">082 440 5518</div>
+            <a href="tel:0824405518" class="emergency-btn">
+                <span>Call Now</span>
+                <span>📞</span>
+            </a>
         </section>
 
+        <!-- FAQ Section -->
         <section class="faq-section">
             <div class="section-header">
                 <div class="section-tag">Need Help?</div>
@@ -1037,40 +1187,45 @@
                 <p class="section-description">Quick answers to common contact questions</p>
             </div>
             
-            <div class="faq-grid">
-                <div class="faq-item">
-                    <div class="faq-question">How quickly do you respond to inquiries?</div>
-                    <div class="faq-answer">
-                        <p>We typically respond to all inquiries within 2 business hours during normal business hours. For urgent matters, please call our main office line for immediate assistance.</p>
-                    </div>
+            <div class="faq-item">
+                <div class="faq-question">How quickly do you respond to inquiries?</div>
+                <div class="faq-answer">
+                    <p>We typically respond to all inquiries within 2 business hours during normal business hours. For urgent matters, please call our main office line for immediate assistance.</p>
                 </div>
-                <div class="faq-item">
-                    <div class="faq-question">Do you offer after-hours support?</div>
-                    <div class="faq-answer">
-                        <p>Yes, we have a 24/7 emergency support line for urgent logistics needs. For non-urgent matters, our team responds to messages received outside business hours on the next business day.</p>
-                    </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Do you offer emergency services?</div>
+                <div class="faq-answer">
+                    <p>Yes, we have emergency support available 24/7 for urgent cleaning, construction, and maintenance needs. Call our emergency line for immediate assistance.</p>
                 </div>
-                <div class="faq-item">
-                    <div class="faq-question">What information should I include when requesting a quote?</div>
-                    <div class="faq-answer">
-                        <p>To get the most accurate quote, please include: shipment origin and destination, type of goods, weight and dimensions, any special handling requirements, and your desired timeline.</p>
-                    </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">What information should I include when requesting a quote?</div>
+                <div class="faq-answer">
+                    <p>To get the most accurate quote, please include: service type, project location, scope of work, timeline requirements, and any special considerations.</p>
                 </div>
-                <div class="faq-item">
-                    <div class="faq-question">Can I visit your office without an appointment?</div>
-                    <div class="faq-answer">
-                        <p>While we welcome visitors, we recommend scheduling an appointment to ensure the appropriate team member is available to assist you with your specific needs.</p>
-                    </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Can I visit your office without an appointment?</div>
+                <div class="faq-answer">
+                    <p>While we welcome visitors, we recommend scheduling an appointment to ensure the appropriate team member is available to assist you with your specific needs.</p>
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <div class="footer-logo"><a><img src="assets/namrhaliProjectsLogo.png" height="95" width="95"></a></div>
-                <p>Your trusted partner in logistics excellence. Proudly Level 1 B-BBEE Certified.</p>
+                <div class="footer-logo">
+                    <img src="assets/namrhaliProjectsLogo.png" alt="Namrhali Projects Logo" loading="lazy">
+                    <div class="footer-logo-text">NAMRHALI PROJECTS</div>
+                </div>
+                <p>Finding innovative ways to do business. Excellence in service delivery since 2022.</p>
                 <div class="social-links">
                     <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
@@ -1081,96 +1236,215 @@
             <div class="footer-section">
                 <h3>Contact Us</h3>
                 <p>41 Sapphire Crescent<br>Middelburg, Mpumalanga<br>1050, South Africa</p>
-                <p><br>Email: info@namrhali.co.za</p>
-                <p>Phone: +27 13 123 4567</p>
+                <p>Email: thulaniskhosana01@gmail.com</p>
+                <p>Phone: 082 440 5518</p>
             </div>
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <a href="index.html">Home</a>
+                <a href="about.html">About</a>
                 <a href="services.html">Services</a>
-                <a href="about.html">About Us</a>
                 <a href="contact.html">Contact</a>
             </div>
             <div class="footer-section">
                 <h3>Certifications</h3>
-                <p><strong>B-BBEE Level 1 Contributor</strong><br>135% Procurement Recognition<br><br>Registration: 2022/808593/07<br>Valid Until: June 2026</p>
+                <p><strong>B-BBEE Level 1 Contributor</strong><br>135% Procurement Recognition<br><br>Established 2022<br>Middelburg, Mpumalanga</p>
             </div>
         </div>
-        <div class="footer-divider"></div>
         <div class="footer-bottom">
-            <p>&copy; 2025 Namrhali Projects (Pty) Ltd. All rights reserved. | Moving South Africa Forward</p>
+            <p>&copy; 2025 Namrhali Projects. All rights reserved. | Finding innovative ways to do business.</p>
         </div>
     </footer>
 
     <script>
-        // Header scroll effect
-        const header = document.getElementById('header');
-        let lastScroll = 0;
+        // Enhanced JavaScript with better mobile handling - Same as index
+        'use strict';
 
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-            
-            if (currentScroll > 100) {
+        // DOM Elements
+        const header = document.getElementById('header');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+        const mobileNavMenu = document.getElementById('mobileNavMenu');
+        const mobileNavClose = document.getElementById('mobileNavClose');
+
+        // Header scroll effect
+        function updateHeader() {
+            if (window.pageYOffset > 50) {
                 header.classList.add('scrolled');
             } else {
                 header.classList.remove('scrolled');
             }
-            
-            lastScroll = currentScroll;
-        });
+        }
 
-        // FAQ functionality
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const item = question.parentNode;
-                item.classList.toggle('active');
-            });
-        });
+        // Mobile navigation state
+        let isMobileMenuOpen = false;
 
-        // Form submission handling
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Simple form validation
-            const firstName = document.getElementById('firstName').value;
-            const lastName = document.getElementById('lastName').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            
-            if (!firstName || !lastName || !email || !message) {
-                alert('Please fill in all required fields.');
-                return;
+        // Open mobile menu
+        function openMobileMenu() {
+            isMobileMenuOpen = true;
+            mobileNavOverlay.classList.add('active');
+            mobileNavMenu.classList.add('active');
+            mobileMenuBtn.setAttribute('aria-expanded', 'true');
+            mobileMenuBtn.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            document.documentElement.style.overflow = 'hidden';
+        }
+
+        // Close mobile menu
+        function closeMobileMenu() {
+            isMobileMenuOpen = false;
+            mobileNavOverlay.classList.remove('active');
+            mobileNavMenu.classList.remove('active');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            mobileMenuBtn.classList.remove('active');
+            document.body.style.overflow = '';
+            document.documentElement.style.overflow = '';
+        }
+
+        // Toggle mobile menu
+        function toggleMobileMenu() {
+            if (isMobileMenuOpen) {
+                closeMobileMenu();
+            } else {
+                openMobileMenu();
             }
-            
-            // In a real implementation, you would send the form data to a server here
-            // For now, we'll just show a success message
-            const submitBtn = this.querySelector('.form-submit');
-            const originalText = submitBtn.innerHTML;
-            
-            submitBtn.innerHTML = '<span>Sending...</span>';
-            submitBtn.disabled = true;
-            
-            setTimeout(() => {
-                alert('Thank you for your message! We will get back to you soon.');
-                this.reset();
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-            }, 1500);
-        });
+        }
 
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+        // Initialize
+        function init() {
+            // Initial header state
+            updateHeader();
+
+            // Event Listeners
+            window.addEventListener('scroll', updateHeader, { passive: true });
+
+            // Mobile menu
+            mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+            mobileNavClose.addEventListener('click', closeMobileMenu);
+            mobileNavOverlay.addEventListener('click', closeMobileMenu);
+
+            // Close mobile menu with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && isMobileMenuOpen) {
+                    closeMobileMenu();
                 }
             });
-        });
+
+            // Prevent zoom on double-tap for iOS
+            let lastTouchEnd = 0;
+            document.addEventListener('touchend', (e) => {
+                const now = Date.now();
+                if (now - lastTouchEnd <= 300) {
+                    e.preventDefault();
+                }
+                lastTouchEnd = now;
+            }, { passive: false });
+
+            // Handle orientation changes
+            function updateViewportHeight() {
+                const vh = window.innerHeight * 0.01;
+                document.documentElement.style.setProperty('--vh', `${vh}px`);
+            }
+
+            updateViewportHeight();
+            window.addEventListener('resize', updateViewportHeight);
+            window.addEventListener('orientationchange', updateViewportHeight);
+
+            // Touch feedback for interactive elements
+            if ('ontouchstart' in window) {
+                const touchElements = document.querySelectorAll('.contact-info-card, .faq-item, .form-submit, .emergency-btn');
+                
+                touchElements.forEach(element => {
+                    element.addEventListener('touchstart', function() {
+                        this.classList.add('active');
+                    }, { passive: true });
+                    
+                    element.addEventListener('touchend', function() {
+                        this.classList.remove('active');
+                    }, { passive: true });
+                });
+            }
+
+            // FAQ functionality
+            document.querySelectorAll('.faq-question').forEach(question => {
+                question.addEventListener('click', () => {
+                    const item = question.parentNode;
+                    item.classList.toggle('active');
+                });
+            });
+
+            // Form submission handling
+            document.getElementById('contactForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Simple form validation
+                const firstName = document.getElementById('firstName').value;
+                const lastName = document.getElementById('lastName').value;
+                const email = document.getElementById('email').value;
+                const phone = document.getElementById('phone').value;
+                const message = document.getElementById('message').value;
+                
+                if (!firstName || !lastName || !email || !phone || !message) {
+                    alert('Please fill in all required fields.');
+                    return;
+                }
+                
+                // In a real implementation, you would send the form data to a server here
+                // For now, we'll just show a success message
+                const submitBtn = this.querySelector('.form-submit');
+                const originalText = submitBtn.innerHTML;
+                
+                submitBtn.innerHTML = '<span>Sending...</span>';
+                submitBtn.disabled = true;
+                
+                setTimeout(() => {
+                    alert('Thank you for your message! We will get back to you soon.');
+                    this.reset();
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                }, 1500);
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href === '#') return;
+                    
+                    if (href.startsWith('#') && document.querySelector(href)) {
+                        e.preventDefault();
+                        const element = document.querySelector(href);
+                        const headerHeight = header.offsetHeight;
+                        const elementPosition = element.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+                        
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                        closeMobileMenu();
+                    }
+                });
+            });
+
+            // Add focus-visible polyfill for better accessibility
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Tab') {
+                    document.body.classList.add('using-keyboard');
+                }
+            });
+
+            document.addEventListener('mousedown', () => {
+                document.body.classList.remove('using-keyboard');
+            });
+        }
+
+        // Initialize when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
     </script>
 </body>
 </html>

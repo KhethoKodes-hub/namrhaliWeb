@@ -54,7 +54,7 @@
             overflow-x: hidden;
         }
 
-        /* Modern Header */
+        /* Modern Header - Consistent with index and about */
         header {
             position: fixed;
             width: 100%;
@@ -113,7 +113,7 @@
             text-overflow: ellipsis;
         }
 
-        /* Mobile Menu Button */
+        /* Mobile Menu Button - Consistent with other pages */
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -132,49 +132,16 @@
             flex-shrink: 0;
         }
 
-        /* Desktop Navigation Links */
+        .mobile-menu-btn:hover {
+            background: rgba(30, 64, 175, 0.1);
+        }
+
+        /* Desktop Navigation Links - Hidden on mobile like other pages */
         .nav-links {
-            display: flex;
-            gap: clamp(1rem, 2vw, 2.5rem);
-            list-style: none;
-            align-items: center;
-            margin-left: auto;
+            display: none;
         }
 
-        .nav-links a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 500;
-            font-size: clamp(0.9rem, 2vw, 1rem);
-            position: relative;
-            transition: color 0.3s ease;
-            padding: 0.5rem 0;
-            white-space: nowrap;
-        }
-
-        .nav-links a:not(.nav-cta)::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--orange);
-            transition: width 0.3s ease;
-        }
-
-        .nav-cta {
-            padding: clamp(0.6rem, 2vw, 0.8rem) clamp(1rem, 3vw, 2rem);
-            background: var(--gradient-orange);
-            color: white;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
-            display: inline-block;
-        }
-
-        /* Mobile Navigation Overlay */
+        /* Mobile Navigation Overlay - Consistent with other pages */
         .mobile-nav-overlay {
             display: none;
             position: fixed;
@@ -281,6 +248,61 @@
 
         .mobile-nav-cta:active {
             transform: scale(0.98);
+        }
+
+        /* Desktop Navigation - Show on larger screens like other pages */
+        @media (min-width: 1024px) {
+            .mobile-menu-btn {
+                display: none;
+            }
+            
+            .nav-links {
+                display: flex;
+                gap: clamp(1.5rem, 3vw, 2.5rem);
+                list-style: none;
+                align-items: center;
+                margin-left: auto;
+            }
+            
+            .nav-links a {
+                text-decoration: none;
+                color: var(--dark);
+                font-weight: 500;
+                font-size: clamp(0.9rem, 2vw, 1rem);
+                position: relative;
+                transition: color 0.3s ease;
+                padding: 0.5rem 0;
+                white-space: nowrap;
+            }
+            
+            .nav-links a:not(.nav-cta)::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background: var(--orange);
+                transition: width 0.3s ease;
+            }
+            
+            .nav-cta {
+                padding: clamp(0.6rem, 2vw, 0.8rem) clamp(1rem, 3vw, 2rem);
+                background: var(--gradient-orange);
+                color: white;
+                border-radius: 8px;
+                font-weight: 600;
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
+                display: inline-block;
+            }
+        }
+
+        /* Show mobile menu button on smaller screens */
+        @media (max-width: 1023px) {
+            .mobile-menu-btn {
+                display: flex;
+            }
         }
 
         /* Page Header with Construction Background */
@@ -1187,7 +1209,7 @@
             left: -1.5rem;
         }
 
-        /* Responsive Design */
+        /* Responsive Design for other sections */
         @media (min-width: 640px) {
             .stats-grid {
                 grid-template-columns: repeat(4, 1fr);
@@ -1209,14 +1231,6 @@
         }
 
         @media (min-width: 768px) {
-            .mobile-menu-btn {
-                display: flex;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-            
             .service-detail {
                 flex-direction: row;
                 gap: clamp(2rem, 4vw, 5rem);
@@ -1272,14 +1286,6 @@
                 padding: 1.2rem 8%;
                 padding-left: max(8%, var(--safe-area-left));
                 padding-right: max(8%, var(--safe-area-right));
-            }
-            
-            .mobile-menu-btn {
-                display: none;
-            }
-            
-            .nav-links {
-                display: flex;
             }
             
             .page-header,
@@ -2007,7 +2013,7 @@
     </footer>
 
     <script>
-        // Enhanced JavaScript with better mobile handling
+        // Enhanced JavaScript with consistent mobile navigation
         'use strict';
 
         // DOM Elements
@@ -2360,7 +2366,7 @@
                         setTimeout(() => {
                             this.classList.remove('active');
                         }, 150);
-                    }, { passive: true });
+                }, { passive: true });
                 });
             }
 
